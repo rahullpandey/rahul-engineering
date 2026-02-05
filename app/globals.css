@@ -687,18 +687,23 @@ textarea {
   outline: none;
 }
 
-.login-logo-link:hover .logo-architect {
+.login-logo-anchor {
+  display: inline-flex;
+  outline: none;
+}
+
+.login-logo-anchor:hover .logo-architect {
   box-shadow: 0 16px 30px rgba(43, 43, 43, 0.18);
 }
 
-.login-logo-link:focus,
-.login-logo-link:focus-visible {
+.login-logo-anchor:focus,
+.login-logo-anchor:focus-visible {
   outline: none !important;
   box-shadow: none !important;
 }
 
-.login-logo-link *:focus,
-.login-logo-link *:focus-visible {
+.login-logo-anchor *:focus,
+.login-logo-anchor *:focus-visible {
   outline: none !important;
   box-shadow: none !important;
 }
