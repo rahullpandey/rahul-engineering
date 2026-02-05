@@ -70,7 +70,9 @@ export default async function HomePage({ searchParams }) {
           <div className="cta-row">
             <a
               className="button primary"
-              href="mailto:rkpanday257@gmail.com?subject=Proposal%20Request%20-%20Rahul%20Engineering"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=rkpanday257@gmail.com&su=Proposal%20Request%20-%20Rahul%20Engineering"
+              target="_blank"
+              rel="noreferrer"
             >
               Request a proposal
             </a>
