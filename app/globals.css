@@ -690,6 +690,12 @@ textarea {
   box-shadow: 0 16px 30px rgba(43, 43, 43, 0.18);
 }
 
+.login-logo-link:focus,
+.login-logo-link:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
 @media (max-width: 900px) {
   .admin-shell {
     grid-template-columns: 1fr;
