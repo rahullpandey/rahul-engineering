@@ -14,7 +14,10 @@
     "@prisma/client": "5.19.1",
     "next": "14.2.5",
     "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react-dom": "18.3.1",
+    "three": "0.165.0",
+    "@react-three/drei": "9.105.6",
+    "@react-three/fiber": "8.16.8"
   },
   "devDependencies": {
     "eslint": "8.57.0",

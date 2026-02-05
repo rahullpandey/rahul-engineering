@@ -1,4 +1,5 @@
 import prisma from "../lib/prisma";
+import WorldGlobe from "./components/WorldGlobe";
 
 export const dynamic = "force-dynamic";
 
@@ -148,12 +149,7 @@ export default async function HomePage({ searchParams }) {
           <p>Active coverage across key hospitality hubs in North India.</p>
         </div>
         <div className="coverage-panel">
-          <div className="coverage-map" aria-hidden>
-            <div className="map-dot dot-delhi">Delhi</div>
-            <div className="map-dot dot-agra">Agra</div>
-            <div className="map-dot dot-gurgaon">Gurgaon</div>
-            <div className="map-dot dot-udaipur">Udaipur</div>
-          </div>
+          <WorldGlobe />
           <div className="coverage-list">
             <h3>Primary Cities</h3>
             <ul>

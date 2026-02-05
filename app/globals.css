@@ -501,10 +501,9 @@ textarea {
   box-shadow: var(--shadow);
 }
 
-.coverage-map {
+.globe-wrapper {
   position: relative;
-  min-height: 220px;
-  height: 260px;
+  min-height: 280px;
   border-radius: 16px;
   background:
     radial-gradient(circle at 40% 40%, rgba(168, 121, 62, 0.15), transparent 60%),
@@ -514,30 +513,39 @@ textarea {
   overflow: hidden;
 }
 
-.coverage-map::before {
-  content: "";
+.globe-canvas {
+  width: 100%;
+  height: 280px;
+}
+
+.globe-popup {
   position: absolute;
-  inset: 14px;
-  background: radial-gradient(circle at 50% 50%, rgba(27, 42, 65, 0.08), transparent 60%);
-  border: 1px dashed rgba(27, 42, 65, 0.18);
+  bottom: 14px;
+  left: 14px;
+  padding: 0.8rem 1rem;
   border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(200, 160, 110, 0.35);
+  box-shadow: 0 10px 22px rgba(27, 42, 65, 0.12);
+  min-width: 180px;
 }
 
-.map-dot {
-  position: absolute;
-  padding: 0.35rem 0.6rem;
-  border-radius: 999px;
-  background: rgba(27, 42, 65, 0.95);
-  color: #fff;
-  font-size: 0.75rem;
-  font-weight: 600;
-  z-index: 1;
+.globe-popup span {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: #1b2a41;
 }
 
-.dot-delhi { top: 30%; left: 40%; }
-.dot-agra { top: 55%; left: 50%; }
-.dot-gurgaon { top: 36%; left: 48%; }
-.dot-udaipur { top: 70%; left: 30%; }
+.globe-popup ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.25rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
 
 .coverage-list ul {
   list-style: none;
