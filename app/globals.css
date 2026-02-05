@@ -236,13 +236,34 @@ textarea {
   background: linear-gradient(90deg, var(--accent), transparent);
 }
 
-.logo-shimmer {
-  position: relative;
-  display: inline-block;
-  background: linear-gradient(90deg, #1b2a41, #c8a06e, #1b2a41);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+.logo-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.1rem;
+  justify-content: center;
+}
+
+.logo-seal {
+  width: 70px;
+  height: 70px;
+  border-radius: 999px;
+  border: 2px solid #c8a06e;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 30% 30%, #f9f2e6, #f1e2cf 65%);
+  box-shadow: 0 12px 30px rgba(27, 42, 65, 0.18);
+}
+
+.logo-seal span {
+  font-family: "Playfair Display", "Times New Roman", serif;
+  font-size: 1.3rem;
+  color: #1b2a41;
+  letter-spacing: 0.2em;
+  padding-left: 0.2em;
+}
+
+.logo-wordmark {
+  color: #1b2a41;
 }
 
 .logo-shimmer::after {

@@ -25,20 +25,27 @@ export default async function HomePage({ searchParams }) {
     <main>
       <header className="container" style={{ paddingTop: "2.5rem", paddingBottom: "1.5rem" }}>
         <div style={{ textAlign: "center" }}>
-          <div
-            className="logo-shimmer"
-            style={{
-              fontWeight: 700,
-              fontSize: "3.2rem",
-              letterSpacing: "0.06em",
-              textTransform: "uppercase",
-              fontFamily: "\"Playfair Display\", \"Times New Roman\", serif"
-            }}
-          >
-            Rahul Engineering
+          <div className="logo-lockup">
+            <div className="logo-seal" aria-hidden>
+              <span>RE</span>
+            </div>
+            <div>
+              <div
+                className="logo-wordmark"
+                style={{
+                  fontWeight: 700,
+                  fontSize: "3.1rem",
+                  letterSpacing: "0.04em",
+                  textTransform: "uppercase",
+                  fontFamily: "\"Playfair Display\", \"Times New Roman\", serif"
+                }}
+              >
+                Rahul Engineering
+              </div>
+              <span className="logo-underline" />
+            </div>
           </div>
-          <span className="logo-underline" />
-          <div style={{ color: "var(--muted)", marginTop: "0.4rem", letterSpacing: "0.1em" }}>
+          <div style={{ color: "var(--muted)", marginTop: "0.6rem", letterSpacing: "0.1em" }}>
             Hospitality Workforce & Project Management
           </div>
         </div>
