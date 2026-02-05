@@ -51,6 +51,7 @@ export default function AdminLoginPage({ searchParams }) {
             />
             <button
               type="button"
+              className="eye-button"
               onClick={() => setShowPassword((prev) => !prev)}
               aria-label={showPassword ? "Hide password" : "Show password"}
               style={{

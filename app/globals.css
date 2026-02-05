@@ -463,6 +463,15 @@ textarea {
   transform: rotate(-16deg) scaleX(1);
 }
 
+.eye-button {
+  outline: none;
+}
+
+.eye-button:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
 @media (max-width: 900px) {
   .admin-shell {
     grid-template-columns: 1fr;
