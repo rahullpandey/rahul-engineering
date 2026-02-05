@@ -1,13 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap");
+
 :root {
   color-scheme: light;
-  --bg: #f6f1e6;
-  --ink: #1b1b1b;
-  --muted: #6c6a66;
-  --accent: #c9652b;
-  --accent-2: #216d6f;
-  --card: #fff9ef;
-  --stroke: #e7dccf;
-  --shadow: 0 20px 60px rgba(43, 35, 25, 0.12);
+  --bg: #f5efe6;
+  --ink: #1c1b19;
+  --muted: #6a5f54;
+  --accent: #b7862a;
+  --accent-2: #264653;
+  --card: #fffaf2;
+  --stroke: #e6d6c2;
+  --shadow: 0 24px 70px rgba(42, 33, 22, 0.15);
   --radius: 18px;
 }
 
@@ -22,8 +24,17 @@ html, body {
 }
 
 body {
-  font-family: "Times New Roman", Times, serif;
-  background: radial-gradient(1200px 800px at 10% -10%, #fff4df 0%, #f6f1e6 60%, #efe6d7 100%);
+  font-family: "Source Sans 3", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(1200px 800px at 10% -10%, #fff2de 0%, #f5efe6 60%, #eee3d4 100%),
+    radial-gradient(800px 600px at 90% 10%, rgba(183, 134, 42, 0.08), transparent 60%),
+    repeating-linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.55) 0,
+      rgba(255, 255, 255, 0.55) 6px,
+      rgba(255, 255, 255, 0.2) 6px,
+      rgba(255, 255, 255, 0.2) 12px
+    );
   color: var(--ink);
   line-height: 1.5;
 }
@@ -67,6 +78,7 @@ textarea {
 }
 
 .hero h1 {
+  font-family: "Playfair Display", "Times New Roman", serif;
   font-size: clamp(2.6rem, 3.6vw, 4.2rem);
   line-height: 1.05;
   letter-spacing: -0.02em;
@@ -83,9 +95,9 @@ textarea {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: #fff2df;
-  border: 1px solid #ecd6b7;
-  color: #7c3c0a;
+  background: #fff3dd;
+  border: 1px solid #e8d2ac;
+  color: #7a4d10;
   padding: 0.4rem 0.9rem;
   border-radius: 999px;
   font-size: 0.85rem;
@@ -114,7 +126,7 @@ textarea {
 .button.primary {
   background: var(--accent);
   color: white;
-  box-shadow: 0 14px 30px rgba(201, 101, 43, 0.25);
+  box-shadow: 0 16px 34px rgba(183, 134, 42, 0.28);
 }
 
 .button.ghost {
@@ -147,6 +159,7 @@ textarea {
 }
 
 .section-title {
+  font-family: "Playfair Display", "Times New Roman", serif;
   font-size: 1.6rem;
   margin: 3rem 0 1.25rem;
 }

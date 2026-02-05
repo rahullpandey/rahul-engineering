@@ -23,12 +23,20 @@ export default async function HomePage({ searchParams }) {
 
   return (
     <main>
-      <header className="container" style={{ paddingTop: "2rem", paddingBottom: "1.5rem" }}>
+      <header className="container" style={{ paddingTop: "2.5rem", paddingBottom: "1.5rem" }}>
         <div style={{ textAlign: "center" }}>
-          <div style={{ fontWeight: 800, fontSize: "2.8rem", letterSpacing: "0.02em" }}>
+          <div
+            style={{
+              fontWeight: 700,
+              fontSize: "3.2rem",
+              letterSpacing: "0.06em",
+              textTransform: "uppercase",
+              fontFamily: "\"Playfair Display\", \"Times New Roman\", serif"
+            }}
+          >
             Rahul Engineering
           </div>
-          <div style={{ color: "var(--muted)", marginTop: "0.4rem" }}>
+          <div style={{ color: "var(--muted)", marginTop: "0.4rem", letterSpacing: "0.1em" }}>
             Hospitality Workforce & Project Management
           </div>
         </div>
@@ -41,7 +49,7 @@ export default async function HomePage({ searchParams }) {
         </nav>
       </header>
 
-      <section className="container hero">
+      <section className="container hero" style={{ position: "relative" }}>
         <div>
           <div className="badge">Trusted manpower partner for premium hospitality</div>
           <h1>Labour supply and project control in one reliable system.</h1>
