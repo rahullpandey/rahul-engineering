@@ -43,7 +43,6 @@ function latLngToVec3(lat, lng, radius) {
 
 function GlobeMesh({ onCitySelect }) {
   const globeRef = useRef(null);
-  const spinRef = useRef(0);
   const colorMap = useTexture(
     "https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg"
   );
@@ -60,10 +59,9 @@ function GlobeMesh({ onCitySelect }) {
     []
   );
 
-  useFrame((_, delta) => {
+  useFrame(() => {
     if (globeRef.current) {
-      spinRef.current += delta * 0.15;
-      globeRef.current.rotation.y = baseRotation.current.y + spinRef.current;
+      globeRef.current.rotation.y = baseRotation.current.y;
       globeRef.current.rotation.x = baseRotation.current.x;
     }
   });
@@ -123,13 +121,13 @@ export default function WorldGlobe() {
   return (
     <div className="globe-wrapper">
       <div className="globe-canvas">
-        <Canvas camera={{ position: [0, 0, 4.6], fov: 38 }} dpr={[1, 2]}>
+        <Canvas camera={{ position: [0, 0, 3.9], fov: 34 }} dpr={[1, 2]}>
           <ambientLight intensity={1.1} />
           <hemisphereLight intensity={0.7} color="#f5efe6" groundColor="#1b2a41" />
           <directionalLight position={[4, 3, 6]} intensity={1.1} />
           <pointLight position={[-6, -3, 4]} intensity={0.6} color="#c8a06e" />
           <GlobeMesh onCitySelect={setSelectedCity} />
-          <OrbitControls enableZoom={false} enablePan={false} autoRotate={false} enableDamping />
+          <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} autoRotate={false} />
         </Canvas>
       </div>
       <div className="globe-popup">
