@@ -253,47 +253,72 @@ textarea {
   justify-content: center;
 }
 
-.logo-badge {
-  width: 96px;
+.logo-doorway {
+  width: 92px;
   height: 96px;
   position: relative;
-  border-radius: 999px;
-  border: 2px solid #c8a06e;
+  display: grid;
+  place-items: center;
+  border-radius: 20px 20px 24px 24px;
   background: #f7f3ed;
+  border: 1.5px solid rgba(27, 42, 65, 0.2);
   box-shadow: 0 12px 28px rgba(27, 42, 65, 0.18);
-  display: grid;
-  place-items: center;
 }
 
-.logo-badge .badge-ring {
+.logo-doorway::before {
+  content: "";
   position: absolute;
-  width: 86px;
-  height: 86px;
-  border-radius: 999px;
-  border: 1px solid rgba(27, 42, 65, 0.25);
-  color: #1b2a41;
-  font-size: 0.46rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  padding: 8px;
+  width: 70px;
+  height: 80px;
+  border-radius: 36px 36px 18px 18px;
+  border: 2px solid #c8a06e;
+  top: 6px;
 }
 
-.logo-badge .badge-center {
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
-  border: 1.5px solid #c8a06e;
-  display: grid;
-  place-items: center;
+.logo-doorway .door-r,
+.logo-doorway .door-e {
+  position: absolute;
   font-family: "Playfair Display", "Times New Roman", serif;
   font-weight: 600;
   color: #1b2a41;
-  letter-spacing: 0.18em;
-  padding-left: 0.18em;
-  background: #fbf7f1;
+}
+
+.logo-doorway .door-r {
+  font-size: 2rem;
+  left: 20px;
+  top: 16px;
+}
+
+.logo-doorway .door-e {
+  font-size: 1.9rem;
+  right: 18px;
+  top: 22px;
+  color: #a8793e;
+}
+
+.logo-doorway .door-steps {
+  position: absolute;
+  height: 5px;
+  background: #c8a06e;
+  border-radius: 6px;
+  bottom: 12px;
+}
+
+.logo-doorway .step-1 {
+  width: 44px;
+  left: 24px;
+}
+
+.logo-doorway .step-2 {
+  width: 36px;
+  left: 28px;
+  bottom: 6px;
+}
+
+.logo-doorway .step-3 {
+  width: 28px;
+  left: 32px;
+  bottom: 0;
 }
 
 .logo-shimmer::after {

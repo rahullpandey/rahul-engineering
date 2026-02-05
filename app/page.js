@@ -26,11 +26,12 @@ export default async function HomePage({ searchParams }) {
       <header className="container" style={{ paddingTop: "2.5rem", paddingBottom: "1.5rem" }}>
         <div style={{ textAlign: "center" }}>
           <div className="logo-lockup">
-            <div className="logo-badge" aria-hidden>
-              <div className="badge-ring">
-                Rahul Engineering • Hospitality Workforce •
-              </div>
-              <div className="badge-center">RE</div>
+            <div className="logo-doorway" aria-hidden>
+              <div className="door-r">R</div>
+              <div className="door-e">E</div>
+              <span className="door-steps step-1" />
+              <span className="door-steps step-2" />
+              <span className="door-steps step-3" />
             </div>
             <div>
               <div
