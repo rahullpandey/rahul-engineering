@@ -284,6 +284,12 @@ textarea {
   box-shadow: 0 8px 20px rgba(27, 42, 65, 0.12);
 }
 
+.experience-badge.badge-corner {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
 .logo-wordmark {
   color: #2b2b2b;
   position: relative;

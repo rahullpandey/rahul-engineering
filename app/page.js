@@ -49,9 +49,6 @@ export default async function HomePage({ searchParams }) {
           <div style={{ color: "var(--muted)", marginTop: "0.6rem", letterSpacing: "0.1em" }}>
             Hospitality Workforce & Project Management
           </div>
-          <div style={{ marginTop: "0.8rem", display: "flex", justifyContent: "center" }}>
-            <span className="experience-badge">18 Years of Excellence</span>
-          </div>
         </div>
         <nav className="nav-links" style={{ justifyContent: "center", marginTop: "1.2rem" }}>
           <a href="#services">Services</a>
@@ -75,7 +72,8 @@ export default async function HomePage({ searchParams }) {
             <a className="button ghost" href="/admin/login">Go to admin portal</a>
           </div>
         </div>
-        <div className="card">
+        <div className="card" style={{ position: "relative" }}>
+          <span className="experience-badge badge-corner">18 Years of Excellence</span>
           <h3>Operational Snapshot</h3>
           <p style={{ marginBottom: "1.2rem", color: "var(--muted)" }}>
             Real-time visibility across workforce and hotel projects.
