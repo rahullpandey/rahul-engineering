@@ -28,14 +28,15 @@ html, body {
 body {
   font-family: "Source Sans 3", "Segoe UI", sans-serif;
   background:
-    radial-gradient(1200px 800px at 10% -10%, #fff2de 0%, #f5efe6 60%, #eee3d4 100%),
-    radial-gradient(800px 600px at 90% 10%, rgba(183, 134, 42, 0.08), transparent 60%),
+    radial-gradient(1400px 900px at 12% -8%, #fff2df 0%, #f6eee4 58%, #eee2d2 100%),
+    radial-gradient(900px 700px at 92% 12%, rgba(183, 134, 42, 0.12), transparent 60%),
+    radial-gradient(700px 600px at 70% 80%, rgba(38, 70, 83, 0.12), transparent 60%),
     repeating-linear-gradient(
       135deg,
-      rgba(255, 255, 255, 0.55) 0,
-      rgba(255, 255, 255, 0.55) 6px,
-      rgba(255, 255, 255, 0.2) 6px,
-      rgba(255, 255, 255, 0.2) 12px
+      rgba(255, 255, 255, 0.6) 0,
+      rgba(255, 255, 255, 0.6) 8px,
+      rgba(255, 255, 255, 0.18) 8px,
+      rgba(255, 255, 255, 0.18) 16px
     );
   color: var(--ink);
   line-height: 1.5;
@@ -52,42 +53,44 @@ body {
 .parallax-orb {
   position: absolute;
   border-radius: 999px;
-  filter: blur(16px);
-  opacity: 0.7;
-  transform: translate3d(calc(var(--parallax-x) * 22px), calc(var(--parallax-y) * 22px), 0);
-  transition: transform 0.3s ease;
+  filter: blur(22px);
+  opacity: 0.55;
+  transform:
+    translate3d(calc(var(--parallax-x) * 18px), calc(var(--parallax-y) * 18px), 0)
+    translateZ(0);
+  transition: transform 0.35s ease;
 }
 
 .orb-1 {
-  width: 380px;
-  height: 380px;
-  top: -120px;
-  right: -60px;
-  background: radial-gradient(circle at 30% 30%, #f3d9a1, transparent 70%);
+  width: 420px;
+  height: 420px;
+  top: -140px;
+  right: -80px;
+  background: radial-gradient(circle at 30% 30%, rgba(246, 223, 168, 0.9), transparent 70%);
 }
 
 .orb-2 {
-  width: 520px;
-  height: 520px;
-  bottom: -220px;
-  left: -140px;
-  background: radial-gradient(circle at 30% 30%, #e6c27a, transparent 70%);
+  width: 600px;
+  height: 600px;
+  bottom: -260px;
+  left: -180px;
+  background: radial-gradient(circle at 30% 30%, rgba(214, 176, 96, 0.9), transparent 70%);
 }
 
 .orb-3 {
-  width: 280px;
-  height: 280px;
-  top: 20%;
-  left: 60%;
-  background: radial-gradient(circle at 30% 30%, rgba(38, 70, 83, 0.25), transparent 70%);
+  width: 320px;
+  height: 320px;
+  top: 22%;
+  left: 58%;
+  background: radial-gradient(circle at 30% 30%, rgba(30, 52, 64, 0.35), transparent 70%);
 }
 
 .orb-4 {
-  width: 220px;
-  height: 220px;
-  bottom: 15%;
-  right: 10%;
-  background: radial-gradient(circle at 30% 30%, rgba(183, 134, 42, 0.35), transparent 70%);
+  width: 240px;
+  height: 240px;
+  bottom: 18%;
+  right: 12%;
+  background: radial-gradient(circle at 30% 30%, rgba(183, 134, 42, 0.4), transparent 70%);
 }
 
 main, header, section, footer, .admin-shell {
@@ -227,7 +230,6 @@ textarea {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: logo-float 6s ease-in-out infinite;
 }
 
 .logo-shimmer::after {
@@ -270,16 +272,6 @@ textarea {
   100% {
     transform: translateX(120%);
     opacity: 0;
-  }
-}
-
-@keyframes logo-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-4px);
   }
 }
 
