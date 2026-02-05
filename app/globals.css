@@ -690,6 +690,7 @@ textarea {
 .login-logo-anchor {
   display: inline-flex;
   outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .login-logo-anchor:hover .logo-architect {
@@ -704,6 +705,11 @@ textarea {
 
 .login-logo-anchor *:focus,
 .login-logo-anchor *:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.login-logo-link:focus-within {
   outline: none !important;
   box-shadow: none !important;
 }
