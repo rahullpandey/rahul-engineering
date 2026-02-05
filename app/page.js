@@ -26,12 +26,25 @@ export default async function HomePage({ searchParams }) {
       <header className="container" style={{ paddingTop: "2.5rem", paddingBottom: "1.5rem" }}>
         <div style={{ textAlign: "center" }}>
           <div className="logo-lockup">
-            <div className="logo-doorway" aria-hidden>
-              <div className="door-r">R</div>
-              <div className="door-e">E</div>
-              <span className="door-steps step-1" />
-              <span className="door-steps step-2" />
-              <span className="door-steps step-3" />
+            <div className="logo-monoline" aria-hidden>
+              <svg viewBox="0 0 220 80" role="img" aria-label="RE monoline mark">
+                <path
+                  d="M14 62 V16 h32 q18 0 18 16 q0 12 -12 16 l18 14 M46 48 H14 M86 62 V16 H156 M86 38 H150 M86 62 H160 q14 0 22 -8"
+                  fill="none"
+                  stroke="#1b2a41"
+                  strokeWidth="4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M160 62 q18 0 30 -10"
+                  fill="none"
+                  stroke="#a8793e"
+                  strokeWidth="4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </div>
             <div>
               <div
