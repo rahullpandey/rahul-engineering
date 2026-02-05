@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap");
+
 :root {
   color-scheme: light;
   --bg: #f5f3ee;
@@ -24,7 +26,7 @@ html, body {
 }
 
 body {
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Source Sans 3", "Segoe UI", sans-serif;
   background:
     radial-gradient(1400px 900px at 12% -8%, #fbf7f1 0%, #f5f1ea 58%, #eee7dd 100%),
     radial-gradient(900px 700px at 92% 12%, rgba(168, 121, 62, 0.12), transparent 60%),
@@ -250,6 +252,7 @@ textarea {
 }
 
 .section-title {
+  font-family: "Playfair Display", "Times New Roman", serif;
   font-size: 1.6rem;
   margin: 3rem 0 1.25rem;
   position: relative;
@@ -419,6 +422,7 @@ textarea {
 
 .logo-architect span {
   position: absolute;
+  font-family: "Playfair Display", "Times New Roman", serif;
   font-weight: 600;
 }
 
