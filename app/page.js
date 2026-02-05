@@ -4,15 +4,22 @@ export const dynamic = "force-dynamic";
 
 export default async function HomePage({ searchParams }) {
   const selectedHotel = searchParams?.hotel || "all";
+  let projects = [];
+  let hotels = [];
+  let dbAvailable = true;
 
-  const [projects, hotels] = await Promise.all([
-    prisma.project.findMany({
-      include: { hotel: true },
-      where: selectedHotel === "all" ? undefined : { hotelId: selectedHotel },
-      orderBy: { startDate: "desc" }
-    }),
-    prisma.hotel.findMany({ orderBy: { name: "asc" } })
-  ]);
+  try {
+    [projects, hotels] = await Promise.all([
+      prisma.project.findMany({
+        include: { hotel: true },
+        where: selectedHotel === "all" ? undefined : { hotelId: selectedHotel },
+        orderBy: { startDate: "desc" }
+      }),
+      prisma.hotel.findMany({ orderBy: { name: "asc" } })
+    ]);
+  } catch (error) {
+    dbAvailable = false;
+  }
 
   return (
     <main>
@@ -106,35 +113,41 @@ export default async function HomePage({ searchParams }) {
 
       <section className="container" id="projects">
         <h2 className="section-title">Ongoing Projects</h2>
-        <form
-          method="get"
-          style={{
-            display: "grid",
-            gap: "0.6rem",
-            gridTemplateColumns: "minmax(220px, 320px)",
-            marginBottom: "1.2rem"
-          }}
-        >
-          <label htmlFor="hotel" style={{ fontWeight: 600 }}>
-            Filter by hotel
-          </label>
-          <select id="hotel" name="hotel" defaultValue={selectedHotel}>
-            <option value="all">All hotels</option>
-            {hotels.map((hotel) => (
-              <option key={hotel.id} value={hotel.id}>
-                {hotel.name}
-              </option>
-            ))}
-          </select>
-          <button className="button ghost" type="submit">
-            Apply Filter
-          </button>
-        </form>
+        {dbAvailable ? (
+          <form
+            method="get"
+            style={{
+              display: "grid",
+              gap: "0.6rem",
+              gridTemplateColumns: "minmax(220px, 320px)",
+              marginBottom: "1.2rem"
+            }}
+          >
+            <label htmlFor="hotel" style={{ fontWeight: 600 }}>
+              Filter by hotel
+            </label>
+            <select id="hotel" name="hotel" defaultValue={selectedHotel}>
+              <option value="all">All hotels</option>
+              {hotels.map((hotel) => (
+                <option key={hotel.id} value={hotel.id}>
+                  {hotel.name}
+                </option>
+              ))}
+            </select>
+            <button className="button ghost" type="submit">
+              Apply Filter
+            </button>
+          </form>
+        ) : null}
         <div className="card-grid">
           {projects.length === 0 ? (
             <div className="card">
               <h3>Projects Updating</h3>
-              <p>Our project list is being updated. Please check back soon.</p>
+              <p>
+                {dbAvailable
+                  ? "Our project list is being updated. Please check back soon."
+                  : "The projects list is temporarily unavailable. Please check back soon."}
+              </p>
             </div>
           ) : (
             projects.map((project) => (
