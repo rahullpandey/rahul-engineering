@@ -289,6 +289,7 @@ textarea {
   box-shadow: 0 12px 24px rgba(43, 43, 43, 0.14);
   display: grid;
   place-items: center;
+  animation: logo-pulse 4.8s ease-in-out infinite;
 }
 
 .logo-architect span {
@@ -309,6 +310,18 @@ textarea {
   right: 12px;
   bottom: 10px;
   color: #a8793e;
+}
+
+@keyframes logo-pulse {
+  0%,
+  100% {
+    box-shadow: 0 12px 24px rgba(43, 43, 43, 0.14);
+    border-color: rgba(43, 43, 43, 0.25);
+  }
+  50% {
+    box-shadow: 0 16px 30px rgba(168, 121, 62, 0.2);
+    border-color: rgba(168, 121, 62, 0.45);
+  }
 }
 
 .logo-shimmer::after {
