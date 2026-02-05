@@ -504,12 +504,23 @@ textarea {
 .coverage-map {
   position: relative;
   min-height: 220px;
+  height: 260px;
   border-radius: 16px;
   background:
     radial-gradient(circle at 40% 40%, rgba(168, 121, 62, 0.15), transparent 60%),
     radial-gradient(circle at 70% 60%, rgba(27, 42, 65, 0.15), transparent 60%),
     linear-gradient(145deg, rgba(255, 255, 255, 0.8), rgba(244, 236, 226, 0.9));
   border: 1px solid rgba(200, 160, 110, 0.35);
+  overflow: hidden;
+}
+
+.coverage-map::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  background: radial-gradient(circle at 50% 50%, rgba(27, 42, 65, 0.08), transparent 60%);
+  border: 1px dashed rgba(27, 42, 65, 0.18);
+  border-radius: 12px;
 }
 
 .map-dot {
@@ -520,6 +531,7 @@ textarea {
   color: #fff;
   font-size: 0.75rem;
   font-weight: 600;
+  z-index: 1;
 }
 
 .dot-delhi { top: 30%; left: 40%; }
