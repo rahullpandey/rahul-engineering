@@ -220,29 +220,46 @@ export default async function HomePage({ searchParams }) {
       </section>
 
       <section className="container" id="contact">
-        <div className="card" style={{ display: "grid", gap: "1.2rem" }}>
-          <h2>Contact Rahul Engineering</h2>
-          <p style={{ color: "var(--muted)" }}>
-            Share your hotel requirements and we will respond with a tailored manpower plan.
-          </p>
-          <div className="card-grid">
-            <div>
-              <strong>Phone</strong>
-              <div style={{ color: "var(--muted)" }}>+91 9891750035, +91 7982987790</div>
+        <div className="contact-panel">
+          <div>
+            <h2>Contact Rahul Engineering</h2>
+            <p style={{ color: "var(--muted)", marginBottom: "1.4rem" }}>
+              Share your hotel requirements and we will respond with a tailored manpower plan.
+            </p>
+            <div className="contact-chips">
+              <a className="contact-chip" href="tel:+919891750035">Call +91 9891750035</a>
+              <a className="contact-chip" href="tel:+917982987790">Call +91 7982987790</a>
+              <a className="contact-chip" href="https://mail.google.com/mail/?view=cm&fs=1&to=rkpanday257@gmail.com&su=Proposal%20Request%20-%20Rahul%20Engineering" target="_blank" rel="noreferrer">
+                Email Us
+              </a>
             </div>
-            <div>
-              <strong>Email</strong>
-              <div style={{ color: "var(--muted)" }}>rkpanday257@gmail.com</div>
-            </div>
-            <div>
-              <strong>Office</strong>
-              <div style={{ color: "var(--muted)" }}>
-                169-A, Nyay Khand -1st, Indirapuram, Ghaziabad, Uttar Pradesh, 201014
+          </div>
+          <div className="contact-card">
+            <div className="contact-row">
+              <div>
+                <strong>Office</strong>
+                <div style={{ color: "var(--muted)" }}>
+                  169-A, Nyay Khand -1st, Indirapuram, Ghaziabad, Uttar Pradesh, 201014
+                </div>
               </div>
+              <a
+                className="button ghost"
+                href="https://www.google.com/maps/search/?api=1&query=169-A%2C%20Nyay%20Khand%20-1st%2C%20Indirapuram%2C%20Ghaziabad%2C%20Uttar%20Pradesh%2C%20201014"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Open Map
+              </a>
             </div>
-            <div>
-              <strong>Working Hours</strong>
-              <div style={{ color: "var(--muted)" }}>24/7</div>
+            <div className="contact-row">
+              <div>
+                <strong>Email</strong>
+                <div style={{ color: "var(--muted)" }}>rkpanday257@gmail.com</div>
+              </div>
+              <div>
+                <strong>Working Hours</strong>
+                <div style={{ color: "var(--muted)" }}>24/7</div>
+              </div>
             </div>
           </div>
         </div>
