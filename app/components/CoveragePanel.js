@@ -30,30 +30,20 @@ export default function CoveragePanel() {
 
   return (
     <div className="coverage-panel">
-      <div className="coverage-map-panel">
-        <div className="map-frame">
-          <div className="map-glow" />
-          {CITY_DATA.map((city) => (
-            <span key={city.name} className={`map-dot ${city.className}`}>
-              {city.name}
-            </span>
-          ))}
-        </div>
-      </div>
       <div className="coverage-detail">
-        <div className="city-card-row">
+        <div className="city-tabs">
           {CITY_DATA.map((city) => (
             <button
               key={city.name}
               type="button"
-              className={city.name === selectedCity.name ? "city-card active" : "city-card"}
+              className={city.name === selectedCity.name ? "city-tab active" : "city-tab"}
               onClick={() => setSelectedCity(city)}
             >
               {city.name}
             </button>
           ))}
         </div>
-        <div className="hotel-list">
+        <div className="hotel-panel" key={selectedCity.name}>
           <h3>{selectedCity.name}</h3>
           <ul>
             {selectedCity.hotels.map((hotel) => (
