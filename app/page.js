@@ -26,8 +26,10 @@ export default async function HomePage({ searchParams }) {
       <header className="container" style={{ paddingTop: "2.5rem", paddingBottom: "1.5rem" }}>
         <div style={{ textAlign: "center" }}>
           <div className="logo-lockup">
-            <div className="logo-crest" aria-hidden>
-              <span>RE</span>
+            <div className="logo-key" aria-hidden>
+              <div className="key-head">RE</div>
+              <div className="key-shaft" />
+              <div className="key-teeth" />
             </div>
             <div>
               <div
