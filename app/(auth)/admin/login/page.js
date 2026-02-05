@@ -1,6 +1,11 @@
+"use client";
+
+import { useState } from "react";
+
 export default function AdminLoginPage({ searchParams }) {
   const error = searchParams?.error;
   const redirect = searchParams?.redirect || "/admin";
+  const [showPassword, setShowPassword] = useState(false);
   const message =
     error === "invalid"
       ? "Invalid admin ID or password."
@@ -35,7 +40,23 @@ export default function AdminLoginPage({ searchParams }) {
           <label htmlFor="username">Admin ID</label>
           <input id="username" name="username" type="text" placeholder="Enter admin ID" required />
           <label htmlFor="password">Password</label>
-          <input id="password" name="password" type="password" placeholder="Enter password" required />
+          <div style={{ display: "flex", gap: "0.6rem", alignItems: "center" }}>
+            <input
+              id="password"
+              name="password"
+              type={showPassword ? "text" : "password"}
+              placeholder="Enter password"
+              required
+            />
+            <button
+              type="button"
+              className="button ghost"
+              onClick={() => setShowPassword((prev) => !prev)}
+              style={{ padding: "0.6rem 1rem", whiteSpace: "nowrap" }}
+            >
+              {showPassword ? "Hide" : "Show"}
+            </button>
+          </div>
           <div style={{ marginTop: "1.4rem" }}>
             <button
               className="button primary"
