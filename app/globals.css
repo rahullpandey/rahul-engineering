@@ -270,6 +270,43 @@ textarea {
 
 .logo-wordmark {
   color: #2b2b2b;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.logo-wordmark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.7) 45%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  animation: wordmark-shimmer 5.5s ease-in-out infinite;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+@keyframes wordmark-shimmer {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  40% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
 }
 
 .logo-lockup {
