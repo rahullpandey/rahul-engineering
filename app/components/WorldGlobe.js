@@ -43,12 +43,14 @@ function latLngToVec3(lat, lng, radius) {
 
 function GlobeMesh({ onCitySelect }) {
   const globeRef = useRef(null);
+  const spinRef = useRef(0);
   const colorMap = useTexture(
     "https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg"
   );
   const bumpMap = useTexture(
     "https://threejs.org/examples/textures/planets/earth_normal_2048.jpg"
   );
+  const baseRotation = useRef({ x: 0, y: 0 });
   const cityPoints = useMemo(
     () =>
       CITY_DATA.map((city) => ({
@@ -58,9 +60,11 @@ function GlobeMesh({ onCitySelect }) {
     []
   );
 
-  useFrame(() => {
+  useFrame((_, delta) => {
     if (globeRef.current) {
-      globeRef.current.rotation.y += 0.0018;
+      spinRef.current += delta * 0.15;
+      globeRef.current.rotation.y = baseRotation.current.y + spinRef.current;
+      globeRef.current.rotation.x = baseRotation.current.x;
     }
   });
 
@@ -68,6 +72,14 @@ function GlobeMesh({ onCitySelect }) {
     if (colorMap) {
       colorMap.colorSpace = THREE.SRGBColorSpace;
     }
+    const avgLat =
+      CITY_DATA.reduce((sum, city) => sum + city.lat, 0) / CITY_DATA.length;
+    const avgLng =
+      CITY_DATA.reduce((sum, city) => sum + city.lng, 0) / CITY_DATA.length;
+    baseRotation.current = {
+      x: THREE.MathUtils.degToRad(avgLat * 0.4),
+      y: THREE.MathUtils.degToRad(-avgLng)
+    };
   }, [colorMap]);
 
   return (
@@ -111,13 +123,13 @@ export default function WorldGlobe() {
   return (
     <div className="globe-wrapper">
       <div className="globe-canvas">
-        <Canvas camera={{ position: [0, 0, 6], fov: 45 }} dpr={[1, 2]}>
+        <Canvas camera={{ position: [0, 0, 4.6], fov: 38 }} dpr={[1, 2]}>
           <ambientLight intensity={1.1} />
           <hemisphereLight intensity={0.7} color="#f5efe6" groundColor="#1b2a41" />
           <directionalLight position={[4, 3, 6]} intensity={1.1} />
           <pointLight position={[-6, -3, 4]} intensity={0.6} color="#c8a06e" />
           <GlobeMesh onCitySelect={setSelectedCity} />
-          <OrbitControls enableZoom={false} enablePan={false} autoRotate={false} />
+          <OrbitControls enableZoom={false} enablePan={false} autoRotate={false} enableDamping />
         </Canvas>
       </div>
       <div className="globe-popup">
