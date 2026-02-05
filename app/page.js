@@ -60,13 +60,18 @@ export default async function HomePage({ searchParams }) {
       </header>
 
       <section className="container hero" style={{ position: "relative" }}>
-        <div>
+        <div className="hero-left">
           <div className="badge">Trusted manpower partner for premium hospitality</div>
           <h1>Labour supply and project control in one reliable system.</h1>
           <p>
             Rahul Engineering supports 5-star hotels with trained teams, project coverage, and on-time
             staffing. Our admin portal keeps every employee and assignment record organized.
           </p>
+          <div className="hero-meta">
+            <span className="hero-pill">24/7 Coverage</span>
+            <span className="hero-pill">Verified Teams</span>
+            <span className="hero-pill">Audit Ready</span>
+          </div>
           <div className="cta-row">
             <a
               className="button primary"
@@ -138,7 +143,10 @@ export default async function HomePage({ searchParams }) {
       </section>
 
       <section className="container" id="projects">
-        <h2 className="section-title">Ongoing Projects</h2>
+        <div className="section-head">
+          <h2 className="section-title">Ongoing Projects</h2>
+          <p>Live coverage across premium hotels with active manpower teams.</p>
+        </div>
         {dbAvailable ? (
           <form
             method="get"
@@ -177,15 +185,26 @@ export default async function HomePage({ searchParams }) {
             </div>
           ) : (
             projects.map((project) => (
-              <div className="card" key={project.id}>
-                <h3>{project.name}</h3>
+              <div className="card project-card" key={project.id}>
+                <div className="project-top">
+                  <h3>{project.name}</h3>
+                  <span className={`status-pill status-${project.status?.toLowerCase()}`}>
+                    {project.status}
+                  </span>
+                </div>
                 <p style={{ color: "var(--muted)", marginBottom: "0.6rem" }}>
                   {project.hotel?.name || "Hotel partner"}
                 </p>
-                <p>
-                  Start: {new Date(project.startDate).toISOString().slice(0, 10)} · End:{" "}
-                  {new Date(project.endDate).toISOString().slice(0, 10)}
-                </p>
+                <div className="project-meta">
+                  <div>
+                    <span>Start</span>
+                    <strong>{new Date(project.startDate).toISOString().slice(0, 10)}</strong>
+                  </div>
+                  <div>
+                    <span>End</span>
+                    <strong>{new Date(project.endDate).toISOString().slice(0, 10)}</strong>
+                  </div>
+                </div>
               </div>
             ))
           )}
@@ -193,7 +212,10 @@ export default async function HomePage({ searchParams }) {
       </section>
 
       <section className="container" id="collaborations">
-        <h2 className="section-title">Collaborations</h2>
+        <div className="section-head">
+          <h2 className="section-title">Collaborations</h2>
+          <p>Trusted partnerships with India’s leading hospitality brands.</p>
+        </div>
         <div className="logo-grid">
           <a className="logo-tile" href="https://www.oberoihotels.com/hotels-in-delhi/?utm_source=GMBlisting&utm_medium=organic" target="_blank" rel="noreferrer">
             The Oberoi, New Delhi

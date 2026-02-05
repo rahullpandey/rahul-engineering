@@ -170,6 +170,11 @@ textarea {
   align-items: center;
 }
 
+.hero-left {
+  display: grid;
+  gap: 1rem;
+}
+
 .hero h1 {
   font-family: "Playfair Display", "Times New Roman", serif;
   font-size: clamp(2.6rem, 3.6vw, 4.2rem);
@@ -195,6 +200,23 @@ textarea {
   border-radius: 999px;
   font-size: 0.85rem;
   margin-bottom: 1.25rem;
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-bottom: 0.4rem;
+}
+
+.hero-pill {
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(168, 121, 62, 0.35);
+  background: rgba(255, 255, 255, 0.8);
+  color: #1b2a41;
+  font-weight: 600;
+  font-size: 0.85rem;
 }
 
 .cta-row {
@@ -247,6 +269,74 @@ textarea {
   box-shadow: var(--shadow);
 }
 
+.project-card {
+  display: grid;
+  gap: 0.8rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px rgba(27, 42, 65, 0.16);
+}
+
+.project-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.project-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.8rem;
+}
+
+.project-meta span {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.project-meta strong {
+  font-size: 0.95rem;
+}
+
+.status-pill {
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: 1px solid rgba(27, 42, 65, 0.2);
+  background: rgba(255, 255, 255, 0.8);
+  color: #1b2a41;
+  white-space: nowrap;
+}
+
+.status-planned {
+  border-color: rgba(27, 42, 65, 0.2);
+}
+
+.status-active {
+  border-color: rgba(168, 121, 62, 0.5);
+  color: #a8793e;
+}
+
+.status-on_hold {
+  border-color: rgba(27, 42, 65, 0.35);
+  color: #1b2a41;
+}
+
+.status-completed {
+  border-color: rgba(27, 42, 65, 0.2);
+  color: #1b2a41;
+}
+
 .card h3 {
   margin-bottom: 0.5rem;
 }
@@ -268,6 +358,16 @@ textarea {
   width: 70%;
   height: 2px;
   background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+.section-head {
+  display: grid;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.section-head p {
+  color: var(--muted);
 }
 
 .logo-grid {
