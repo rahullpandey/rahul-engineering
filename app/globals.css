@@ -296,25 +296,6 @@ textarea {
   overflow: hidden;
 }
 
-.logo-tile:nth-child(even) {
-  background:
-    linear-gradient(180deg, rgba(245, 241, 234, 0.95), rgba(236, 229, 218, 0.95)),
-    radial-gradient(circle at 80% 20%, rgba(200, 160, 110, 0.18), transparent 55%);
-  border-color: rgba(27, 42, 65, 0.18);
-}
-
-.logo-tile:nth-child(even)::before {
-  content: "";
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  width: 22px;
-  height: 22px;
-  border-top: 2px solid rgba(200, 160, 110, 0.7);
-  border-right: 2px solid rgba(200, 160, 110, 0.7);
-  border-radius: 0 8px 0 0;
-  opacity: 0.8;
-}
 
 .logo-tile:hover {
   transform: translateY(-2px);
