@@ -11,6 +11,8 @@
   --stroke: #e6d6c2;
   --shadow: 0 24px 70px rgba(42, 33, 22, 0.15);
   --radius: 18px;
+  --parallax-x: 0;
+  --parallax-y: 0;
 }
 
 * {
@@ -37,6 +39,60 @@ body {
     );
   color: var(--ink);
   line-height: 1.5;
+}
+
+.parallax-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.parallax-orb {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(16px);
+  opacity: 0.7;
+  transform: translate3d(calc(var(--parallax-x) * 22px), calc(var(--parallax-y) * 22px), 0);
+  transition: transform 0.3s ease;
+}
+
+.orb-1 {
+  width: 380px;
+  height: 380px;
+  top: -120px;
+  right: -60px;
+  background: radial-gradient(circle at 30% 30%, #f3d9a1, transparent 70%);
+}
+
+.orb-2 {
+  width: 520px;
+  height: 520px;
+  bottom: -220px;
+  left: -140px;
+  background: radial-gradient(circle at 30% 30%, #e6c27a, transparent 70%);
+}
+
+.orb-3 {
+  width: 280px;
+  height: 280px;
+  top: 20%;
+  left: 60%;
+  background: radial-gradient(circle at 30% 30%, rgba(38, 70, 83, 0.25), transparent 70%);
+}
+
+.orb-4 {
+  width: 220px;
+  height: 220px;
+  bottom: 15%;
+  right: 10%;
+  background: radial-gradient(circle at 30% 30%, rgba(183, 134, 42, 0.35), transparent 70%);
+}
+
+main, header, section, footer, .admin-shell {
+  position: relative;
+  z-index: 1;
 }
 
 a {
