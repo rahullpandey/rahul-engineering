@@ -237,15 +237,17 @@ textarea {
 }
 
 .logo-wordmark {
-  color: #1b2a41;
+  color: #2b2b2b;
 }
 
 .logo-split .logo-primary {
-  color: #1b2a41;
+  color: #f7f3ed;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8), 0 4px 14px rgba(0, 0, 0, 0.18);
 }
 
 .logo-split .logo-accent {
-  color: #a8793e;
+  color: #f7f3ed;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8), 0 4px 14px rgba(0, 0, 0, 0.18);
 }
 
 .logo-shimmer::after {
