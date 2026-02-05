@@ -203,6 +203,12 @@ export default async function HomePage({ searchParams }) {
           <a className="logo-tile" href="https://www.oberoihotels.com/hotels-in-agra-amarvilas-resort/?utm_source=GMBlisting&utm_medium=organic" target="_blank" rel="noreferrer">
             The Oberoi Amarvilas
           </a>
+          <a className="logo-tile" href="https://www.oberoihotels.com/hotels-in-gurgaon/?utm_source=GMBlisting&utm_medium=organic" target="_blank" rel="noreferrer">
+            The Oberoi, Gurgaon
+          </a>
+          <a className="logo-tile" href="https://www.ihg.com/crowneplaza/hotels/us/en/delhi/delgn/hoteldetail?cm_mmc=GoogleMaps-_-CP-_-IN-_-DELGN" target="_blank" rel="noreferrer">
+            Crowne Plaza, New Delhi
+          </a>
         </div>
       </section>
 
