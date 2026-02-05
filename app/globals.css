@@ -281,8 +281,10 @@ textarea {
   min-height: 90px;
   padding: 1rem;
   border-radius: 16px;
-  border: 1px solid var(--stroke);
-  background: #fbf7f1;
+  border: 1px solid rgba(200, 160, 110, 0.35);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(250, 246, 239, 0.9)),
+    radial-gradient(circle at 20% 20%, rgba(200, 160, 110, 0.2), transparent 55%);
   color: #1b2a41;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -290,11 +292,66 @@ textarea {
   text-align: center;
   box-shadow: 0 10px 22px rgba(27, 42, 65, 0.12);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-tile:nth-child(even) {
+  background:
+    linear-gradient(180deg, rgba(245, 241, 234, 0.95), rgba(236, 229, 218, 0.95)),
+    radial-gradient(circle at 80% 20%, rgba(200, 160, 110, 0.18), transparent 55%);
+  border-color: rgba(27, 42, 65, 0.18);
+}
+
+.logo-tile:nth-child(even)::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 22px;
+  height: 22px;
+  border-top: 2px solid rgba(200, 160, 110, 0.7);
+  border-right: 2px solid rgba(200, 160, 110, 0.7);
+  border-radius: 0 8px 0 0;
+  opacity: 0.8;
 }
 
 .logo-tile:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 28px rgba(27, 42, 65, 0.16);
+  box-shadow: 0 16px 32px rgba(27, 42, 65, 0.18);
+}
+
+.logo-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.6) 45%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  animation: tile-shimmer 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes tile-shimmer {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  40% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
 }
 
 .experience-badge {
