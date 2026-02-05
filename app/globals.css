@@ -43,12 +43,26 @@ body {
   cursor: default;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: -10%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(600px 400px at 10% 20%, rgba(168, 121, 62, 0.12), transparent 60%),
+    radial-gradient(700px 500px at 80% 30%, rgba(27, 42, 65, 0.12), transparent 60%),
+    radial-gradient(500px 380px at 40% 80%, rgba(200, 160, 110, 0.12), transparent 60%);
+  animation: ambient-drift 24s ease-in-out infinite;
+  opacity: 0.8;
+}
+
 .parallax-bg {
   position: fixed;
   inset: 0;
   pointer-events: none;
   overflow: hidden;
-  z-index: 0;
+  z-index: 1;
 }
 
 .parallax-orb {
@@ -96,7 +110,19 @@ body {
 
 main, header, section, footer, .admin-shell {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+}
+
+@keyframes ambient-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-1.5%, 1.5%, 0) scale(1.03);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
 }
 
 a {
