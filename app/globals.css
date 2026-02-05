@@ -268,6 +268,35 @@ textarea {
   background: linear-gradient(90deg, var(--accent), transparent);
 }
 
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.logo-tile {
+  display: grid;
+  place-items: center;
+  min-height: 90px;
+  padding: 1rem;
+  border-radius: 16px;
+  border: 1px solid var(--stroke);
+  background: #fbf7f1;
+  color: #1b2a41;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: center;
+  box-shadow: 0 10px 22px rgba(27, 42, 65, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.logo-tile:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(27, 42, 65, 0.16);
+}
+
 .experience-badge {
   display: inline-flex;
   align-items: center;

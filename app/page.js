@@ -185,6 +185,27 @@ export default async function HomePage({ searchParams }) {
         </div>
       </section>
 
+      <section className="container" id="collaborations">
+        <h2 className="section-title">Collaborations</h2>
+        <div className="logo-grid">
+          <a className="logo-tile" href="https://www.oberoihotels.com/hotels-in-delhi/?utm_source=GMBlisting&utm_medium=organic" target="_blank" rel="noreferrer">
+            The Oberoi, New Delhi
+          </a>
+          <a className="logo-tile" href="https://www.marriott.com/en-us/hotels/agrlc-itc-mughal-a-luxury-collection-resort-and-spa-agra/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0" target="_blank" rel="noreferrer">
+            ITC Mughal, Agra
+          </a>
+          <a className="logo-tile" href="https://www.thelalit.com/the-lalit-delhi/" target="_blank" rel="noreferrer">
+            The Lalit, New Delhi
+          </a>
+          <a className="logo-tile" href="https://www.oberoihotels.com/hotels-in-udaipur-udaivilas-resort/?utm_source=GMBlisting&utm_medium=organic" target="_blank" rel="noreferrer">
+            The Oberoi Udaivilas
+          </a>
+          <a className="logo-tile" href="https://www.oberoihotels.com/hotels-in-agra-amarvilas-resort/?utm_source=GMBlisting&utm_medium=organic" target="_blank" rel="noreferrer">
+            The Oberoi Amarvilas
+          </a>
+        </div>
+      </section>
+
       <section className="container" id="contact">
         <div className="card" style={{ display: "grid", gap: "1.2rem" }}>
           <h2>Contact Rahul Engineering</h2>
