@@ -178,19 +178,19 @@ textarea {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: #f0e2d3;
-  color: #3d342a;
+  background: #efe4d8;
+  color: #2b2117;
 }
 
 .button.primary {
   background: var(--accent);
   color: white;
-  box-shadow: 0 16px 34px rgba(183, 134, 42, 0.28);
+  box-shadow: 0 16px 34px rgba(168, 121, 62, 0.3);
 }
 
 .button.ghost {
-  border-color: #d9c7b2;
-  color: #4a3f33;
+  border-color: #d9c9b8;
+  color: #3b2f24;
   background: transparent;
 }
 
@@ -221,6 +221,19 @@ textarea {
   font-family: "Playfair Display", "Times New Roman", serif;
   font-size: 1.6rem;
   margin: 3rem 0 1.25rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.35rem;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 70%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
 }
 
 .logo-shimmer {
