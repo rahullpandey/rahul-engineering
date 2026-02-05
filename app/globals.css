@@ -239,7 +239,7 @@ textarea {
 .logo-shimmer {
   position: relative;
   display: inline-block;
-  background: linear-gradient(90deg, #c8a06e, #ead6b6, #a8793e);
+  background: linear-gradient(90deg, #1b2a41, #c8a06e, #1b2a41);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
