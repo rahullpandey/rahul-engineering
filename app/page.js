@@ -49,6 +49,9 @@ export default async function HomePage({ searchParams }) {
           <div style={{ color: "var(--muted)", marginTop: "0.6rem", letterSpacing: "0.1em" }}>
             Hospitality Workforce & Project Management
           </div>
+          <div style={{ marginTop: "0.8rem", display: "flex", justifyContent: "center" }}>
+            <span className="experience-badge">18 Years of Excellence</span>
+          </div>
         </div>
         <nav className="nav-links" style={{ justifyContent: "center", marginTop: "1.2rem" }}>
           <a href="#services">Services</a>
