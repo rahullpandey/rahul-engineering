@@ -679,6 +679,17 @@ textarea {
   box-shadow: none;
 }
 
+.login-logo-link {
+  display: flex;
+  justify-content: center;
+  padding-top: 2.5rem;
+  padding-bottom: 1rem;
+}
+
+.login-logo-link:hover .logo-architect {
+  box-shadow: 0 16px 30px rgba(43, 43, 43, 0.18);
+}
+
 @media (max-width: 900px) {
   .admin-shell {
     grid-template-columns: 1fr;

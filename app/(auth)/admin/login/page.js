@@ -15,6 +15,12 @@ export default function AdminLoginPage({ searchParams }) {
 
   return (
     <main className="container">
+      <a className="login-logo-link" href="/" aria-label="Back to home">
+        <div className="logo-architect" aria-hidden>
+          <span className="arch-r">R</span>
+          <span className="arch-e">E</span>
+        </div>
+      </a>
       <div className="login-card">
         <h1 style={{ marginBottom: "0.6rem" }}>Admin Login</h1>
         <p style={{ color: "var(--muted)", marginBottom: "1.4rem" }}>
