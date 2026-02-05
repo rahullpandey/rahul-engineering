@@ -41,6 +41,7 @@ body {
   color: var(--ink);
   line-height: 1.5;
   cursor: default;
+  caret-color: transparent;
 }
 
 body::before {
@@ -153,6 +154,7 @@ textarea {
   border: 1px solid #d9c7b2;
   background: white;
   font-family: inherit;
+  caret-color: auto;
 }
 
 .container {
