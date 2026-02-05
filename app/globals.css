@@ -684,6 +684,7 @@ textarea {
   justify-content: center;
   padding-top: 2.5rem;
   padding-bottom: 1rem;
+  outline: none;
 }
 
 .login-logo-link:hover .logo-architect {
@@ -692,8 +693,14 @@ textarea {
 
 .login-logo-link:focus,
 .login-logo-link:focus-visible {
-  outline: none;
-  box-shadow: none;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.login-logo-link *:focus,
+.login-logo-link *:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 @media (max-width: 900px) {
