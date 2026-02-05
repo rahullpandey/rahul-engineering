@@ -34,6 +34,17 @@ async function updateHotel(formData) {
 }
 
 export default async function EditHotelPage({ params }) {
+  if (process.env.NEXT_PHASE === "phase-production-build") {
+    return (
+      <section>
+        <h1>Hotel data loading</h1>
+        <p style={{ color: "var(--muted)", marginBottom: "1rem" }}>
+          This page will be available after deployment completes.
+        </p>
+        <a className="button ghost" href="/admin/hotels">Back to Hotels</a>
+      </section>
+    );
+  }
   let hotel = null;
   try {
     hotel = await prisma.hotel.findUnique({ where: { id: params.id } });

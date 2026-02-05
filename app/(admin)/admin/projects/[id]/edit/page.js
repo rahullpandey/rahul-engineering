@@ -32,6 +32,17 @@ async function updateProject(formData) {
 }
 
 export default async function EditProjectPage({ params }) {
+  if (process.env.NEXT_PHASE === "phase-production-build") {
+    return (
+      <section>
+        <h1>Project data loading</h1>
+        <p style={{ color: "var(--muted)", marginBottom: "1rem" }}>
+          This page will be available after deployment completes.
+        </p>
+        <a className="button ghost" href="/admin/projects">Back to Projects</a>
+      </section>
+    );
+  }
   let project = null;
   let hotels = [];
   try {

@@ -36,6 +36,17 @@ async function updateEmployee(formData) {
 }
 
 export default async function EditEmployeePage({ params }) {
+  if (process.env.NEXT_PHASE === "phase-production-build") {
+    return (
+      <section>
+        <h1>Employee data loading</h1>
+        <p style={{ color: "var(--muted)", marginBottom: "1rem" }}>
+          This page will be available after deployment completes.
+        </p>
+        <a className="button ghost" href="/admin/employees">Back to Employees</a>
+      </section>
+    );
+  }
   let employee = null;
   try {
     employee = await prisma.employee.findUnique({ where: { id: params.id } });
