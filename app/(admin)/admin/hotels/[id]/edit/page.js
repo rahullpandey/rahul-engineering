@@ -4,6 +4,7 @@ import prisma from "../../../../../../lib/prisma";
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 export const runtime = "nodejs";
+export const fetchCache = "force-no-store";
 
 function formatDate(value) {
   const date = new Date(value);
@@ -33,7 +34,20 @@ async function updateHotel(formData) {
 }
 
 export default async function EditHotelPage({ params }) {
-  const hotel = await prisma.hotel.findUnique({ where: { id: params.id } });
+  let hotel = null;
+  try {
+    hotel = await prisma.hotel.findUnique({ where: { id: params.id } });
+  } catch (error) {
+    return (
+      <section>
+        <h1>Hotel data unavailable</h1>
+        <p style={{ color: "var(--muted)", marginBottom: "1rem" }}>
+          The database connection is not available yet. Please try again after the deployment finishes.
+        </p>
+        <a className="button ghost" href="/admin/hotels">Back to Hotels</a>
+      </section>
+    );
+  }
 
   if (!hotel) {
     return (

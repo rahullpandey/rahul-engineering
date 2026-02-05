@@ -4,6 +4,7 @@ import prisma from "../../../../../../lib/prisma";
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 export const runtime = "nodejs";
+export const fetchCache = "force-no-store";
 
 function formatDate(value) {
   const date = new Date(value);
@@ -31,10 +32,24 @@ async function updateProject(formData) {
 }
 
 export default async function EditProjectPage({ params }) {
-  const [project, hotels] = await Promise.all([
-    prisma.project.findUnique({ where: { id: params.id } }),
-    prisma.hotel.findMany({ orderBy: { name: "asc" } })
-  ]);
+  let project = null;
+  let hotels = [];
+  try {
+    [project, hotels] = await Promise.all([
+      prisma.project.findUnique({ where: { id: params.id } }),
+      prisma.hotel.findMany({ orderBy: { name: "asc" } })
+    ]);
+  } catch (error) {
+    return (
+      <section>
+        <h1>Project data unavailable</h1>
+        <p style={{ color: "var(--muted)", marginBottom: "1rem" }}>
+          The database connection is not available yet. Please try again after the deployment finishes.
+        </p>
+        <a className="button ghost" href="/admin/projects">Back to Projects</a>
+      </section>
+    );
+  }
 
   if (!project) {
     return (

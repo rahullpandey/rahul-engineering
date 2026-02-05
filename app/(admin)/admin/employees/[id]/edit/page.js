@@ -4,6 +4,7 @@ import prisma from "../../../../../../lib/prisma";
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 export const runtime = "nodejs";
+export const fetchCache = "force-no-store";
 
 function formatDate(value) {
   const date = new Date(value);
@@ -35,7 +36,20 @@ async function updateEmployee(formData) {
 }
 
 export default async function EditEmployeePage({ params }) {
-  const employee = await prisma.employee.findUnique({ where: { id: params.id } });
+  let employee = null;
+  try {
+    employee = await prisma.employee.findUnique({ where: { id: params.id } });
+  } catch (error) {
+    return (
+      <section>
+        <h1>Employee data unavailable</h1>
+        <p style={{ color: "var(--muted)", marginBottom: "1rem" }}>
+          The database connection is not available yet. Please try again after the deployment finishes.
+        </p>
+        <a className="button ghost" href="/admin/employees">Back to Employees</a>
+      </section>
+    );
+  }
 
   if (!employee) {
     return (
