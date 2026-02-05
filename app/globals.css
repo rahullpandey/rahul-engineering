@@ -492,7 +492,7 @@ textarea {
 
 .coverage-panel {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 2rem;
   background: #fbf7f1;
   border: 1px solid var(--stroke);
@@ -501,50 +501,106 @@ textarea {
   box-shadow: var(--shadow);
 }
 
-.globe-wrapper {
+.coverage-map-panel {
   position: relative;
-  min-height: 280px;
+}
+
+.map-frame {
+  position: relative;
+  min-height: 260px;
   border-radius: 16px;
   background:
-    radial-gradient(circle at 40% 40%, rgba(168, 121, 62, 0.15), transparent 60%),
-    radial-gradient(circle at 70% 60%, rgba(27, 42, 65, 0.15), transparent 60%),
-    linear-gradient(145deg, rgba(255, 255, 255, 0.8), rgba(244, 236, 226, 0.9));
+    radial-gradient(circle at 35% 35%, rgba(168, 121, 62, 0.18), transparent 60%),
+    radial-gradient(circle at 75% 55%, rgba(27, 42, 65, 0.15), transparent 60%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.85), rgba(244, 236, 226, 0.95));
   border: 1px solid rgba(200, 160, 110, 0.35);
   overflow: hidden;
 }
 
-.globe-canvas {
-  width: 100%;
-  height: 280px;
-}
-
-.globe-popup {
+.map-frame::after {
+  content: "";
   position: absolute;
-  bottom: 14px;
-  left: 14px;
-  padding: 0.8rem 1rem;
+  inset: 16px;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(200, 160, 110, 0.35);
-  box-shadow: 0 10px 22px rgba(27, 42, 65, 0.12);
-  min-width: 180px;
+  border: 1px dashed rgba(27, 42, 65, 0.18);
+  background: radial-gradient(circle at 50% 50%, rgba(27, 42, 65, 0.08), transparent 60%);
 }
 
-.globe-popup span {
-  display: block;
-  font-weight: 700;
-  margin-bottom: 0.4rem;
-  color: #1b2a41;
+.map-glow {
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(circle, rgba(200, 160, 110, 0.2), transparent 60%);
+  filter: blur(24px);
 }
 
-.globe-popup ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.map-dot {
+  position: absolute;
+  padding: 0.32rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(27, 42, 65, 0.95);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  z-index: 1;
+}
+
+.dot-delhi { top: 32%; left: 42%; }
+.dot-agra { top: 55%; left: 52%; }
+.dot-gurgaon { top: 36%; left: 48%; }
+.dot-udaipur { top: 70%; left: 30%; }
+
+.coverage-detail {
   display: grid;
-  gap: 0.25rem;
+  gap: 1rem;
+}
+
+.city-card-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.city-card {
+  border: 1px solid rgba(200, 160, 110, 0.35);
+  background: rgba(255, 255, 255, 0.85);
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  font-weight: 600;
+  color: #1b2a41;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.city-card.active {
+  border-color: rgba(168, 121, 62, 0.8);
+  box-shadow: 0 10px 20px rgba(27, 42, 65, 0.12);
+  transform: translateY(-1px);
+}
+
+.hotel-list {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(200, 160, 110, 0.3);
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+.hotel-list h3 {
+  margin-bottom: 0.4rem;
+}
+
+.hotel-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.6rem;
+  display: grid;
+  gap: 0.3rem;
   color: var(--muted);
-  font-size: 0.85rem;
+}
+
+.hotel-list p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
 }
 
 .coverage-list ul {

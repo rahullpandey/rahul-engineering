@@ -1,5 +1,5 @@
 import prisma from "../lib/prisma";
-import WorldGlobe from "./components/WorldGlobe";
+import CoveragePanel from "./components/CoveragePanel";
 
 export const dynamic = "force-dynamic";
 
@@ -148,21 +148,7 @@ export default async function HomePage({ searchParams }) {
           <h2 className="section-title">Service Coverage</h2>
           <p>Active coverage across key hospitality hubs in North India.</p>
         </div>
-        <div className="coverage-panel">
-          <WorldGlobe />
-          <div className="coverage-list">
-            <h3>Primary Cities</h3>
-            <ul>
-              <li>Delhi NCR</li>
-              <li>Agra</li>
-              <li>Gurgaon</li>
-              <li>Udaipur</li>
-            </ul>
-            <p style={{ color: "var(--muted)" }}>
-              Additional cities can be supported with advance scheduling.
-            </p>
-          </div>
-        </div>
+        <CoveragePanel />
       </section>
 
       <section className="container" id="projects">
