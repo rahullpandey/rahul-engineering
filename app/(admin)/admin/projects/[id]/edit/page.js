@@ -5,6 +5,10 @@ export const dynamic = "force-dynamic";
 export const revalidate = 0;
 export const runtime = "nodejs";
 export const fetchCache = "force-no-store";
+export const dynamicParams = true;
+export function generateStaticParams() {
+  return [];
+}
 
 function formatDate(value) {
   const date = new Date(value);
