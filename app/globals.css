@@ -2,14 +2,14 @@
 
 :root {
   color-scheme: light;
-  --bg: #f5efe6;
-  --ink: #1c1b19;
-  --muted: #6a5f54;
-  --accent: #b7862a;
-  --accent-2: #264653;
-  --card: #fffaf2;
-  --stroke: #e6d6c2;
-  --shadow: 0 24px 70px rgba(42, 33, 22, 0.15);
+  --bg: #f5f3ee;
+  --ink: #191919;
+  --muted: #6a645d;
+  --accent: #a8793e;
+  --accent-2: #1b2a41;
+  --card: #fcfaf6;
+  --stroke: #e3d9cc;
+  --shadow: 0 24px 70px rgba(34, 30, 26, 0.14);
   --radius: 18px;
   --parallax-x: 0;
   --parallax-y: 0;
@@ -28,9 +28,9 @@ html, body {
 body {
   font-family: "Source Sans 3", "Segoe UI", sans-serif;
   background:
-    radial-gradient(1400px 900px at 12% -8%, #fff2df 0%, #f6eee4 58%, #eee2d2 100%),
-    radial-gradient(900px 700px at 92% 12%, rgba(183, 134, 42, 0.12), transparent 60%),
-    radial-gradient(700px 600px at 70% 80%, rgba(38, 70, 83, 0.12), transparent 60%),
+    radial-gradient(1400px 900px at 12% -8%, #fbf7f1 0%, #f5f1ea 58%, #eee7dd 100%),
+    radial-gradient(900px 700px at 92% 12%, rgba(168, 121, 62, 0.12), transparent 60%),
+    radial-gradient(700px 600px at 70% 80%, rgba(27, 42, 65, 0.12), transparent 60%),
     repeating-linear-gradient(
       135deg,
       rgba(255, 255, 255, 0.6) 0,
@@ -66,7 +66,7 @@ body {
   height: 420px;
   top: -140px;
   right: -80px;
-  background: radial-gradient(circle at 30% 30%, rgba(246, 223, 168, 0.9), transparent 70%);
+  background: radial-gradient(circle at 30% 30%, rgba(225, 201, 164, 0.9), transparent 70%);
 }
 
 .orb-2 {
@@ -74,7 +74,7 @@ body {
   height: 600px;
   bottom: -260px;
   left: -180px;
-  background: radial-gradient(circle at 30% 30%, rgba(214, 176, 96, 0.9), transparent 70%);
+  background: radial-gradient(circle at 30% 30%, rgba(196, 156, 92, 0.9), transparent 70%);
 }
 
 .orb-3 {
@@ -82,7 +82,7 @@ body {
   height: 320px;
   top: 22%;
   left: 58%;
-  background: radial-gradient(circle at 30% 30%, rgba(30, 52, 64, 0.35), transparent 70%);
+  background: radial-gradient(circle at 30% 30%, rgba(27, 42, 65, 0.35), transparent 70%);
 }
 
 .orb-4 {
@@ -90,7 +90,7 @@ body {
   height: 240px;
   bottom: 18%;
   right: 12%;
-  background: radial-gradient(circle at 30% 30%, rgba(183, 134, 42, 0.4), transparent 70%);
+  background: radial-gradient(circle at 30% 30%, rgba(168, 121, 62, 0.4), transparent 70%);
 }
 
 main, header, section, footer, .admin-shell {
@@ -226,7 +226,7 @@ textarea {
 .logo-shimmer {
   position: relative;
   display: inline-block;
-  background: linear-gradient(90deg, #caa761, #f4e0b5, #b7862a);
+  background: linear-gradient(90deg, #c8a06e, #ead6b6, #a8793e);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -253,7 +253,7 @@ textarea {
   height: 2px;
   margin: 0.5rem auto 0;
   width: 0;
-  background: linear-gradient(90deg, transparent, #caa761, #b7862a, transparent);
+  background: linear-gradient(90deg, transparent, #c8a06e, #a8793e, transparent);
   animation: underline-reveal 1.4s ease forwards;
 }
 
