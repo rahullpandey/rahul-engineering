@@ -240,14 +240,41 @@ textarea {
   color: #2b2b2b;
 }
 
-.logo-split .logo-primary {
-  color: #f7f3ed;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8), 0 4px 14px rgba(0, 0, 0, 0.18);
+.logo-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
 }
 
-.logo-split .logo-accent {
-  color: #f7f3ed;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8), 0 4px 14px rgba(0, 0, 0, 0.18);
+.logo-monogram {
+  width: 62px;
+  height: 62px;
+  position: relative;
+  border: 1.5px solid rgba(27, 42, 65, 0.45);
+  border-radius: 14px;
+  background: #f7f3ed;
+  box-shadow: 0 12px 24px rgba(27, 42, 65, 0.16);
+}
+
+.logo-monogram span {
+  position: absolute;
+  font-family: "Playfair Display", "Times New Roman", serif;
+  font-weight: 600;
+  color: #1b2a41;
+}
+
+.logo-monogram .mono-r {
+  font-size: 2.1rem;
+  left: 10px;
+  top: 6px;
+}
+
+.logo-monogram .mono-e {
+  font-size: 2rem;
+  right: 10px;
+  bottom: 6px;
+  color: #a8793e;
 }
 
 .logo-shimmer::after {
