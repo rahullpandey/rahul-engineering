@@ -142,6 +142,33 @@ export default async function HomePage({ searchParams }) {
         </div>
       </section>
 
+      <section className="container" id="coverage">
+        <div className="section-head">
+          <h2 className="section-title">Service Coverage</h2>
+          <p>Active coverage across key hospitality hubs in North India.</p>
+        </div>
+        <div className="coverage-panel">
+          <div className="coverage-map" aria-hidden>
+            <div className="map-dot dot-delhi">Delhi</div>
+            <div className="map-dot dot-agra">Agra</div>
+            <div className="map-dot dot-gurgaon">Gurgaon</div>
+            <div className="map-dot dot-udaipur">Udaipur</div>
+          </div>
+          <div className="coverage-list">
+            <h3>Primary Cities</h3>
+            <ul>
+              <li>Delhi NCR</li>
+              <li>Agra</li>
+              <li>Gurgaon</li>
+              <li>Udaipur</li>
+            </ul>
+            <p style={{ color: "var(--muted)" }}>
+              Additional cities can be supported with advance scheduling.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section className="container" id="projects">
         <div className="section-head">
           <h2 className="section-title">Ongoing Projects</h2>
@@ -238,6 +265,35 @@ export default async function HomePage({ searchParams }) {
           <a className="logo-tile" href="https://www.ihg.com/crowneplaza/hotels/us/en/delhi/delgn/hoteldetail?cm_mmc=GoogleMaps-_-CP-_-IN-_-DELGN" target="_blank" rel="noreferrer">
             Crowne Plaza, New Delhi
           </a>
+        </div>
+      </section>
+
+      <section className="container" id="timeline">
+        <div className="section-head">
+          <h2 className="section-title">Partnership Timeline</h2>
+          <p>Highlights of long-term hotel collaborations.</p>
+        </div>
+        <div className="timeline-grid">
+          <div className="timeline-card">
+            <span>2008</span>
+            <strong>Foundation Year</strong>
+            <p>Launched premium hospitality staffing operations.</p>
+          </div>
+          <div className="timeline-card">
+            <span>2014</span>
+            <strong>Luxury Expansion</strong>
+            <p>Expanded to multi-city luxury hotel partnerships.</p>
+          </div>
+          <div className="timeline-card">
+            <span>2019</span>
+            <strong>Operations Scale</strong>
+            <p>Introduced centralized reporting and QA programs.</p>
+          </div>
+          <div className="timeline-card">
+            <span>2024</span>
+            <strong>Premium Network</strong>
+            <p>Strengthened coverage across premium hotel groups.</p>
+          </div>
         </div>
       </section>
 
