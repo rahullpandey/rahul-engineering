@@ -26,6 +26,7 @@ export default async function HomePage({ searchParams }) {
       <header className="container" style={{ paddingTop: "2.5rem", paddingBottom: "1.5rem" }}>
         <div style={{ textAlign: "center" }}>
           <div
+            className="logo-shimmer"
             style={{
               fontWeight: 700,
               fontSize: "3.2rem",
@@ -36,6 +37,7 @@ export default async function HomePage({ searchParams }) {
           >
             Rahul Engineering
           </div>
+          <span className="logo-underline" />
           <div style={{ color: "var(--muted)", marginTop: "0.4rem", letterSpacing: "0.1em" }}>
             Hospitality Workforce & Project Management
           </div>

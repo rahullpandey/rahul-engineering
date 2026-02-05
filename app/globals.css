@@ -220,6 +220,80 @@ textarea {
   margin: 3rem 0 1.25rem;
 }
 
+.logo-shimmer {
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(90deg, #caa761, #f4e0b5, #b7862a);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: logo-float 6s ease-in-out infinite;
+}
+
+.logo-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.6) 45%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  animation: logo-shimmer 4.5s ease-in-out infinite;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.logo-underline {
+  display: block;
+  height: 2px;
+  margin: 0.5rem auto 0;
+  width: 0;
+  background: linear-gradient(90deg, transparent, #caa761, #b7862a, transparent);
+  animation: underline-reveal 1.4s ease forwards;
+}
+
+@keyframes logo-shimmer {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  40% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+}
+
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes underline-reveal {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 62%;
+    opacity: 1;
+  }
+}
+
 .nav {
   display: flex;
   align-items: center;
