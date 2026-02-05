@@ -37,8 +37,7 @@ export default async function HomePage({ searchParams }) {
                   fontWeight: 700,
                   fontSize: "3.1rem",
                   letterSpacing: "0.04em",
-                  textTransform: "uppercase",
-                  fontFamily: "\"Playfair Display\", \"Times New Roman\", serif"
+                  textTransform: "uppercase"
                 }}
               >
                 Rahul Engineering
