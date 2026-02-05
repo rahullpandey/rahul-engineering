@@ -62,7 +62,13 @@ function GlobeMesh({ onCitySelect }) {
     <group ref={globeRef}>
       <mesh>
         <sphereGeometry args={[2.2, 64, 64]} />
-        <meshStandardMaterial color="#13202b" metalness={0.4} roughness={0.7} />
+        <meshStandardMaterial
+          color="#2c3e55"
+          metalness={0.35}
+          roughness={0.45}
+          emissive="#1b2a41"
+          emissiveIntensity={0.35}
+        />
       </mesh>
       <mesh>
         <sphereGeometry args={[2.24, 64, 64]} />
@@ -91,9 +97,11 @@ export default function WorldGlobe() {
   return (
     <div className="globe-wrapper">
       <div className="globe-canvas">
-        <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
-          <ambientLight intensity={0.7} />
-          <directionalLight position={[5, 5, 5]} intensity={0.8} />
+        <Canvas camera={{ position: [0, 0, 6], fov: 45 }} dpr={[1, 2]}>
+          <ambientLight intensity={1.1} />
+          <hemisphereLight intensity={0.7} color="#f5efe6" groundColor="#1b2a41" />
+          <directionalLight position={[4, 3, 6]} intensity={1.1} />
+          <pointLight position={[-6, -3, 4]} intensity={0.6} color="#c8a06e" />
           <GlobeMesh onCitySelect={setSelectedCity} />
           <OrbitControls enableZoom={false} enablePan={false} autoRotate={false} />
         </Canvas>
