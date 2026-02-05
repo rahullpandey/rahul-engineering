@@ -30,28 +30,27 @@ export default function CoveragePanel() {
 
   return (
     <div className="coverage-panel">
-      <div className="coverage-detail">
-        <div className="city-tabs">
-          {CITY_DATA.map((city) => (
-            <button
-              key={city.name}
-              type="button"
-              className={city.name === selectedCity.name ? "city-tab active" : "city-tab"}
-              onClick={() => setSelectedCity(city)}
-            >
-              {city.name}
-            </button>
+      <div className="coverage-rail">
+        <div className="rail-line" />
+        {CITY_DATA.map((city) => (
+          <button
+            key={city.name}
+            type="button"
+            className={city.name === selectedCity.name ? "rail-dot active" : "rail-dot"}
+            onClick={() => setSelectedCity(city)}
+          >
+            <span className="rail-city">{city.name}</span>
+          </button>
+        ))}
+      </div>
+      <div className="hotel-panel" key={selectedCity.name}>
+        <h3>{selectedCity.name}</h3>
+        <ul>
+          {selectedCity.hotels.map((hotel) => (
+            <li key={hotel}>{hotel}</li>
           ))}
-        </div>
-        <div className="hotel-panel" key={selectedCity.name}>
-          <h3>{selectedCity.name}</h3>
-          <ul>
-            {selectedCity.hotels.map((hotel) => (
-              <li key={hotel}>{hotel}</li>
-            ))}
-          </ul>
-          <p>Additional cities can be supported with advance scheduling.</p>
-        </div>
+        </ul>
+        <p>Additional cities can be supported with advance scheduling.</p>
       </div>
     </div>
   );

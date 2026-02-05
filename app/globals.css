@@ -492,7 +492,7 @@ textarea {
 
 .coverage-panel {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1.3fr;
   gap: 2rem;
   background: #fbf7f1;
   border: 1px solid var(--stroke);
@@ -501,32 +501,51 @@ textarea {
   box-shadow: var(--shadow);
 }
 
-.coverage-detail {
+.coverage-rail {
+  position: relative;
+  padding-left: 1.2rem;
   display: grid;
-  gap: 1rem;
+  gap: 1.4rem;
 }
 
-.city-tabs {
+.rail-line {
+  position: absolute;
+  left: 8px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(168, 121, 62, 0.6), rgba(27, 42, 65, 0.25));
+}
+
+.rail-dot {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
+  align-items: center;
+  gap: 0.8rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
 }
 
-.city-tab {
-  border: 1px solid rgba(200, 160, 110, 0.35);
-  background: rgba(255, 255, 255, 0.85);
-  padding: 0.5rem 0.9rem;
+.rail-dot::before {
+  content: "";
+  width: 14px;
+  height: 14px;
   border-radius: 999px;
+  border: 2px solid rgba(168, 121, 62, 0.6);
+  background: #fbf7f1;
+  box-shadow: 0 6px 14px rgba(27, 42, 65, 0.12);
+}
+
+.rail-dot.active::before {
+  background: #a8793e;
+  border-color: #a8793e;
+}
+
+.rail-city {
   font-weight: 600;
   color: #1b2a41;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.city-tab.active {
-  border-color: rgba(168, 121, 62, 0.8);
-  box-shadow: 0 10px 20px rgba(27, 42, 65, 0.12);
-  transform: translateY(-1px);
 }
 
 .hotel-panel {
