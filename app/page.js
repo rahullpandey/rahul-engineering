@@ -175,15 +175,21 @@ export default async function HomePage({ searchParams }) {
           <div className="card-grid">
             <div>
               <strong>Phone</strong>
-              <div style={{ color: "var(--muted)" }}>+91-XXXXXXXXXX</div>
+              <div style={{ color: "var(--muted)" }}>+91 9891750035, +91 7982987790</div>
             </div>
             <div>
               <strong>Email</strong>
-              <div style={{ color: "var(--muted)" }}>rahulengineering@company.com</div>
+              <div style={{ color: "var(--muted)" }}>rkpanday257@gmail.com</div>
             </div>
             <div>
               <strong>Office</strong>
-              <div style={{ color: "var(--muted)" }}>City, State</div>
+              <div style={{ color: "var(--muted)" }}>
+                169-A, Nyay Khand -1st, Indirapuram, Ghaziabad, Uttar Pradesh, 201014
+              </div>
+            </div>
+            <div>
+              <strong>Working Hours</strong>
+              <div style={{ color: "var(--muted)" }}>24/7</div>
             </div>
           </div>
         </div>
