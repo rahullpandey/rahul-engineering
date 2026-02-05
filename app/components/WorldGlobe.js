@@ -1,8 +1,8 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-import { useMemo, useRef, useState } from "react";
+import { OrbitControls, useTexture } from "@react-three/drei";
+import { useEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 
 const CITY_DATA = [
@@ -43,6 +43,12 @@ function latLngToVec3(lat, lng, radius) {
 
 function GlobeMesh({ onCitySelect }) {
   const globeRef = useRef(null);
+  const colorMap = useTexture(
+    "https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg"
+  );
+  const bumpMap = useTexture(
+    "https://threejs.org/examples/textures/planets/earth_normal_2048.jpg"
+  );
   const cityPoints = useMemo(
     () =>
       CITY_DATA.map((city) => ({
@@ -58,21 +64,29 @@ function GlobeMesh({ onCitySelect }) {
     }
   });
 
+  useEffect(() => {
+    if (colorMap) {
+      colorMap.colorSpace = THREE.SRGBColorSpace;
+    }
+  }, [colorMap]);
+
   return (
     <group ref={globeRef}>
       <mesh>
         <sphereGeometry args={[2.2, 64, 64]} />
         <meshStandardMaterial
-          color="#2c3e55"
+          color="#ffffff"
+          map={colorMap}
+          normalMap={bumpMap}
           metalness={0.35}
-          roughness={0.45}
-          emissive="#1b2a41"
-          emissiveIntensity={0.35}
+          roughness={0.6}
+          emissive="#0b1a26"
+          emissiveIntensity={0.12}
         />
       </mesh>
       <mesh>
         <sphereGeometry args={[2.24, 64, 64]} />
-        <meshStandardMaterial color="#c8a06e" transparent opacity={0.15} />
+        <meshStandardMaterial color="#ffffff" transparent opacity={0.08} />
       </mesh>
       {cityPoints.map((city) => (
         <mesh
