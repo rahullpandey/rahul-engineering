@@ -411,6 +411,56 @@ textarea {
   font-weight: 600;
 }
 
+.eye-icon {
+  width: 22px;
+  height: 14px;
+  display: inline-block;
+  border: 2px solid var(--accent-2);
+  border-radius: 999px;
+  position: relative;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.eye-icon::before {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--accent-2);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.eye-icon::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  top: 50%;
+  height: 2px;
+  background: rgba(27, 42, 65, 0.6);
+  transform: rotate(-20deg) scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease;
+}
+
+.eye-icon.active {
+  border-color: var(--accent);
+  transform: scale(1.05);
+}
+
+.eye-icon.active::before {
+  background: var(--accent);
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.eye-icon.active::after {
+  transform: rotate(-20deg) scaleX(1);
+}
+
 @media (max-width: 900px) {
   .admin-shell {
     grid-template-columns: 1fr;

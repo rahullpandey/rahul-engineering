@@ -40,21 +40,29 @@ export default function AdminLoginPage({ searchParams }) {
           <label htmlFor="username">Admin ID</label>
           <input id="username" name="username" type="text" placeholder="Enter admin ID" required />
           <label htmlFor="password">Password</label>
-          <div style={{ display: "flex", gap: "0.6rem", alignItems: "center" }}>
+          <div style={{ position: "relative", display: "flex", alignItems: "center" }}>
             <input
               id="password"
               name="password"
               type={showPassword ? "text" : "password"}
               placeholder="Enter password"
               required
+              style={{ paddingRight: "3rem" }}
             />
             <button
               type="button"
-              className="button ghost"
               onClick={() => setShowPassword((prev) => !prev)}
-              style={{ padding: "0.6rem 1rem", whiteSpace: "nowrap" }}
+              aria-label={showPassword ? "Hide password" : "Show password"}
+              style={{
+                position: "absolute",
+                right: "0.65rem",
+                background: "transparent",
+                border: "none",
+                cursor: "pointer",
+                padding: 0
+              }}
             >
-              {showPassword ? "Hide" : "Show"}
+              <span className={showPassword ? "eye-icon active" : "eye-icon"} />
             </button>
           </div>
           <div style={{ marginTop: "1.4rem" }}>
