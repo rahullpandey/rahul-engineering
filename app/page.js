@@ -68,7 +68,12 @@ export default async function HomePage({ searchParams }) {
             staffing. Our admin portal keeps every employee and assignment record organized.
           </p>
           <div className="cta-row">
-            <a className="button primary" href="#contact">Request a proposal</a>
+            <a
+              className="button primary"
+              href="mailto:rkpanday257@gmail.com?subject=Proposal%20Request%20-%20Rahul%20Engineering"
+            >
+              Request a proposal
+            </a>
             <a className="button ghost" href="/admin/login">Go to admin portal</a>
           </div>
         </div>
