@@ -247,6 +247,24 @@ export default async function HomePage({ searchParams }) {
           <a className="logo-tile" href="https://www.ihg.com/crowneplaza/hotels/us/en/delhi/delgn/hoteldetail?cm_mmc=GoogleMaps-_-CP-_-IN-_-DELGN" target="_blank" rel="noreferrer">
             Crowne Plaza, New Delhi
           </a>
+          <a className="logo-tile" href="https://www.dlfmallofindia.com/shopdetails-355-" target="_blank" rel="noreferrer">
+            DLF Mall of India
+          </a>
+          <a className="logo-tile" href="https://www.tods.com/ww-en/store-locator/847/" target="_blank" rel="noreferrer">
+            Tod's Store
+          </a>
+          <a className="logo-tile" href="https://www.gucci.com/us/store/vasant-kunj-phase-ii?srsltid=AfmBOorIsczGNN45esgcJ0T1_N6al4QjTfaHF3LvBAbjtEiw6H2wUl8n" target="_blank" rel="noreferrer">
+            Gucci, Vasant Kunj
+          </a>
+          <a className="logo-tile" href="https://www.eroshotels.co.in/" target="_blank" rel="noreferrer">
+            Eros Hotel
+          </a>
+          <a className="logo-tile" href="https://www.tridenthotels.com/hotels-in-gurgaon/" target="_blank" rel="noreferrer">
+            Trident, Gurgaon
+          </a>
+          <a className="logo-tile" href="https://www.thesuryaa.com/" target="_blank" rel="noreferrer">
+            The Suryaa, New Delhi
+          </a>
         </div>
       </section>
 
