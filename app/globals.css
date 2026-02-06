@@ -410,55 +410,57 @@ textarea {
   position: relative;
   overflow: hidden;
   border: none;
-  background: none;
+  background: transparent;
   box-shadow: none;
-  padding: 0.25rem 0;
+  padding: 0.75rem 0;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
 }
 
 .logo-track {
   display: inline-flex;
-  gap: 1.4rem;
-  padding: 0 0.5rem;
+  gap: 2rem;
+  padding: 0 2rem;
   white-space: nowrap;
 }
 
 .logo-pill {
   display: inline-flex;
   align-items: center;
-  padding: 0.2rem 0.1rem;
+  padding: 0.2rem 0;
   border-radius: 0;
   border: none;
   background: transparent;
   color: #1b2a41;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  font-size: 0.92rem;
   white-space: nowrap;
   text-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.9),
-    0 4px 14px rgba(27, 42, 65, 0.28);
-  filter: drop-shadow(0 6px 10px rgba(27, 42, 65, 0.12));
+    0 1px 0 rgba(255, 255, 255, 0.95),
+    0 6px 18px rgba(27, 42, 65, 0.35);
+  filter: drop-shadow(0 10px 14px rgba(27, 42, 65, 0.18));
   transform: translateZ(0);
   transition: transform 0.2s ease, text-shadow 0.2s ease, color 0.2s ease;
 }
 
 .logo-pill:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   color: #0f1624;
   text-shadow:
     0 1px 0 rgba(255, 255, 255, 0.95),
-    0 6px 18px rgba(27, 42, 65, 0.35);
+    0 10px 22px rgba(27, 42, 65, 0.45);
 }
 
 .logo-slider {
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
 }
 
 .logo-track {
-  animation: logo-scroll 28s linear infinite;
+  animation: logo-scroll 36s linear infinite;
   width: max-content;
 }
 
@@ -475,7 +477,7 @@ textarea {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-40%);
+    transform: translateX(-50%);
   }
 }
 

@@ -16,6 +16,8 @@ export default async function HomePage({ searchParams }) {
     ...GROUP_ORDER.filter((group) => groupedCollaborations[group]?.length),
     ...Object.keys(groupedCollaborations).filter((group) => !GROUP_ORDER.includes(group))
   ];
+  const marqueeItems = groupNames.flatMap((group) => groupedCollaborations[group]);
+  const marqueeLoop = [...marqueeItems, ...marqueeItems];
   let projects = [];
   let hotels = [];
   let dbAvailable = true;
@@ -241,9 +243,9 @@ export default async function HomePage({ searchParams }) {
         </div>
         <div className="logo-slider">
           <div className="logo-track">
-            {groupNames.flatMap((group) => groupedCollaborations[group]).map((item) => (
+            {marqueeLoop.map((item, index) => (
               <a
-                key={`${item.group}-${item.name}`}
+                key={`${item.group}-${item.name}-${index}`}
                 className="logo-pill"
                 href={item.url}
                 target="_blank"
