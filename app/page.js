@@ -235,21 +235,31 @@ export default async function HomePage({ searchParams }) {
           <h2 className="section-title">Collaborations</h2>
           <p>Trusted partnerships with India’s leading hospitality brands.</p>
         </div>
-        <div className="masonry-grid">
-          {groupNames.map((group) => (
-            <div className="masonry-card" key={group}>
-              <h3>{group}</h3>
-              <ul className="masonry-list">
-                {groupedCollaborations[group].map((item) => (
-                  <li key={item.name}>
-                    <a className="masonry-link" href={item.url} target="_blank" rel="noreferrer">
-                      {item.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+        <div className="logo-slider">
+          <div className="logo-track">
+            {groupNames.flatMap((group) => groupedCollaborations[group]).map((item) => (
+              <a
+                key={`${item.group}-${item.name}`}
+                className="logo-pill"
+                href={item.url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {item.name}
+              </a>
+            ))}
+            {groupNames.flatMap((group) => groupedCollaborations[group]).map((item, idx) => (
+              <a
+                key={`${item.group}-${item.name}-dup-${idx}`}
+                className="logo-pill"
+                href={item.url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {item.name}
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
