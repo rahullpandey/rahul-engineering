@@ -13,6 +13,16 @@ export default async function AdminHomePage() {
       take: 5
     })
   ]);
+  let quotations = [];
+
+  try {
+    quotations = await prisma.quotation.findMany({
+      orderBy: { createdAt: "desc" },
+      take: 10
+    });
+  } catch (error) {
+    quotations = [];
+  }
 
   const kpis = [
     { label: "Active Employees", value: employeeCount },
@@ -44,14 +54,39 @@ export default async function AdminHomePage() {
           </p>
         </div>
         <div className="admin-action-row">
-          <a className="button primary" href="/templates/letter-head.docx" download>
+          <a className="button primary" href="/api/quotations?format=docx">
             MS Word
           </a>
-          <a className="button ghost" href="/templates/letter-head.xlsx" download>
+          <a className="button ghost" href="/api/quotations?format=xlsx">
             MS Excel
           </a>
         </div>
       </div>
+
+      <h2 className="section-title">Quotation History</h2>
+      <table className="table" style={{ marginBottom: "2.5rem" }}>
+        <thead>
+          <tr>
+            <th>Format</th>
+            <th>Template</th>
+            <th>Created</th>
+          </tr>
+        </thead>
+        <tbody>
+          {quotations.map((quote) => (
+            <tr key={quote.id}>
+              <td>{quote.format}</td>
+              <td>{quote.templateFile}</td>
+              <td>{new Date(quote.createdAt).toISOString().slice(0, 10)}</td>
+            </tr>
+          ))}
+          {quotations.length === 0 ? (
+            <tr>
+              <td colSpan={3}>No quotations yet.</td>
+            </tr>
+          ) : null}
+        </tbody>
+      </table>
 
       <h2 className="section-title">Recent Project Activity</h2>
       <table className="table">
