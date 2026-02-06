@@ -119,7 +119,7 @@ export default async function HomePage({ searchParams }) {
 
       <section className="container" id="services">
         <h2 className="section-title">What We Handle</h2>
-        <div className="card-grid">
+        <div className="card-grid stagger-grid">
           <div className="card">
             <h3>Hotel Staffing</h3>
             <p>Housekeeping, banquet, kitchen support, and front-of-house teams aligned to premium standards.</p>
@@ -141,7 +141,7 @@ export default async function HomePage({ searchParams }) {
 
       <section className="container" id="operations">
         <h2 className="section-title">How We Work</h2>
-        <div className="card-grid">
+        <div className="card-grid stagger-grid">
           <div className="card">
             <h3>Centralized Records</h3>
             <p>All employee documents and wage rates stored securely.</p>
@@ -196,7 +196,7 @@ export default async function HomePage({ searchParams }) {
             </button>
           </form>
         ) : null}
-        <div className="card-grid">
+        <div className="card-grid stagger-grid">
           {projects.length === 0 ? (
             <div className="card">
               <h3>Projects Updating</h3>
