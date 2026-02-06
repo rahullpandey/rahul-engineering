@@ -747,6 +747,27 @@ textarea {
   justify-content: center;
 }
 
+.site-mark {
+  display: inline-flex;
+  position: relative;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  outline: none;
+}
+
+.site-mark:focus,
+.site-mark:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+body.logo-stuck .site-mark {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  transform: scale(0.9);
+  z-index: 20;
+}
+
 .logo-architect {
   width: 72px;
   height: 72px;

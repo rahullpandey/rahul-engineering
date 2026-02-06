@@ -1,5 +1,6 @@
 import prisma from "../lib/prisma";
 import CoveragePanel from "./components/CoveragePanel";
+import StickyLogoController from "./components/StickyLogoController";
 import { COLLABORATIONS, GROUP_ORDER } from "./data/collaborations";
 
 export const dynamic = "force-dynamic";
@@ -34,13 +35,16 @@ export default async function HomePage({ searchParams }) {
 
   return (
     <main>
+      <StickyLogoController />
       <header className="container" style={{ paddingTop: "2.5rem", paddingBottom: "1.5rem" }}>
         <div style={{ textAlign: "center" }}>
           <div className="logo-lockup">
-            <div className="logo-architect" aria-hidden>
-              <span className="arch-r">R</span>
-              <span className="arch-e">E</span>
-            </div>
+            <a className="site-mark" href="/" aria-label="Back to home">
+              <div className="logo-architect" aria-hidden>
+                <span className="arch-r">R</span>
+                <span className="arch-e">E</span>
+              </div>
+            </a>
             <div>
               <div
                 className="logo-wordmark"
