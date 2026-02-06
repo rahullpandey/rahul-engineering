@@ -249,17 +249,23 @@ export default async function HomePage({ searchParams }) {
         </div>
         <div className="logo-slider">
           <div className="logo-track">
-            {marqueeLoop.map((item, index) => (
-              <a
-                key={`${item.group}-${item.name}-${index}`}
-                className="logo-pill"
-                href={item.url}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {item.name}
-              </a>
-            ))}
+            {marqueeLoop.map((item, index) =>
+              item.url ? (
+                <a
+                  key={`${item.group}-${item.name}-${index}`}
+                  className="logo-pill"
+                  href={item.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {item.name}
+                </a>
+              ) : (
+                <span key={`${item.group}-${item.name}-${index}`} className="logo-pill logo-pill--static">
+                  {item.name}
+                </span>
+              )
+            )}
           </div>
         </div>
       </section>

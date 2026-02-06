@@ -521,6 +521,10 @@ textarea {
   text-shadow: 0 10px 22px rgba(27, 42, 65, 0.4);
 }
 
+.logo-pill--static {
+  cursor: default;
+}
+
 .logo-slider {
   overflow-x: auto;
   scroll-behavior: smooth;

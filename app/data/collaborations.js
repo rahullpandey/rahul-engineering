@@ -1,11 +1,16 @@
 export const GROUP_ORDER = [
   "Oberoi Group",
-  "Luxury Collection & Partners",
+  "ITC Hotels",
+  "IHG Hotels",
   "Premium Hotels",
-  "Luxury Retail & Malls"
+  "Eros Group",
+  "PVR Cinemas",
+  "Luxury Retail & Malls",
+  "Ambience Group",
+  "Lakewood City"
 ];
 
-export const CITY_ORDER = ["Delhi NCR", "Gurgaon", "Agra", "Udaipur"];
+export const CITY_ORDER = ["Delhi NCR", "Gurgaon", "Faridabad", "Agra", "Udaipur"];
 
 export const COLLABORATIONS = [
   {
@@ -41,14 +46,32 @@ export const COLLABORATIONS = [
   {
     name: "ITC Mughal, Agra",
     url: "https://www.marriott.com/en-us/hotels/agrlc-itc-mughal-a-luxury-collection-resort-and-spa-agra/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0",
-    group: "Luxury Collection & Partners",
+    group: "ITC Hotels",
     city: "Agra"
+  },
+  {
+    name: "ITC Grand Bharat, Gurugram",
+    url: "https://www.itchotels.com/in/en/itcgrandbharat-gurugram",
+    group: "ITC Hotels",
+    city: "Gurgaon"
   },
   {
     name: "Crowne Plaza, New Delhi",
     url: "https://www.ihg.com/crowneplaza/hotels/us/en/delhi/delgn/hoteldetail?cm_mmc=GoogleMaps-_-CP-_-IN-_-DELGN",
-    group: "Luxury Collection & Partners",
+    group: "IHG Hotels",
     city: "Delhi NCR"
+  },
+  {
+    name: "Holiday Inn, Gurugram Sector 90",
+    url: "https://www.ihg.com/holidayinn/hotels/us/en/gurgaon/delgs/hoteldetail",
+    group: "IHG Hotels",
+    city: "Gurgaon"
+  },
+  {
+    name: "Holiday Inn Express, Gurugram Sector 50",
+    url: "https://www.ihg.com/holidayinnexpress/hotels/us/en/gurgaon/hayge/hoteldetail",
+    group: "IHG Hotels",
+    city: "Gurgaon"
   },
   {
     name: "The Lalit, New Delhi",
@@ -59,7 +82,19 @@ export const COLLABORATIONS = [
   {
     name: "Eros Hotel",
     url: "https://www.eroshotels.co.in/",
-    group: "Premium Hotels",
+    group: "Eros Group",
+    city: "Delhi NCR"
+  },
+  {
+    name: "Eros Cinema, Jangpura Extension",
+    url: null,
+    group: "Eros Group",
+    city: "Delhi NCR"
+  },
+  {
+    name: "Eros Market Place, Indirapuram",
+    url: null,
+    group: "Eros Group",
     city: "Delhi NCR"
   },
   {
@@ -69,10 +104,40 @@ export const COLLABORATIONS = [
     city: "Delhi NCR"
   },
   {
+    name: "PVR INOX, Gurugram Sector 65",
+    url: null,
+    group: "PVR Cinemas",
+    city: "Gurgaon"
+  },
+  {
+    name: "PVR, Vasant Kunj",
+    url: null,
+    group: "PVR Cinemas",
+    city: "Delhi NCR"
+  },
+  {
+    name: "PVR, Mall of India Noida",
+    url: null,
+    group: "PVR Cinemas",
+    city: "Delhi NCR"
+  },
+  {
+    name: "PVR, Vasant Vihar",
+    url: null,
+    group: "PVR Cinemas",
+    city: "Delhi NCR"
+  },
+  {
     name: "DLF Mall of India",
     url: "https://www.dlfmallofindia.com/shopdetails-355-",
     group: "Luxury Retail & Malls",
     city: "Delhi NCR"
+  },
+  {
+    name: "Ambience Mall, Gurugram",
+    url: "https://ambiencegroup.in/mall/ambience-mall-gurugram",
+    group: "Ambience Group",
+    city: "Gurgaon"
   },
   {
     name: "Tod's Store",
@@ -85,5 +150,11 @@ export const COLLABORATIONS = [
     url: "https://www.gucci.com/us/store/vasant-kunj-phase-ii?srsltid=AfmBOorIsczGNN45esgcJ0T1_N6al4QjTfaHF3LvBAbjtEiw6H2wUl8n",
     group: "Luxury Retail & Malls",
     city: "Delhi NCR"
+  },
+  {
+    name: "Lakewood City, Faridabad",
+    url: "https://www.lakewoodcityfaridabad.com/",
+    group: "Lakewood City",
+    city: "Faridabad"
   }
 ];
