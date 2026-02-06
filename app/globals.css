@@ -450,6 +450,30 @@ textarea {
   padding: 1.1rem 0;
 }
 
+.collaboration-band {
+  position: relative;
+  margin: 2.5rem 0 1rem;
+  padding: 2.5rem 0 2.2rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(246, 238, 227, 0.9));
+  border-top: 1px solid rgba(200, 160, 110, 0.25);
+  border-bottom: 1px solid rgba(200, 160, 110, 0.25);
+}
+
+.collaboration-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 12% 30%, rgba(200, 160, 110, 0.15), transparent 50%),
+    radial-gradient(circle at 85% 70%, rgba(27, 42, 65, 0.12), transparent 55%);
+  pointer-events: none;
+}
+
+.collaboration-band .container {
+  position: relative;
+  z-index: 1;
+}
+
 .logo-slider::before {
   content: "";
   position: absolute;

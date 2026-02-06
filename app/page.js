@@ -141,6 +141,36 @@ export default async function HomePage({ searchParams }) {
         </div>
       </section>
 
+      <section className="collaboration-band" id="collaborations">
+        <div className="container">
+          <div className="section-head">
+            <h2 className="section-title">Collaborations</h2>
+            <p>Trusted partnerships with India’s leading hospitality brands.</p>
+          </div>
+        </div>
+        <div className="logo-slider">
+          <div className="logo-track">
+            {marqueeLoop.map((item, index) =>
+              item.url ? (
+                <a
+                  key={`${item.group}-${item.name}-${index}`}
+                  className="logo-pill"
+                  href={item.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {item.name}
+                </a>
+              ) : (
+                <span key={`${item.group}-${item.name}-${index}`} className="logo-pill logo-pill--static">
+                  {item.name}
+                </span>
+              )
+            )}
+          </div>
+        </div>
+      </section>
+
       <section className="container" id="operations">
         <div className="section-head">
           <h2 className="section-title">How We Work</h2>
@@ -239,34 +269,6 @@ export default async function HomePage({ searchParams }) {
               </div>
             ))
           )}
-        </div>
-      </section>
-
-      <section className="container" id="collaborations">
-        <div className="section-head">
-          <h2 className="section-title">Collaborations</h2>
-          <p>Trusted partnerships with India’s leading hospitality brands.</p>
-        </div>
-        <div className="logo-slider">
-          <div className="logo-track">
-            {marqueeLoop.map((item, index) =>
-              item.url ? (
-                <a
-                  key={`${item.group}-${item.name}-${index}`}
-                  className="logo-pill"
-                  href={item.url}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {item.name}
-                </a>
-              ) : (
-                <span key={`${item.group}-${item.name}-${index}`} className="logo-pill logo-pill--static">
-                  {item.name}
-                </span>
-              )
-            )}
-          </div>
         </div>
       </section>
 
