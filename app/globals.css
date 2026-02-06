@@ -817,18 +817,27 @@ textarea {
   );
   animation: radar-sweep 6s linear infinite;
   opacity: 0.75;
-  filter: blur(2px);
+  filter: blur(4px);
   mix-blend-mode: normal;
 }
 
 .radar-display::after {
   content: "";
   position: absolute;
-  inset: 10%;
+  inset: 8%;
   border-radius: 50%;
   border: 1px dashed rgba(168, 121, 62, 0.5);
   opacity: 0.8;
   animation: radar-dash 12s linear infinite;
+}
+
+.radar-display .radar-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, rgba(168, 121, 62, 0.35), transparent 60%);
+  animation: radar-glow 3.8s ease-in-out infinite;
+  pointer-events: none;
 }
 
 .radar-ring {
@@ -868,6 +877,7 @@ textarea {
   top: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 0 0 24px rgba(168, 121, 62, 0.8);
+  animation: radar-center 2.8s ease-in-out infinite;
 }
 
 .radar-dot {
@@ -955,6 +965,26 @@ textarea {
   }
   100% {
     transform: rotate(-360deg);
+  }
+}
+
+@keyframes radar-glow {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes radar-center {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.25);
   }
 }
 

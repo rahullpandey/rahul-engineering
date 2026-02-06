@@ -33,6 +33,7 @@ export default function CoveragePanel() {
     <div className="coverage-panel coverage-panel--radar">
       <div className="radar-shell">
         <div className="radar-display">
+          <div className="radar-glow" aria-hidden />
           <div className="radar-ring radar-ring--outer" />
           <div className="radar-ring radar-ring--mid" />
           <div className="radar-ring radar-ring--inner" />
