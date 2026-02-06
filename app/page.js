@@ -142,19 +142,25 @@ export default async function HomePage({ searchParams }) {
       </section>
 
       <section className="container" id="operations">
-        <h2 className="section-title">How We Work</h2>
-        <div className="card-grid stagger-grid">
-          <div className="card">
-            <h3>Centralized Records</h3>
-            <p>All employee documents and wage rates stored securely.</p>
+        <div className="section-head">
+          <h2 className="section-title">How We Work</h2>
+          <p>Structured workflows that keep staffing, compliance, and reporting aligned.</p>
+        </div>
+        <div className="card-grid stagger-grid process-grid">
+          <div className="card process-card">
+            <span className="process-label">Step 01</span>
+            <h3>Compliance & Documentation</h3>
+            <p>Verified IDs, contracts, and wage records maintained for audit readiness.</p>
           </div>
-          <div className="card">
-            <h3>Hotel Collaboration</h3>
-            <p>Dedicated point of contact for each property with clear contract milestones.</p>
+          <div className="card process-card">
+            <span className="process-label">Step 02</span>
+            <h3>Client Coordination</h3>
+            <p>Dedicated account leads align rosters, SLAs, and shift requirements.</p>
           </div>
-          <div className="card">
-            <h3>Real-time Reporting</h3>
-            <p>Weekly and monthly reports for manpower allocation and cost tracking.</p>
+          <div className="card process-card">
+            <span className="process-label">Step 03</span>
+            <h3>Performance Reporting</h3>
+            <p>Weekly KPI summaries on manpower allocation, costs, and service quality.</p>
           </div>
         </div>
       </section>
