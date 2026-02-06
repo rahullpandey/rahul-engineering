@@ -1018,6 +1018,17 @@ body.logo-stuck .site-mark {
   padding: 2.5rem;
 }
 
+.admin-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0 1.8rem;
+  border-bottom: 1px solid var(--stroke);
+  margin-bottom: 2rem;
+}
+
 .admin-action-row {
   display: flex;
   flex-wrap: wrap;
