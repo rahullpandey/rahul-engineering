@@ -820,6 +820,16 @@ textarea {
   mix-blend-mode: screen;
 }
 
+.radar-display::after {
+  content: "";
+  position: absolute;
+  inset: 10%;
+  border-radius: 50%;
+  border: 1px dashed rgba(168, 121, 62, 0.35);
+  opacity: 0.7;
+  animation: radar-dash 12s linear infinite;
+}
+
 .radar-ring {
   position: absolute;
   border-radius: 50%;
@@ -910,6 +920,15 @@ textarea {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes radar-dash {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
   }
 }
 
