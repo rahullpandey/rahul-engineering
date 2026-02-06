@@ -1029,6 +1029,14 @@ body.logo-stuck .site-mark {
   margin-bottom: 2rem;
 }
 
+.admin-toolbar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 1rem;
+  align-items: center;
+  justify-content: flex-end;
+}
+
 .admin-action-row {
   display: flex;
   flex-wrap: wrap;

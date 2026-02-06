@@ -74,17 +74,27 @@ export default async function AdminHomePage() {
             Upload finalized quotations to keep them organized in the portal.
           </p>
         </div>
-        <form
-          className="admin-upload"
-          action="/api/quotations"
-          method="post"
-          encType="multipart/form-data"
-        >
-          <input type="file" name="file" required />
-          <button className="button primary" type="submit">
-            Upload quotation
-          </button>
-        </form>
+        <div className="admin-toolbar-actions">
+          <div className="admin-action-row">
+            <a className="button ghost" href="/templates/letter-head.docx" download>
+              Download Word Letterhead
+            </a>
+            <a className="button ghost" href="/templates/letter-head.xlsx" download>
+              Download Excel Letterhead
+            </a>
+          </div>
+          <form
+            className="admin-upload"
+            action="/api/quotations"
+            method="post"
+            encType="multipart/form-data"
+          >
+            <input type="file" name="file" required />
+            <button className="button primary" type="submit">
+              Upload quotation
+            </button>
+          </form>
+        </div>
       </div>
 
       <h2 className="section-title">Stored Quotations</h2>
