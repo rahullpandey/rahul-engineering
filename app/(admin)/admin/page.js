@@ -34,6 +34,21 @@ export default async function AdminHomePage() {
         ))}
       </div>
 
+      <h2 className="section-title">Quotations</h2>
+      <div className="card" style={{ marginBottom: "2.5rem" }}>
+        <p style={{ color: "var(--muted)", marginBottom: "1rem" }}>
+          Create a new quotation using the official Rahul Engineering letterhead.
+        </p>
+        <div className="admin-action-row">
+          <a className="button primary" href="/templates/letter-head.docx" download>
+            Create in MS Word
+          </a>
+          <a className="button ghost" href="/templates/letter-head.xlsx" download>
+            Create in MS Excel
+          </a>
+        </div>
+      </div>
+
       <h2 className="section-title">Recent Project Activity</h2>
       <table className="table">
         <thead>

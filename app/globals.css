@@ -1018,6 +1018,12 @@ body.logo-stuck .site-mark {
   padding: 2.5rem;
 }
 
+.admin-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;
