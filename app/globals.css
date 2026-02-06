@@ -891,7 +891,7 @@ textarea {
   box-shadow: 0 6px 14px rgba(27, 42, 65, 0.18);
   transition: transform 0.2s ease, background 0.2s ease;
   position: relative;
-  animation: radar-dot-pulse 3s ease-in-out infinite;
+  animation: radar-dot-pulse 5s ease-in-out infinite;
 }
 
 .radar-dot-core::after {
@@ -901,7 +901,7 @@ textarea {
   border-radius: 50%;
   border: 1px solid rgba(200, 160, 110, 0.4);
   opacity: 0;
-  animation: radar-dot-ripple 3s ease-in-out infinite;
+  animation: radar-dot-ripple 5s ease-in-out infinite;
 }
 
 .radar-dot-label {
