@@ -445,12 +445,25 @@ textarea {
 }
 
 .logo-track {
-  animation: none;
+  animation: logo-scroll 28s linear infinite;
   width: max-content;
 }
 
 .logo-pill {
   scroll-snap-align: start;
+}
+
+.logo-slider:hover .logo-track {
+  animation-play-state: paused;
+}
+
+@keyframes logo-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-40%);
+  }
 }
 
 .logo-tile {
