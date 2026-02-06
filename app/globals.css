@@ -918,6 +918,7 @@ textarea {
 .radar-dot.active .radar-dot-core {
   background: #a8793e;
   transform: scale(1.1);
+  box-shadow: 0 0 18px rgba(168, 121, 62, 0.65);
 }
 
 .radar-dot.active .radar-dot-core,
