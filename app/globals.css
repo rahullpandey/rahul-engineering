@@ -386,6 +386,56 @@ textarea {
   color: #1b2a41;
 }
 
+.masonry-grid {
+  column-count: 2;
+  column-gap: 1.5rem;
+}
+
+.masonry-card {
+  break-inside: avoid;
+  margin: 0 0 1.5rem;
+  padding: 1.2rem 1.4rem;
+  border-radius: 16px;
+  border: 1px solid rgba(200, 160, 110, 0.3);
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 12px 24px rgba(27, 42, 65, 0.12);
+}
+
+.masonry-card h3 {
+  margin-bottom: 0.8rem;
+  color: #1b2a41;
+}
+
+.masonry-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.masonry-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #1b2a41;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.82rem;
+}
+
+.masonry-link::before {
+  content: "•";
+  color: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .masonry-grid {
+    column-count: 1;
+  }
+}
+
 .logo-tile {
   display: grid;
   place-items: center;

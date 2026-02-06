@@ -235,24 +235,22 @@ export default async function HomePage({ searchParams }) {
           <h2 className="section-title">Collaborations</h2>
           <p>Trusted partnerships with India’s leading hospitality brands.</p>
         </div>
-        {groupNames.map((group) => (
-          <div className="collab-group" key={group}>
-            <h3>{group}</h3>
-            <div className="logo-grid">
-              {groupedCollaborations[group].map((item) => (
-                <a
-                  key={item.name}
-                  className="logo-tile"
-                  href={item.url}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {item.name}
-                </a>
-              ))}
+        <div className="masonry-grid">
+          {groupNames.map((group) => (
+            <div className="masonry-card" key={group}>
+              <h3>{group}</h3>
+              <ul className="masonry-list">
+                {groupedCollaborations[group].map((item) => (
+                  <li key={item.name}>
+                    <a className="masonry-link" href={item.url} target="_blank" rel="noreferrer">
+                      {item.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </section>
 
       <section className="container" id="timeline">
