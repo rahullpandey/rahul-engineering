@@ -599,11 +599,49 @@ textarea {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 2rem;
   align-items: start;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(246, 240, 231, 0.9));
-  border: 1px solid var(--stroke);
-  border-radius: 20px;
-  padding: 2rem;
-  box-shadow: var(--shadow);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(246, 240, 231, 0.95));
+  border: 1px solid rgba(200, 160, 110, 0.3);
+  border-radius: 22px;
+  padding: 2.2rem;
+  box-shadow: 0 24px 40px rgba(27, 42, 65, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-panel::before {
+  content: "";
+  position: absolute;
+  right: -120px;
+  top: -120px;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 160, 110, 0.25), transparent 70%);
+  opacity: 0.7;
+  animation: contact-orb 10s ease-in-out infinite;
+}
+
+.contact-panel::after {
+  content: "";
+  position: absolute;
+  left: -20%;
+  top: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.35) 45%,
+    transparent 70%
+  );
+  opacity: 0.6;
+  animation: contact-sheen 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.contact-panel > * {
+  position: relative;
+  z-index: 1;
 }
 
 .contact-chips {
@@ -618,7 +656,7 @@ textarea {
   padding: 0.5rem 0.9rem;
   border-radius: 999px;
   border: 1px solid rgba(168, 121, 62, 0.35);
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   font-weight: 600;
   font-size: 0.9rem;
   color: #1b2a41;
@@ -631,12 +669,15 @@ textarea {
 }
 
 .contact-card {
-  background: #fbf7f1;
+  background: linear-gradient(135deg, rgba(251, 247, 241, 0.95), rgba(255, 255, 255, 0.9));
   border: 1px solid rgba(200, 160, 110, 0.25);
-  border-radius: 16px;
-  padding: 1.4rem;
+  border-radius: 18px;
+  padding: 1.6rem;
   display: grid;
   gap: 1.2rem;
+  box-shadow: 0 14px 28px rgba(27, 42, 65, 0.12);
+  position: relative;
+  z-index: 1;
 }
 
 .contact-row {
@@ -645,6 +686,34 @@ textarea {
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
+}
+
+@keyframes contact-orb {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(18px);
+  }
+}
+
+@keyframes contact-sheen {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateX(160%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(160%);
+    opacity: 0;
+  }
 }
 
 .coverage-panel {
@@ -761,14 +830,29 @@ textarea {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
+  position: relative;
+}
+
+.timeline-grid::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 22px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(168, 121, 62, 0.5), transparent);
+  opacity: 0.6;
 }
 
 .timeline-card {
   border: 1px solid var(--stroke);
   border-radius: 16px;
-  padding: 1.2rem;
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 12px 24px rgba(27, 42, 65, 0.12);
+  padding: 1.2rem 1.3rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(247, 241, 233, 0.9));
+  box-shadow: 0 16px 30px rgba(27, 42, 65, 0.12);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .timeline-card span {
@@ -781,6 +865,44 @@ textarea {
 .timeline-card strong {
   display: block;
   margin-top: 0.3rem;
+}
+
+.timeline-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.5) 45%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  animation: timeline-sheen 6.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.timeline-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 36px rgba(27, 42, 65, 0.18);
+}
+
+@keyframes timeline-sheen {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.9;
+  }
+  40% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
 }
 
 .experience-badge {

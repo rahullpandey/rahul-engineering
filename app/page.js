@@ -263,7 +263,7 @@ export default async function HomePage({ searchParams }) {
           <h2 className="section-title">Partnership Timeline</h2>
           <p>Highlights of long-term hotel collaborations.</p>
         </div>
-        <div className="timeline-grid">
+        <div className="timeline-grid stagger-grid">
           <div className="timeline-card">
             <span>2008</span>
             <strong>Foundation Year</strong>
