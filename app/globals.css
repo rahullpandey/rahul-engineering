@@ -377,6 +377,15 @@ textarea {
   margin-bottom: 3rem;
 }
 
+.collab-group {
+  margin-bottom: 2rem;
+}
+
+.collab-group h3 {
+  margin-bottom: 0.6rem;
+  color: #1b2a41;
+}
+
 .logo-tile {
   display: grid;
   place-items: center;
