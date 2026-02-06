@@ -13,15 +13,36 @@ export default async function AdminHomePage() {
       take: 5
     })
   ]);
-  let quotations = [];
+  const supabaseUrl = process.env.SUPABASE_URL;
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const bucket = process.env.SUPABASE_QUOTATIONS_BUCKET || "quotations";
+  let storedQuotations = [];
+  let storageError = null;
 
-  try {
-    quotations = await prisma.quotation.findMany({
-      orderBy: { createdAt: "desc" },
-      take: 10
+  if (!supabaseUrl || !serviceKey) {
+    storageError = "Supabase storage is not configured.";
+  } else {
+    const listResponse = await fetch(`${supabaseUrl}/storage/v1/object/list/${bucket}`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${serviceKey}`,
+        apikey: serviceKey,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        prefix: "",
+        limit: 50,
+        sortBy: { column: "created_at", order: "desc" }
+      }),
+      cache: "no-store"
     });
-  } catch (error) {
-    quotations = [];
+
+    if (!listResponse.ok) {
+      storageError = `Storage error: ${listResponse.statusText}`;
+    } else {
+      const data = await listResponse.json();
+      storedQuotations = (data || []).filter((item) => item.name && !item.name.endsWith("/"));
+    }
   }
 
   const kpis = [
@@ -44,47 +65,64 @@ export default async function AdminHomePage() {
         ))}
       </div>
 
-      <div className="admin-toolbar">
+      <div className="admin-toolbar" id="quotations">
         <div>
           <h2 className="section-title" style={{ marginBottom: "0.2rem" }}>
             Quotations
           </h2>
           <p style={{ color: "var(--muted)", margin: 0 }}>
-            Create a new quotation on the official letterhead.
+            Upload finalized quotations to keep them organized in the portal.
           </p>
         </div>
-        <div className="admin-action-row">
-          <a className="button primary" href="/api/quotations?format=docx">
-            MS Word
-          </a>
-          <a className="button ghost" href="/api/quotations?format=xlsx">
-            MS Excel
-          </a>
-        </div>
+        <form
+          className="admin-upload"
+          action="/api/quotations"
+          method="post"
+          encType="multipart/form-data"
+        >
+          <input type="file" name="file" required />
+          <button className="button primary" type="submit">
+            Upload quotation
+          </button>
+        </form>
       </div>
 
-      <h2 className="section-title">Quotation History</h2>
+      <h2 className="section-title">Stored Quotations</h2>
       <table className="table" style={{ marginBottom: "2.5rem" }}>
         <thead>
           <tr>
-            <th>Format</th>
-            <th>Template</th>
-            <th>Created</th>
+            <th>File</th>
+            <th>Size</th>
+            <th>Updated</th>
+            <th>Download</th>
           </tr>
         </thead>
         <tbody>
-          {quotations.map((quote) => (
-            <tr key={quote.id}>
-              <td>{quote.format}</td>
-              <td>{quote.templateFile}</td>
-              <td>{new Date(quote.createdAt).toISOString().slice(0, 10)}</td>
-            </tr>
-          ))}
-          {quotations.length === 0 ? (
+          {storageError ? (
             <tr>
-              <td colSpan={3}>No quotations yet.</td>
+              <td colSpan={4}>{storageError}</td>
             </tr>
-          ) : null}
+          ) : storedQuotations.length === 0 ? (
+            <tr>
+              <td colSpan={4}>No quotations uploaded yet.</td>
+            </tr>
+          ) : (
+            storedQuotations.map((file) => (
+              <tr key={file.name}>
+                <td>{file.name}</td>
+                <td>{file.metadata?.size ? `${Math.round(file.metadata.size / 1024)} KB` : "-"}</td>
+                <td>{file.updated_at || file.created_at ? new Date(file.updated_at || file.created_at).toISOString().slice(0, 10) : "-"}</td>
+                <td>
+                  <a
+                    className="button ghost"
+                    href={`/api/quotations?file=${encodeURIComponent(file.name)}`}
+                  >
+                    Download
+                  </a>
+                </td>
+              </tr>
+            ))
+          )}
         </tbody>
       </table>
 

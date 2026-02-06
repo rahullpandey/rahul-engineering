@@ -1035,6 +1035,32 @@ body.logo-stuck .site-mark {
   gap: 1rem;
 }
 
+.admin-upload {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.admin-upload input[type="file"] {
+  max-width: 260px;
+  padding: 0.45rem;
+  border-radius: 12px;
+  border: 1px solid #d9c7b2;
+  background: #fff;
+  font-size: 0.85rem;
+}
+
+.admin-upload input[type="file"]::file-selector-button {
+  border: none;
+  background: #ead7bf;
+  color: #3b2f24;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  margin-right: 0.6rem;
+  font-weight: 600;
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;
