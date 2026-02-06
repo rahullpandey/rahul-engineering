@@ -26,21 +26,36 @@ export default function CoveragePanel() {
   }, []);
 
   const [selectedCity, setSelectedCity] = useState(cityData[0] || { name: "", hotels: [] });
+  const totalCities = cityData.length || 1;
+  const radarRadius = 95;
 
   return (
-    <div className="coverage-panel">
-      <div className="coverage-rail">
-        <div className="rail-line" />
-        {cityData.map((city) => (
-          <button
-            key={city.name}
-            type="button"
-            className={city.name === selectedCity.name ? "rail-dot active" : "rail-dot"}
-            onClick={() => setSelectedCity(city)}
-          >
-            <span className="rail-city">{city.name}</span>
-          </button>
-        ))}
+    <div className="coverage-panel coverage-panel--radar">
+      <div className="radar-shell">
+        <div className="radar-display">
+          <div className="radar-ring radar-ring--outer" />
+          <div className="radar-ring radar-ring--mid" />
+          <div className="radar-ring radar-ring--inner" />
+          <div className="radar-center" />
+          {cityData.map((city, index) => {
+            const angle = (index / totalCities) * Math.PI * 2 - Math.PI / 2;
+            const x = Math.cos(angle) * radarRadius;
+            const y = Math.sin(angle) * radarRadius;
+            const isActive = city.name === selectedCity.name;
+            return (
+              <button
+                key={city.name}
+                type="button"
+                className={isActive ? "radar-dot active" : "radar-dot"}
+                onClick={() => setSelectedCity(city)}
+                style={{ transform: `translate(-50%, -50%) translate(${x}px, ${y}px)` }}
+              >
+                <span className="radar-dot-core" />
+                <span className="radar-dot-label">{city.name}</span>
+              </button>
+            );
+          })}
+        </div>
       </div>
       <div className="hotel-panel" key={selectedCity.name || "empty"}>
         <h3>{selectedCity.name || "Coverage"}</h3>

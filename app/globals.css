@@ -782,6 +782,147 @@ textarea {
   box-shadow: var(--shadow);
 }
 
+.coverage-panel--radar {
+  grid-template-columns: minmax(260px, 1fr) minmax(260px, 1.1fr);
+  align-items: center;
+}
+
+.radar-shell {
+  display: grid;
+  place-items: center;
+}
+
+.radar-display {
+  position: relative;
+  width: clamp(220px, 40vw, 280px);
+  height: clamp(220px, 40vw, 280px);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(247, 241, 233, 0.9)),
+    radial-gradient(circle at 70% 70%, rgba(200, 160, 110, 0.2), transparent 55%);
+  border: 1px solid rgba(200, 160, 110, 0.35);
+  box-shadow: 0 18px 36px rgba(27, 42, 65, 0.16);
+  overflow: hidden;
+}
+
+.radar-display::before {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(200, 160, 110, 0.2),
+    transparent 45%,
+    transparent 100%
+  );
+  animation: radar-sweep 7s linear infinite;
+  opacity: 0.65;
+  mix-blend-mode: screen;
+}
+
+.radar-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(200, 160, 110, 0.35);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation: radar-pulse 5.5s ease-in-out infinite;
+}
+
+.radar-ring--outer {
+  width: 86%;
+  height: 86%;
+}
+
+.radar-ring--mid {
+  width: 62%;
+  height: 62%;
+  animation-delay: 0.6s;
+}
+
+.radar-ring--inner {
+  width: 40%;
+  height: 40%;
+  animation-delay: 1.2s;
+}
+
+.radar-center {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #a8793e;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 18px rgba(168, 121, 62, 0.7);
+}
+
+.radar-dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.radar-dot-core {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(27, 42, 65, 0.25);
+  border: 1.5px solid rgba(200, 160, 110, 0.6);
+  box-shadow: 0 6px 14px rgba(27, 42, 65, 0.18);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.radar-dot-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(27, 42, 65, 0.65);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.radar-dot.active .radar-dot-core {
+  background: #a8793e;
+  transform: scale(1.1);
+}
+
+.radar-dot.active .radar-dot-label,
+.radar-dot:hover .radar-dot-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes radar-sweep {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes radar-pulse {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
 .coverage-rail {
   position: relative;
   padding-left: 1.2rem;
