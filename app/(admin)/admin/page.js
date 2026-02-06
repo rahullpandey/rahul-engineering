@@ -52,13 +52,23 @@ export default async function AdminHomePage() {
   ];
 
   return (
-    <section>
-      <h1 style={{ fontSize: "2rem", marginBottom: "0.6rem" }}>Dashboard</h1>
-      <p style={{ color: "var(--muted)" }}>Track workforce and hotel projects at a glance.</p>
+    <section className="admin-dashboard">
+      <div className="admin-hero">
+        <div className="admin-hero-content">
+          <span className="admin-hero-eyebrow">Admin Control Center</span>
+          <h1>Dashboard</h1>
+          <p>Track workforce, hotels, and projects with real-time clarity.</p>
+          <div className="admin-hero-chips">
+            <span>Operational Snapshot</span>
+            <span>Secure Admin Portal</span>
+          </div>
+        </div>
+        <div className="admin-hero-orb" aria-hidden />
+      </div>
 
       <div className="kpi-grid">
         {kpis.map((kpi) => (
-          <div className="kpi" key={kpi.label}>
+          <div className="kpi admin-kpi" key={kpi.label}>
             <span>{kpi.label}</span>
             <strong>{kpi.value}</strong>
           </div>

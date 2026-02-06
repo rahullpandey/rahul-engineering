@@ -1016,6 +1016,110 @@ body.logo-stuck .site-mark {
 
 .admin-content {
   padding: 2.5rem;
+  background: radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.9), transparent 45%),
+    radial-gradient(circle at 90% 20%, rgba(200, 160, 110, 0.18), transparent 55%),
+    radial-gradient(circle at 50% 90%, rgba(27, 42, 65, 0.12), transparent 60%);
+}
+
+.admin-dashboard {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.admin-hero {
+  position: relative;
+  padding: 2rem 2.4rem;
+  border-radius: 24px;
+  border: 1px solid rgba(200, 160, 110, 0.35);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(247, 241, 233, 0.9));
+  box-shadow: 0 24px 45px rgba(27, 42, 65, 0.12);
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.admin-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 520px;
+}
+
+.admin-hero h1 {
+  font-size: 2.2rem;
+  margin: 0.2rem 0 0.6rem;
+}
+
+.admin-hero p {
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.admin-hero-eyebrow {
+  font-size: 0.85rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #a8793e;
+  font-weight: 600;
+}
+
+.admin-hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.admin-hero-chips span {
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(200, 160, 110, 0.35);
+  font-size: 0.85rem;
+  color: #4a3a2a;
+}
+
+.admin-hero-orb {
+  position: absolute;
+  right: -40px;
+  top: -60px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(200, 160, 110, 0.25) 60%),
+    radial-gradient(circle at 70% 70%, rgba(27, 42, 65, 0.25), transparent 60%);
+  box-shadow: 0 30px 60px rgba(27, 42, 65, 0.2);
+  animation: admin-orb-float 8s ease-in-out infinite;
+  transform: translateZ(30px);
+}
+
+.admin-kpi {
+  transform-style: preserve-3d;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-kpi:hover {
+  transform: translateY(-4px) rotateX(3deg);
+  box-shadow: 0 18px 34px rgba(27, 42, 65, 0.18);
+}
+
+.admin-toolbar,
+.table {
+  transform-style: preserve-3d;
+}
+
+.admin-toolbar:hover,
+.table:hover {
+  transform: translateY(-2px);
+  transition: transform 0.2s ease;
+}
+
+@keyframes admin-orb-float {
+  0%,
+  100% {
+    transform: translateZ(30px) translateY(0);
+  }
+  50% {
+    transform: translateZ(30px) translateY(12px);
+  }
 }
 
 .admin-toolbar {
