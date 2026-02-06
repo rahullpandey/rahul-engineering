@@ -420,7 +420,6 @@ textarea {
   display: inline-flex;
   gap: 1rem;
   padding: 0 1.5rem;
-  animation: logo-scroll 28s linear infinite;
   white-space: nowrap;
 }
 
@@ -439,13 +438,19 @@ textarea {
   white-space: nowrap;
 }
 
-@keyframes logo-scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+.logo-slider {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.logo-track {
+  animation: none;
+  width: max-content;
+}
+
+.logo-pill {
+  scroll-snap-align: start;
 }
 
 .logo-tile {

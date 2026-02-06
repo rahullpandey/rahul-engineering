@@ -252,17 +252,6 @@ export default async function HomePage({ searchParams }) {
                 {item.name}
               </a>
             ))}
-            {groupNames.flatMap((group) => groupedCollaborations[group]).map((item, idx) => (
-              <a
-                key={`${item.group}-${item.name}-dup-${idx}`}
-                className="logo-pill"
-                href={item.url}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {item.name}
-              </a>
-            ))}
           </div>
         </div>
       </section>
