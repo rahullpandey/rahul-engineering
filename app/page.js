@@ -1,10 +1,20 @@
 import prisma from "../lib/prisma";
 import CoveragePanel from "./components/CoveragePanel";
+import { COLLABORATIONS, GROUP_ORDER } from "./data/collaborations";
 
 export const dynamic = "force-dynamic";
 
 export default async function HomePage({ searchParams }) {
   const selectedHotel = searchParams?.hotel || "all";
+  const groupedCollaborations = COLLABORATIONS.reduce((acc, item) => {
+    if (!acc[item.group]) acc[item.group] = [];
+    acc[item.group].push(item);
+    return acc;
+  }, {});
+  const groupNames = [
+    ...GROUP_ORDER.filter((group) => groupedCollaborations[group]?.length),
+    ...Object.keys(groupedCollaborations).filter((group) => !GROUP_ORDER.includes(group))
+  ];
   let projects = [];
   let hotels = [];
   let dbAvailable = true;
@@ -225,68 +235,24 @@ export default async function HomePage({ searchParams }) {
           <h2 className="section-title">Collaborations</h2>
           <p>Trusted partnerships with India’s leading hospitality brands.</p>
         </div>
-        <div className="collab-group">
-          <h3>Oberoi Group</h3>
-          <div className="logo-grid">
-            <a className="logo-tile" href="https://www.oberoihotels.com/hotels-in-delhi/?utm_source=GMBlisting&utm_medium=organic" target="_blank" rel="noreferrer">
-              The Oberoi, New Delhi
-            </a>
-            <a className="logo-tile" href="https://www.oberoihotels.com/hotels-in-udaipur-udaivilas-resort/?utm_source=GMBlisting&utm_medium=organic" target="_blank" rel="noreferrer">
-              The Oberoi Udaivilas
-            </a>
-            <a className="logo-tile" href="https://www.oberoihotels.com/hotels-in-agra-amarvilas-resort/?utm_source=GMBlisting&utm_medium=organic" target="_blank" rel="noreferrer">
-              The Oberoi Amarvilas
-            </a>
-            <a className="logo-tile" href="https://www.oberoihotels.com/hotels-in-gurgaon/?utm_source=GMBlisting&utm_medium=organic" target="_blank" rel="noreferrer">
-              The Oberoi, Gurgaon
-            </a>
-            <a className="logo-tile" href="https://www.tridenthotels.com/hotels-in-gurgaon/" target="_blank" rel="noreferrer">
-              Trident, Gurgaon
-            </a>
+        {groupNames.map((group) => (
+          <div className="collab-group" key={group}>
+            <h3>{group}</h3>
+            <div className="logo-grid">
+              {groupedCollaborations[group].map((item) => (
+                <a
+                  key={item.name}
+                  className="logo-tile"
+                  href={item.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {item.name}
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
-
-        <div className="collab-group">
-          <h3>Luxury Collection & Partners</h3>
-          <div className="logo-grid">
-            <a className="logo-tile" href="https://www.marriott.com/en-us/hotels/agrlc-itc-mughal-a-luxury-collection-resort-and-spa-agra/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0" target="_blank" rel="noreferrer">
-              ITC Mughal, Agra
-            </a>
-            <a className="logo-tile" href="https://www.ihg.com/crowneplaza/hotels/us/en/delhi/delgn/hoteldetail?cm_mmc=GoogleMaps-_-CP-_-IN-_-DELGN" target="_blank" rel="noreferrer">
-              Crowne Plaza, New Delhi
-            </a>
-          </div>
-        </div>
-
-        <div className="collab-group">
-          <h3>Premium Hotels</h3>
-          <div className="logo-grid">
-            <a className="logo-tile" href="https://www.thelalit.com/the-lalit-delhi/" target="_blank" rel="noreferrer">
-              The Lalit, New Delhi
-            </a>
-            <a className="logo-tile" href="https://www.eroshotels.co.in/" target="_blank" rel="noreferrer">
-              Eros Hotel
-            </a>
-            <a className="logo-tile" href="https://www.thesuryaa.com/" target="_blank" rel="noreferrer">
-              The Suryaa, New Delhi
-            </a>
-          </div>
-        </div>
-
-        <div className="collab-group">
-          <h3>Luxury Retail & Malls</h3>
-          <div className="logo-grid">
-            <a className="logo-tile" href="https://www.dlfmallofindia.com/shopdetails-355-" target="_blank" rel="noreferrer">
-              DLF Mall of India
-            </a>
-            <a className="logo-tile" href="https://www.tods.com/ww-en/store-locator/847/" target="_blank" rel="noreferrer">
-              Tod's Store
-            </a>
-            <a className="logo-tile" href="https://www.gucci.com/us/store/vasant-kunj-phase-ii?srsltid=AfmBOorIsczGNN45esgcJ0T1_N6al4QjTfaHF3LvBAbjtEiw6H2wUl8n" target="_blank" rel="noreferrer">
-              Gucci, Vasant Kunj
-            </a>
-          </div>
-        </div>
+        ))}
       </section>
 
       <section className="container" id="timeline">

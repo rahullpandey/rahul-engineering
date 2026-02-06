@@ -1,38 +1,37 @@
 "use client";
 
-import { useState } from "react";
-
-const CITY_DATA = [
-  {
-    name: "Delhi",
-    hotels: ["The Oberoi, New Delhi", "The Lalit, New Delhi", "Crowne Plaza, New Delhi"],
-    className: "dot-delhi"
-  },
-  {
-    name: "Gurgaon",
-    hotels: ["The Oberoi, Gurgaon"],
-    className: "dot-gurgaon"
-  },
-  {
-    name: "Agra",
-    hotels: ["ITC Mughal, Agra", "The Oberoi Amarvilas"],
-    className: "dot-agra"
-  },
-  {
-    name: "Udaipur",
-    hotels: ["The Oberoi Udaivilas"],
-    className: "dot-udaipur"
-  }
-];
+import { useMemo, useState } from "react";
+import { COLLABORATIONS, CITY_ORDER } from "../data/collaborations";
 
 export default function CoveragePanel() {
-  const [selectedCity, setSelectedCity] = useState(CITY_DATA[0]);
+  const cityData = useMemo(() => {
+    const cityMap = new Map();
+    COLLABORATIONS.forEach((item) => {
+      if (!item.city) return;
+      if (!cityMap.has(item.city)) cityMap.set(item.city, []);
+      cityMap.get(item.city).push(item.name);
+    });
+
+    const ordered = CITY_ORDER.filter((city) => cityMap.has(city)).map((city) => ({
+      name: city,
+      hotels: cityMap.get(city)
+    }));
+
+    const remaining = Array.from(cityMap.keys())
+      .filter((city) => !CITY_ORDER.includes(city))
+      .sort()
+      .map((city) => ({ name: city, hotels: cityMap.get(city) }));
+
+    return [...ordered, ...remaining];
+  }, []);
+
+  const [selectedCity, setSelectedCity] = useState(cityData[0] || { name: "", hotels: [] });
 
   return (
     <div className="coverage-panel">
       <div className="coverage-rail">
         <div className="rail-line" />
-        {CITY_DATA.map((city) => (
+        {cityData.map((city) => (
           <button
             key={city.name}
             type="button"
@@ -43,10 +42,10 @@ export default function CoveragePanel() {
           </button>
         ))}
       </div>
-      <div className="hotel-panel" key={selectedCity.name}>
-        <h3>{selectedCity.name}</h3>
+      <div className="hotel-panel" key={selectedCity.name || "empty"}>
+        <h3>{selectedCity.name || "Coverage"}</h3>
         <ul>
-          {selectedCity.hotels.map((hotel) => (
+          {(selectedCity.hotels || []).map((hotel) => (
             <li key={hotel}>{hotel}</li>
           ))}
         </ul>
