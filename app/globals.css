@@ -145,6 +145,14 @@ button {
   cursor: pointer;
 }
 
+a:focus,
+a:focus-visible,
+button:focus,
+button:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
 input,
 select,
 textarea {
