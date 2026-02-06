@@ -424,11 +424,9 @@ textarea {
   height: 58px;
   transform: translateY(-50%);
   border-radius: 999px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.2)),
-    radial-gradient(circle at 30% 30%, rgba(200, 160, 110, 0.22), transparent 60%);
+  background: rgba(255, 255, 255, 0.45);
   border: none;
-  box-shadow: 0 16px 40px rgba(27, 42, 65, 0.1);
+  box-shadow: none;
   backdrop-filter: blur(8px);
   pointer-events: none;
 }
