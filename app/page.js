@@ -119,7 +119,7 @@ export default async function HomePage({ searchParams }) {
 
       <section className="container" id="services">
         <h2 className="section-title">What We Handle</h2>
-        <div className="card-grid stagger-grid">
+        <div className="card-grid">
           <div className="card">
             <h3>Hotel Staffing</h3>
             <p>Housekeeping, banquet, kitchen support, and front-of-house teams aligned to premium standards.</p>
