@@ -413,15 +413,13 @@ textarea {
   background: transparent;
   box-shadow: none;
   padding: 1.1rem 0;
-  mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
 }
 
 .logo-slider::before {
   content: "";
   position: absolute;
-  left: 4%;
-  right: 4%;
+  left: 0;
+  right: 0;
   top: 50%;
   height: 58px;
   transform: translateY(-50%);
