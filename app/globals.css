@@ -412,9 +412,47 @@ textarea {
   border: none;
   background: transparent;
   box-shadow: none;
-  padding: 0.75rem 0;
-  mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+  padding: 1.1rem 0;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+}
+
+.logo-slider::before {
+  content: "";
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  top: 50%;
+  height: 58px;
+  transform: translateY(-50%);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.2)),
+    radial-gradient(circle at 30% 30%, rgba(200, 160, 110, 0.22), transparent 60%);
+  border: 1px solid rgba(200, 160, 110, 0.28);
+  box-shadow: 0 16px 40px rgba(27, 42, 65, 0.12);
+  backdrop-filter: blur(8px);
+  pointer-events: none;
+}
+
+.logo-slider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -40%;
+  width: 40%;
+  height: 58px;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.5) 45%,
+    transparent 100%
+  );
+  opacity: 0.6;
+  filter: blur(2px);
+  animation: logo-sweep 6s ease-in-out infinite;
+  pointer-events: none;
 }
 
 .logo-track {
@@ -431,26 +469,25 @@ textarea {
   border-radius: 0;
   border: none;
   background: transparent;
-  color: #1b2a41;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-size: 0.92rem;
   white-space: nowrap;
-  text-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.95),
-    0 6px 18px rgba(27, 42, 65, 0.35);
-  filter: drop-shadow(0 10px 14px rgba(27, 42, 65, 0.18));
+  background-image: linear-gradient(120deg, #1b2a41 0%, #a8793e 45%, #1b2a41 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 6px 16px rgba(27, 42, 65, 0.25);
+  filter: drop-shadow(0 8px 12px rgba(27, 42, 65, 0.16));
   transform: translateZ(0);
-  transition: transform 0.2s ease, text-shadow 0.2s ease, color 0.2s ease;
+  transition: transform 0.2s ease, text-shadow 0.2s ease;
 }
 
 .logo-pill:hover {
   transform: translateY(-3px);
-  color: #0f1624;
-  text-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.95),
-    0 10px 22px rgba(27, 42, 65, 0.45);
+  text-shadow: 0 10px 22px rgba(27, 42, 65, 0.4);
 }
 
 .logo-slider {
@@ -478,6 +515,18 @@ textarea {
   }
   100% {
     transform: translateX(-50%);
+  }
+}
+
+@keyframes logo-sweep {
+  0% {
+    transform: translate(-20%, -50%);
+  }
+  50% {
+    transform: translate(120%, -50%);
+  }
+  100% {
+    transform: translate(220%, -50%);
   }
 }
 
