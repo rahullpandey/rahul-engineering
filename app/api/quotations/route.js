@@ -16,6 +16,46 @@ function getStorageConfig() {
   return { supabaseUrl, serviceKey, bucket };
 }
 
+async function moveObject(config, sourceKey, destinationKey) {
+  const response = await fetch(`${config.supabaseUrl}/storage/v1/object/move`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${config.serviceKey}`,
+      apikey: config.serviceKey,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      bucketId: config.bucket,
+      sourceKey,
+      destinationKey
+    })
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(errorText || "Move failed");
+  }
+}
+
+function isSafePath(value) {
+  return value && !value.includes("..") && !value.startsWith("/");
+}
+
+async function deleteObject(config, target) {
+  const response = await fetch(`${config.supabaseUrl}/storage/v1/object/${config.bucket}/${encodeURIComponent(target)}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${config.serviceKey}`,
+      apikey: config.serviceKey
+    }
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(errorText || "Delete failed");
+  }
+}
+
 export async function POST(request) {
   const config = getStorageConfig();
 
@@ -24,7 +64,52 @@ export async function POST(request) {
   }
 
   const formData = await request.formData();
+  let action = (formData.get("action") || "").toString();
+  const fallbackFileName = (formData.get("fileName") || "").toString();
+  if (!action && fallbackFileName && !fallbackFileName.startsWith("recycle/")) {
+    action = "delete";
+  }
   const file = formData.get("file");
+
+  if (action === "delete") {
+    const target = (formData.get("fileName") || "").toString();
+    if (!isSafePath(target) || target.includes("/")) {
+      return new Response("Invalid file name.", { status: 400 });
+    }
+    try {
+      await moveObject(config, target, `recycle/${target}`);
+    } catch (error) {
+      return new Response(`Delete failed: ${error.message}`, { status: 500 });
+    }
+    return Response.redirect(new URL("/admin#quotations", request.url), 302);
+  }
+
+  if (action === "restore") {
+    const target = (formData.get("fileName") || "").toString();
+    if (!isSafePath(target) || !target.startsWith("recycle/")) {
+      return new Response("Invalid recycle file.", { status: 400 });
+    }
+    const restoredName = target.replace(/^recycle\//, "");
+    try {
+      await moveObject(config, target, restoredName);
+    } catch (error) {
+      return new Response(`Restore failed: ${error.message}`, { status: 500 });
+    }
+    return Response.redirect(new URL("/admin#quotations", request.url), 302);
+  }
+
+  if (action === "purge") {
+    const target = (formData.get("fileName") || "").toString();
+    if (!isSafePath(target) || !target.startsWith("recycle/")) {
+      return new Response("Invalid recycle file.", { status: 400 });
+    }
+    try {
+      await deleteObject(config, target);
+    } catch (error) {
+      return new Response(`Permanent delete failed: ${error.message}`, { status: 500 });
+    }
+    return Response.redirect(new URL("/admin#quotations", request.url), 302);
+  }
 
   if (!file || typeof file === "string") {
     return new Response("No file provided.", { status: 400 });
