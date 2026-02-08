@@ -46,7 +46,16 @@ export default async function AdminHomePage() {
         throw new Error(response.statusText);
       }
       const data = await response.json();
-      return (data || []).filter((item) => item.name && !item.name.endsWith("/"));
+      const cleaned = (data || [])
+        .filter((item) => item.name && !item.name.endsWith("/"))
+        .map((item) => {
+          if (!prefix) return item;
+          const normalized = item.name.startsWith(`${prefix}/`)
+            ? item.name
+            : `${prefix}/${item.name}`;
+          return { ...item, name: normalized };
+        });
+      return prefix ? cleaned : cleaned.filter((item) => !item.name.startsWith("recycle/"));
     };
 
     try {
