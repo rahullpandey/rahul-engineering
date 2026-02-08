@@ -1225,6 +1225,14 @@ textarea {
   right: 1rem;
 }
 
+@media (max-width: 720px) {
+  .experience-badge.badge-corner {
+    position: static;
+    margin: 0 0 0.8rem;
+    align-self: flex-start;
+  }
+}
+
 .logo-wordmark {
   color: #2b2b2b;
   position: relative;
