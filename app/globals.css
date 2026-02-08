@@ -1491,6 +1491,29 @@ body.logo-stuck .site-mark {
   gap: 0.6rem;
 }
 
+.admin-brand .logo-architect {
+  display: grid;
+  place-items: center;
+}
+
+.admin-brand .logo-architect span {
+  position: absolute;
+}
+
+.admin-brand .logo-architect .arch-r {
+  font-size: 2.15rem;
+  left: 14px;
+  top: 10px;
+  color: #2b2b2b;
+}
+
+.admin-brand .logo-architect .arch-e {
+  font-size: 1.95rem;
+  right: 12px;
+  bottom: 10px;
+  color: #a8793e;
+}
+
 .admin-brand-text {
   display: grid;
   gap: 0.1rem;
@@ -1961,11 +1984,11 @@ body.logo-stuck .site-mark {
 
   .admin-brand {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.6rem;
   }
 
   .admin-wordmark {
-    font-size: 1.7rem;
+    font-size: 2.1rem;
     text-align: center;
   }
 
@@ -1974,8 +1997,8 @@ body.logo-stuck .site-mark {
   }
 
   .admin-sidebar .logo-architect {
-    width: 88px;
-    height: 88px;
+    width: 96px;
+    height: 96px;
     border: none;
     border-radius: 999px;
     background: #f7f3ed;
@@ -1983,15 +2006,15 @@ body.logo-stuck .site-mark {
   }
 
   .admin-sidebar .logo-architect .arch-r {
-    left: 26px;
-    top: 18px;
     font-size: 2.6rem;
+    left: 20px;
+    top: 16px;
   }
 
   .admin-sidebar .logo-architect .arch-e {
-    right: 20px;
-    bottom: 16px;
-    font-size: 2.3rem;
+    font-size: 2.35rem;
+    right: 18px;
+    bottom: 14px;
   }
 
   .admin-nav {
@@ -2003,7 +2026,7 @@ body.logo-stuck .site-mark {
   }
 
   .admin-nav a {
-    padding: 0.45rem 0.8rem;
+    padding: 0.55rem 0.9rem;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.6);
     border: 1px solid rgba(200, 160, 110, 0.35);
@@ -2032,6 +2055,17 @@ body.logo-stuck .site-mark {
 @media (max-width: 720px) {
   .table {
     min-width: 560px;
+  }
+
+  .table th,
+  .table td {
+    white-space: nowrap;
+  }
+
+  .table td:first-child {
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
