@@ -1770,9 +1770,40 @@ body.logo-stuck .site-mark {
   }
 
   .admin-sidebar {
-    flex-direction: row;
-    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
     gap: 1rem;
+  }
+
+  .admin-sidebar > div:first-child {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .admin-sidebar nav {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem 1.2rem !important;
+    width: 100%;
+  }
+
+  .admin-sidebar nav a {
+    padding: 0.4rem 0.6rem;
+  }
+
+  .admin-sidebar form {
+    width: 100%;
+    margin-top: 0.5rem !important;
+  }
+
+  .admin-sidebar form .button {
+    width: 100%;
+  }
+
+  .admin-sidebar > div:last-child {
+    width: 100%;
+    text-align: center;
   }
 }
 
