@@ -1873,6 +1873,27 @@ body.logo-stuck .site-mark {
     font-size: 1.35rem;
   }
 
+  .admin-sidebar .logo-architect {
+    width: 64px;
+    height: 64px;
+    border: none;
+    border-radius: 999px;
+    background: #f7f3ed;
+    box-shadow: 0 10px 22px rgba(43, 43, 43, 0.12);
+  }
+
+  .admin-sidebar .logo-architect .arch-r {
+    left: 18px;
+    top: 12px;
+    font-size: 2rem;
+  }
+
+  .admin-sidebar .logo-architect .arch-e {
+    right: 14px;
+    bottom: 12px;
+    font-size: 1.8rem;
+  }
+
   .admin-sidebar nav {
     display: flex !important;
     flex-wrap: wrap;
