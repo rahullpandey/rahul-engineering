@@ -22,6 +22,7 @@ export default function AdminLayout({ children }) {
           <a href="/admin/employees">Employees</a>
           <a href="/admin/hotels">Hotels</a>
           <a href="/admin/projects">Projects</a>
+          <a href="/admin/attendance">Attendance</a>
           <a href="/admin/requests">Requests</a>
         </nav>
         <form method="post" action="/api/auth/logout" style={{ marginTop: "auto" }}>

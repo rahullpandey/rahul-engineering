@@ -77,3 +77,22 @@ model ProposalRequest {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model AttendanceRecord {
+  id             String   @id @default(cuid())
+  employeeId     String
+  hotelId        String?
+  status         String
+  attendanceDate String
+  latitude       Float?
+  longitude      Float?
+  selfiePath     String?
+  capturedAt     DateTime @default(now())
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  employee       Employee @relation(fields: [employeeId], references: [id])
+  hotel          Hotel?   @relation(fields: [hotelId], references: [id])
+
+  @@unique([employeeId, attendanceDate])
+}
