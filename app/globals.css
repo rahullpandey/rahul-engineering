@@ -819,6 +819,7 @@ textarea {
   opacity: 0.75;
   filter: blur(4px);
   mix-blend-mode: normal;
+  pointer-events: none;
 }
 
 .radar-display::after {
@@ -829,6 +830,7 @@ textarea {
   border: 1px dashed rgba(168, 121, 62, 0.5);
   opacity: 0.8;
   animation: radar-dash 12s linear infinite;
+  pointer-events: none;
 }
 
 .radar-display .radar-glow {
@@ -848,6 +850,7 @@ textarea {
   top: 50%;
   transform: translate(-50%, -50%);
   animation: radar-pulse 5.5s ease-in-out infinite;
+  pointer-events: none;
 }
 
 .radar-ring--outer {
@@ -878,6 +881,7 @@ textarea {
   transform: translate(-50%, -50%);
   box-shadow: 0 0 24px rgba(168, 121, 62, 0.8);
   animation: radar-center 2.8s ease-in-out infinite;
+  pointer-events: none;
 }
 
 .radar-dot {
@@ -891,6 +895,7 @@ textarea {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  z-index: 2;
 }
 
 .radar-dot-core {
@@ -1436,6 +1441,52 @@ body.logo-stuck .site-mark {
   gap: 2rem;
 }
 
+.admin-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.admin-brand-text {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.admin-wordmark {
+  font-weight: 700;
+  font-size: 1.1rem;
+  font-family: "Playfair Display", "Times New Roman", serif;
+  letter-spacing: 0.04em;
+  position: relative;
+  display: inline-block;
+}
+
+.admin-wordmark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.7) 45%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  animation: wordmark-shimmer 5.5s ease-in-out infinite;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.admin-subtitle {
+  color: #6c6a66;
+  font-size: 0.9rem;
+}
+
+.admin-nav {
+  display: grid;
+  gap: 0.5rem;
+}
+
 .admin-sidebar a {
   color: #3d342a;
   font-weight: 600;
@@ -1864,48 +1915,53 @@ body.logo-stuck .site-mark {
     gap: 1rem;
   }
 
-  .admin-sidebar > div:first-child {
-    width: 100%;
-    justify-content: center;
+  .admin-brand {
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
-  .admin-sidebar > div:first-child > div:last-child > div:first-child {
-    font-size: 1.35rem;
+  .admin-wordmark {
+    font-size: 1.7rem;
+    text-align: center;
+  }
+
+  .admin-subtitle {
+    font-size: 0.95rem;
   }
 
   .admin-sidebar .logo-architect {
-    width: 84px;
-    height: 84px;
+    width: 88px;
+    height: 88px;
     border: none;
     border-radius: 999px;
     background: #f7f3ed;
-    box-shadow: 0 10px 22px rgba(43, 43, 43, 0.12);
+    box-shadow: 0 12px 24px rgba(43, 43, 43, 0.12);
   }
 
   .admin-sidebar .logo-architect .arch-r {
-    left: 24px;
+    left: 26px;
     top: 18px;
-    font-size: 2.4rem;
+    font-size: 2.6rem;
   }
 
   .admin-sidebar .logo-architect .arch-e {
-    right: 18px;
+    right: 20px;
     bottom: 16px;
-    font-size: 2.1rem;
+    font-size: 2.3rem;
   }
 
-  .admin-sidebar nav {
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(120px, 1fr));
-    gap: 0.8rem 1.1rem !important;
-    width: min(360px, 100%);
+  .admin-nav {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    gap: 0.6rem 1rem;
+    width: min(360px, 100%);
   }
 
-  .admin-sidebar nav a {
-    padding: 0.5rem 0.4rem;
+  .admin-nav a {
+    padding: 0.45rem 0.8rem;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.6);
     border: 1px solid rgba(200, 160, 110, 0.35);
   }
 
@@ -1924,42 +1980,14 @@ body.logo-stuck .site-mark {
   }
 }
 
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 @media (max-width: 720px) {
   .table {
-    display: block;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .table thead {
-    display: none;
-  }
-
-  .table tbody,
-  .table tr,
-  .table td {
-    display: block;
-    width: 100%;
-  }
-
-  .table tr {
-    border-bottom: 1px solid var(--stroke);
-    padding: 0.8rem 0;
-  }
-
-  .table td {
-    border: none;
-    padding: 0.4rem 0;
-  }
-
-  .table td::before {
-    content: attr(data-label);
-    display: block;
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 0.15rem;
+    min-width: 560px;
   }
 }
 
