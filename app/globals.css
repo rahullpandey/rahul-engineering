@@ -1767,3 +1767,34 @@ body.logo-stuck .site-mark {
     gap: 1rem;
   }
 }
+
+@media (max-width: 720px) {
+  .logo-lockup {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .logo-wordmark {
+    font-size: 2.2rem !important;
+    letter-spacing: 0.02em !important;
+    line-height: 1.1;
+    text-align: center;
+  }
+
+  .logo-underline {
+    margin-top: 0.35rem;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem 1.1rem;
+    font-size: 0.95rem;
+  }
+
+  body.logo-stuck .site-mark {
+    top: 10px;
+    left: 10px;
+    transform: scale(0.8);
+  }
+}
