@@ -21,6 +21,7 @@ model Employee {
   updatedAt    DateTime @updatedAt
 
   assignments  ProjectAssignment[]
+  attendance   AttendanceRecord[]
 }
 
 model Hotel {
@@ -36,6 +37,7 @@ model Hotel {
   updatedAt      DateTime @updatedAt
 
   projects       Project[]
+  attendance     AttendanceRecord[]
 }
 
 model Project {
