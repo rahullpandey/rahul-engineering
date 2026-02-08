@@ -1780,6 +1780,10 @@ body.logo-stuck .site-mark {
     justify-content: center;
   }
 
+  .admin-sidebar > div:first-child > div:last-child > div:first-child {
+    font-size: 1.35rem;
+  }
+
   .admin-sidebar nav {
     display: flex !important;
     flex-wrap: wrap;
