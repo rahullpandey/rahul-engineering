@@ -743,6 +743,50 @@ textarea {
   flex-wrap: wrap;
 }
 
+.proposal-panel {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(246, 240, 231, 0.95));
+  border: 1px solid rgba(200, 160, 110, 0.3);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 18px 34px rgba(27, 42, 65, 0.12);
+}
+
+.proposal-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.proposal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.proposal-form label {
+  display: grid;
+  gap: 0.4rem;
+  font-weight: 600;
+}
+
+.proposal-form textarea {
+  resize: vertical;
+}
+
+.proposal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.proposal-success {
+  color: #1b2a41;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(200, 160, 110, 0.35);
+}
+
 @keyframes contact-orb {
   0%,
   100% {

@@ -7,6 +7,9 @@ export const dynamic = "force-dynamic";
 
 export default async function HomePage({ searchParams }) {
   const selectedHotel = searchParams?.hotel || "all";
+  const selectedStatus = searchParams?.status || "all";
+  const selectedCity = searchParams?.city || "all";
+  const proposalSubmitted = searchParams?.submitted === "1";
   const groupedCollaborations = COLLABORATIONS.reduce((acc, item) => {
     if (!acc[item.group]) acc[item.group] = [];
     acc[item.group].push(item);
@@ -20,19 +23,56 @@ export default async function HomePage({ searchParams }) {
   const marqueeLoop = [...marqueeItems, ...marqueeItems];
   let projects = [];
   let hotels = [];
+  let employeeCount = 0;
+  let hotelCount = 0;
+  let projectCount = 0;
   let dbAvailable = true;
 
   try {
-    [projects, hotels] = await Promise.all([
+    const projectWhere = {};
+    if (selectedHotel !== "all") projectWhere.hotelId = selectedHotel;
+    if (selectedStatus !== "all") projectWhere.status = selectedStatus;
+
+    const [projectsData, hotelsData, employeesData, projectsTotal] = await Promise.all([
       prisma.project.findMany({
         include: { hotel: true },
-        where: selectedHotel === "all" ? undefined : { hotelId: selectedHotel },
+        where: Object.keys(projectWhere).length ? projectWhere : undefined,
         orderBy: { startDate: "desc" }
       }),
-      prisma.hotel.findMany({ orderBy: { name: "asc" } })
+      prisma.hotel.findMany({ orderBy: { name: "asc" } }),
+      prisma.employee.count(),
+      prisma.project.count()
     ]);
+
+    projects = projectsData;
+    hotels = hotelsData;
+    employeeCount = employeesData;
+    hotelCount = hotelsData.length;
+    projectCount = projectsTotal;
   } catch (error) {
     dbAvailable = false;
+  }
+
+  const cityOptions = Array.from(
+    new Set(
+      hotels
+        .map((hotel) => {
+          if (!hotel.address) return null;
+          const parts = hotel.address.split(",").map((part) => part.trim()).filter(Boolean);
+          if (parts.length >= 2) return parts[parts.length - 2];
+          return parts[0] || null;
+        })
+        .filter(Boolean)
+    )
+  ).sort();
+
+  if (selectedCity !== "all") {
+    const needle = selectedCity.toLowerCase();
+    projects = projects.filter((project) => {
+      const address = (project.hotel?.address || "").toLowerCase();
+      const name = (project.hotel?.name || "").toLowerCase();
+      return address.includes(needle) || name.includes(needle);
+    });
   }
 
   return (
@@ -90,12 +130,7 @@ export default async function HomePage({ searchParams }) {
             <span className="hero-pill">Audit Ready</span>
           </div>
           <div className="cta-row">
-            <a
-              className="button primary"
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=rkpanday257@gmail.com&su=Proposal%20Request%20-%20Rahul%20Engineering"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a className="button primary" href="#proposal">
               Request a proposal
             </a>
             <a className="button ghost" href="/admin/login">Go to admin portal</a>
@@ -108,9 +143,9 @@ export default async function HomePage({ searchParams }) {
             Real-time visibility across workforce and hotel projects.
           </p>
           <div className="kpi-grid">
-            <div className="kpi"><span>Active Employees</span><strong>128</strong></div>
-            <div className="kpi"><span>Hotel Projects</span><strong>14</strong></div>
-            <div className="kpi"><span>Hotels Covered</span><strong>9</strong></div>
+            <div className="kpi"><span>Active Employees</span><strong>{dbAvailable ? employeeCount : "-"}</strong></div>
+            <div className="kpi"><span>Hotel Projects</span><strong>{dbAvailable ? projectCount : "-"}</strong></div>
+            <div className="kpi"><span>Hotels Covered</span><strong>{dbAvailable ? hotelCount : "-"}</strong></div>
             <div className="kpi"><span>Response Time</span><strong>24h</strong></div>
           </div>
           <div style={{ fontSize: "0.9rem", color: "var(--muted)" }}>
@@ -214,7 +249,7 @@ export default async function HomePage({ searchParams }) {
             style={{
               display: "grid",
               gap: "0.6rem",
-              gridTemplateColumns: "minmax(220px, 320px)",
+              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
               marginBottom: "1.2rem"
             }}
           >
@@ -228,6 +263,27 @@ export default async function HomePage({ searchParams }) {
                   {hotel.name}
                 </option>
               ))}
+            </select>
+            <label htmlFor="city" style={{ fontWeight: 600 }}>
+              Filter by city
+            </label>
+            <select id="city" name="city" defaultValue={selectedCity}>
+              <option value="all">All cities</option>
+              {cityOptions.map((city) => (
+                <option key={city} value={city}>
+                  {city}
+                </option>
+              ))}
+            </select>
+            <label htmlFor="status" style={{ fontWeight: 600 }}>
+              Filter by status
+            </label>
+            <select id="status" name="status" defaultValue={selectedStatus}>
+              <option value="all">All statuses</option>
+              <option value="PLANNED">Planned</option>
+              <option value="ACTIVE">Active</option>
+              <option value="ON_HOLD">On Hold</option>
+              <option value="COMPLETED">Completed</option>
             </select>
             <button className="button ghost" type="submit">
               Apply Filter
@@ -298,6 +354,63 @@ export default async function HomePage({ searchParams }) {
             <strong>Premium Network</strong>
             <p>Strengthened coverage across premium hotel groups.</p>
           </div>
+        </div>
+      </section>
+
+      <section className="container" id="proposal">
+        <div className="section-head">
+          <h2 className="section-title">Request a Proposal</h2>
+          <p>Send your requirements and our team will respond quickly.</p>
+        </div>
+        <div className="proposal-panel">
+          <form className="proposal-form" action="/api/proposals" method="post">
+            <div className="proposal-grid">
+              <label>
+                Full name
+                <input name="name" placeholder="Your name" required />
+              </label>
+              <label>
+                Company
+                <input name="company" placeholder="Company (optional)" />
+              </label>
+              <label>
+                Email
+                <input type="email" name="email" placeholder="you@example.com" required />
+              </label>
+              <label>
+                Phone
+                <input name="phone" placeholder="+91..." required />
+              </label>
+              <label>
+                Hotel / Property
+                <input name="hotel" placeholder="Hotel name (optional)" />
+              </label>
+              <label>
+                City
+                <input name="city" placeholder="City (optional)" />
+              </label>
+            </div>
+            <label>
+              Requirements
+              <textarea name="message" rows={4} placeholder="Tell us about staffing or project needs." />
+            </label>
+            <div className="proposal-actions">
+              <button className="button primary" type="submit">
+                Submit request
+              </button>
+              <a
+                className="button ghost"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=rkpanday257@gmail.com&su=Proposal%20Request%20-%20Rahul%20Engineering"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Email us instead
+              </a>
+            </div>
+            {proposalSubmitted ? (
+              <p className="proposal-success">Thanks! Your request has been submitted.</p>
+            ) : null}
+          </form>
         </div>
       </section>
 

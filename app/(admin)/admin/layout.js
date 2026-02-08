@@ -6,22 +6,23 @@ export default function AdminLayout({ children }) {
     <div className="admin-shell">
       <aside className="admin-sidebar">
         <div>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
+          <div className="admin-brand">
             <div className="logo-architect" aria-hidden>
               <span className="arch-r">R</span>
               <span className="arch-e">E</span>
             </div>
-            <div>
-              <div style={{ fontWeight: 700, fontSize: "1.1rem" }}>Rahul Engineering</div>
-              <div style={{ color: "#6c6a66", fontSize: "0.9rem" }}>Admin Portal</div>
+            <div className="admin-brand-text">
+              <div className="admin-wordmark">Rahul Engineering</div>
+              <div className="admin-subtitle">Admin Portal</div>
             </div>
           </div>
         </div>
-        <nav style={{ display: "grid", gap: "0.5rem" }}>
+        <nav className="admin-nav">
           <a href="/admin">Dashboard</a>
           <a href="/admin/employees">Employees</a>
           <a href="/admin/hotels">Hotels</a>
           <a href="/admin/projects">Projects</a>
+          <a href="/admin/requests">Requests</a>
         </nav>
         <form method="post" action="/api/auth/logout" style={{ marginTop: "auto" }}>
           <button
