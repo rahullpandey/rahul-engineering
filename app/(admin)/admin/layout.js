@@ -7,7 +7,7 @@ export default function AdminLayout({ children }) {
       <aside className="admin-sidebar">
         <div>
           <div className="admin-brand">
-            <div className="logo-architect" aria-hidden>
+            <div className="logo-architect admin-logo" aria-hidden>
               <span className="arch-r">R</span>
               <span className="arch-e">E</span>
             </div>
