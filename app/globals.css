@@ -1601,6 +1601,95 @@ body.logo-stuck .site-mark {
   font-weight: 600;
 }
 
+.inline-form {
+  display: inline-flex;
+}
+
+.action-icon-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid rgba(168, 121, 62, 0.35);
+  background: rgba(255, 255, 255, 0.85);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.action-icon-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 18px rgba(27, 42, 65, 0.16);
+}
+
+.action-delete {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: none;
+  background: transparent;
+  color: #8b4b4b;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.3rem 0.5rem;
+  border-radius: 999px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.action-delete:hover {
+  background: rgba(168, 121, 62, 0.12);
+  color: #6f3a3a;
+}
+
+.recycle-icon {
+  width: 16px;
+  height: 16px;
+  border: 1.6px solid rgba(168, 121, 62, 0.7);
+  border-radius: 3px;
+  position: relative;
+  background: rgba(168, 121, 62, 0.18);
+}
+
+.recycle-icon::before {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 8px;
+  background: rgba(168, 121, 62, 0.9);
+  left: 50%;
+  top: 3px;
+  transform: translateX(-50%);
+}
+
+.recycle-icon::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid rgba(168, 121, 62, 0.9);
+  border-bottom: 2px solid rgba(168, 121, 62, 0.9);
+  transform: rotate(45deg);
+  left: 50%;
+  top: 7px;
+  margin-left: -3px;
+}
+
+.row-removing {
+  animation: row-fade 0.26s ease forwards;
+}
+
+@keyframes row-fade {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;

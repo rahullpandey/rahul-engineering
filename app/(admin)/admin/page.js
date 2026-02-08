@@ -1,5 +1,6 @@
 import prisma from "../../../lib/prisma";
 import PurgeForm from "./components/PurgeForm";
+import RecycleForm from "./components/RecycleForm";
 
 export const dynamic = "force-dynamic";
 
@@ -153,14 +154,7 @@ export default async function AdminHomePage() {
                   </a>
                 </td>
                 <td>
-                  <form className="inline-form" action="/api/quotations" method="post">
-                    <input type="hidden" name="action" value="delete" />
-                    <input type="hidden" name="fileName" value={file.name} />
-                    <button className="action-delete" type="submit">
-                      <span className="delete-icon" aria-hidden />
-                      Move to recycle
-                    </button>
-                  </form>
+                  <RecycleForm fileName={file.name} />
                 </td>
               </tr>
             ))
