@@ -129,118 +129,124 @@ export default async function AdminHomePage() {
       </div>
 
       <h2 className="section-title">Stored Quotations</h2>
-      <table className="table" style={{ marginBottom: "2.5rem" }}>
-        <thead>
-          <tr>
-            <th>File</th>
-            <th>Size</th>
-            <th>Updated</th>
-            <th>Download</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {storageError ? (
+      <div className="table-wrap" style={{ marginBottom: "2.5rem" }}>
+        <table className="table">
+          <thead>
             <tr>
-              <td colSpan={5}>{storageError}</td>
+              <th>File</th>
+              <th>Size</th>
+              <th>Updated</th>
+              <th>Download</th>
+              <th>Move to Bin</th>
             </tr>
-          ) : activeQuotations.length === 0 ? (
-            <tr>
-              <td colSpan={5}>No quotations uploaded yet.</td>
-            </tr>
-          ) : (
-            activeQuotations.map((file) => (
-              <tr key={file.name}>
-                <td data-label="File">{file.name}</td>
-                <td data-label="Size">{file.metadata?.size ? `${Math.round(file.metadata.size / 1024)} KB` : "-"}</td>
-                <td data-label="Updated">{file.updated_at || file.created_at ? new Date(file.updated_at || file.created_at).toISOString().slice(0, 10) : "-"}</td>
-                <td data-label="Download">
-                  <a
-                    className="button ghost"
-                    href={`/api/quotations?file=${encodeURIComponent(file.name)}`}
-                  >
-                    Download
-                  </a>
-                </td>
-                <td data-label="Action">
-                  <RecycleForm fileName={file.name} />
-                </td>
+          </thead>
+          <tbody>
+            {storageError ? (
+              <tr>
+                <td colSpan={5}>{storageError}</td>
               </tr>
-            ))
-          )}
-        </tbody>
-      </table>
+            ) : activeQuotations.length === 0 ? (
+              <tr>
+                <td colSpan={5}>No quotations uploaded yet.</td>
+              </tr>
+            ) : (
+              activeQuotations.map((file) => (
+                <tr key={file.name}>
+                  <td>{file.name}</td>
+                  <td>{file.metadata?.size ? `${Math.round(file.metadata.size / 1024)} KB` : "-"}</td>
+                  <td>{file.updated_at || file.created_at ? new Date(file.updated_at || file.created_at).toISOString().slice(0, 10) : "-"}</td>
+                  <td>
+                    <a
+                      className="button ghost"
+                      href={`/api/quotations?file=${encodeURIComponent(file.name)}`}
+                    >
+                      Download
+                    </a>
+                  </td>
+                  <td>
+                    <RecycleForm fileName={file.name} />
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
 
       <h2 className="section-title">Recycle Bin</h2>
-      <table className="table" style={{ marginBottom: "2.5rem" }}>
-        <thead>
-          <tr>
-            <th>File</th>
-            <th>Size</th>
-            <th>Updated</th>
-            <th>Restore</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          {storageError ? (
+      <div className="table-wrap" style={{ marginBottom: "2.5rem" }}>
+        <table className="table">
+          <thead>
             <tr>
-              <td colSpan={5}>{storageError}</td>
+              <th>File</th>
+              <th>Size</th>
+              <th>Updated</th>
+              <th>Restore</th>
+              <th>Delete</th>
             </tr>
-          ) : recycledQuotations.length === 0 ? (
-            <tr>
-              <td colSpan={5}>Recycle bin is empty.</td>
-            </tr>
-          ) : (
-            recycledQuotations.map((file) => (
-              <tr key={file.name}>
-                <td data-label="File">{file.name.replace(/^recycle\//, "")}</td>
-                <td data-label="Size">{file.metadata?.size ? `${Math.round(file.metadata.size / 1024)} KB` : "-"}</td>
-                <td data-label="Updated">{file.updated_at || file.created_at ? new Date(file.updated_at || file.created_at).toISOString().slice(0, 10) : "-"}</td>
-                <td data-label="Restore">
-                  <form className="inline-form" action="/api/quotations" method="post">
-                    <input type="hidden" name="action" value="restore" />
-                    <input type="hidden" name="fileName" value={file.name} />
-                    <button className="button ghost" type="submit">
-                      Restore
-                    </button>
-                  </form>
-                </td>
-                <td data-label="Delete">
-                  <PurgeForm fileName={file.name} />
-                </td>
+          </thead>
+          <tbody>
+            {storageError ? (
+              <tr>
+                <td colSpan={5}>{storageError}</td>
               </tr>
-            ))
-          )}
-        </tbody>
-      </table>
+            ) : recycledQuotations.length === 0 ? (
+              <tr>
+                <td colSpan={5}>Recycle bin is empty.</td>
+              </tr>
+            ) : (
+              recycledQuotations.map((file) => (
+                <tr key={file.name}>
+                  <td>{file.name.replace(/^recycle\//, "")}</td>
+                  <td>{file.metadata?.size ? `${Math.round(file.metadata.size / 1024)} KB` : "-"}</td>
+                  <td>{file.updated_at || file.created_at ? new Date(file.updated_at || file.created_at).toISOString().slice(0, 10) : "-"}</td>
+                  <td>
+                    <form className="inline-form" action="/api/quotations" method="post">
+                      <input type="hidden" name="action" value="restore" />
+                      <input type="hidden" name="fileName" value={file.name} />
+                      <button className="button ghost" type="submit">
+                        Restore
+                      </button>
+                    </form>
+                  </td>
+                  <td>
+                    <PurgeForm fileName={file.name} />
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
 
       <h2 className="section-title">Recent Project Activity</h2>
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Hotel</th>
-            <th>Project</th>
-            <th>Status</th>
-            <th>Last Updated</th>
-          </tr>
-        </thead>
-        <tbody>
-          {projects.map((row) => (
-            <tr key={row.id}>
-                <td data-label="Hotel">{row.hotel?.name}</td>
-                <td data-label="Project">{row.name}</td>
-                <td data-label="Status">{row.status}</td>
-                <td data-label="Last Updated">{new Date(row.updatedAt).toISOString().slice(0, 10)}</td>
-            </tr>
-          ))}
-          {projects.length === 0 ? (
+      <div className="table-wrap">
+        <table className="table">
+          <thead>
             <tr>
-              <td colSpan={4}>No projects yet. Add your first project to see it here.</td>
+              <th>Hotel</th>
+              <th>Project</th>
+              <th>Status</th>
+              <th>Last Updated</th>
             </tr>
-          ) : null}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {projects.map((row) => (
+              <tr key={row.id}>
+                <td>{row.hotel?.name}</td>
+                <td>{row.name}</td>
+                <td>{row.status}</td>
+                <td>{new Date(row.updatedAt).toISOString().slice(0, 10)}</td>
+              </tr>
+            ))}
+            {projects.length === 0 ? (
+              <tr>
+                <td colSpan={4}>No projects yet. Add your first project to see it here.</td>
+              </tr>
+            ) : null}
+          </tbody>
+        </table>
+      </div>
     </section>
   );
 }
