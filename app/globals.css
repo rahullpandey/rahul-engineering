@@ -1797,4 +1797,32 @@ body.logo-stuck .site-mark {
     left: 10px;
     transform: scale(0.8);
   }
+
+  .coverage-panel {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+  }
+
+  .coverage-panel--radar {
+    grid-template-columns: 1fr;
+  }
+
+  .radar-shell {
+    order: 1;
+  }
+
+  .radar-display {
+    width: min(240px, 80vw);
+    height: min(240px, 80vw);
+    margin: 0 auto;
+  }
+
+  .hotel-panel {
+    order: 2;
+    width: 100%;
+  }
+
+  .radar-dot-label {
+    font-size: 0.65rem;
+  }
 }
