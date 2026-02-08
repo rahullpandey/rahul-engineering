@@ -1,4 +1,5 @@
 import prisma from "../../../lib/prisma";
+import PurgeForm from "./components/PurgeForm";
 
 export const dynamic = "force-dynamic";
 
@@ -19,29 +20,39 @@ export default async function AdminHomePage() {
   let storedQuotations = [];
   let storageError = null;
 
+  let activeQuotations = [];
+  let recycledQuotations = [];
+
   if (!supabaseUrl || !serviceKey) {
     storageError = "Supabase storage is not configured.";
   } else {
-    const listResponse = await fetch(`${supabaseUrl}/storage/v1/object/list/${bucket}`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${serviceKey}`,
-        apikey: serviceKey,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        prefix: "",
-        limit: 50,
-        sortBy: { column: "created_at", order: "desc" }
-      }),
-      cache: "no-store"
-    });
+    const listFiles = async (prefix) => {
+      const response = await fetch(`${supabaseUrl}/storage/v1/object/list/${bucket}`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${serviceKey}`,
+          apikey: serviceKey,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          prefix,
+          limit: 100,
+          sortBy: { column: "created_at", order: "desc" }
+        }),
+        cache: "no-store"
+      });
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      const data = await response.json();
+      return (data || []).filter((item) => item.name && !item.name.endsWith("/"));
+    };
 
-    if (!listResponse.ok) {
-      storageError = `Storage error: ${listResponse.statusText}`;
-    } else {
-      const data = await listResponse.json();
-      storedQuotations = (data || []).filter((item) => item.name && !item.name.endsWith("/"));
+    try {
+      activeQuotations = await listFiles("");
+      recycledQuotations = await listFiles("recycle");
+    } catch (error) {
+      storageError = `Storage error: ${error.message}`;
     }
   }
 
@@ -115,19 +126,20 @@ export default async function AdminHomePage() {
             <th>Size</th>
             <th>Updated</th>
             <th>Download</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
           {storageError ? (
             <tr>
-              <td colSpan={4}>{storageError}</td>
+              <td colSpan={5}>{storageError}</td>
             </tr>
-          ) : storedQuotations.length === 0 ? (
+          ) : activeQuotations.length === 0 ? (
             <tr>
-              <td colSpan={4}>No quotations uploaded yet.</td>
+              <td colSpan={5}>No quotations uploaded yet.</td>
             </tr>
           ) : (
-            storedQuotations.map((file) => (
+            activeQuotations.map((file) => (
               <tr key={file.name}>
                 <td>{file.name}</td>
                 <td>{file.metadata?.size ? `${Math.round(file.metadata.size / 1024)} KB` : "-"}</td>
@@ -139,6 +151,60 @@ export default async function AdminHomePage() {
                   >
                     Download
                   </a>
+                </td>
+                <td>
+                  <form className="inline-form" action="/api/quotations" method="post">
+                    <input type="hidden" name="action" value="delete" />
+                    <input type="hidden" name="fileName" value={file.name} />
+                    <button className="action-delete" type="submit">
+                      <span className="delete-icon" aria-hidden />
+                      Move to recycle
+                    </button>
+                  </form>
+                </td>
+              </tr>
+            ))
+          )}
+        </tbody>
+      </table>
+
+      <h2 className="section-title">Recycle Bin</h2>
+      <table className="table" style={{ marginBottom: "2.5rem" }}>
+        <thead>
+          <tr>
+            <th>File</th>
+            <th>Size</th>
+            <th>Updated</th>
+            <th>Restore</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {storageError ? (
+            <tr>
+              <td colSpan={5}>{storageError}</td>
+            </tr>
+          ) : recycledQuotations.length === 0 ? (
+            <tr>
+              <td colSpan={5}>Recycle bin is empty.</td>
+            </tr>
+          ) : (
+            recycledQuotations.map((file) => (
+              <tr key={file.name}>
+                <td>{file.name.replace(/^recycle\//, "")}</td>
+                <td>{file.metadata?.size ? `${Math.round(file.metadata.size / 1024)} KB` : "-"}</td>
+                <td>{file.updated_at || file.created_at ? new Date(file.updated_at || file.created_at).toISOString().slice(0, 10) : "-"}</td>
+                <td>
+                  <form className="inline-form" action="/api/quotations" method="post">
+                    <input type="hidden" name="action" value="restore" />
+                    <input type="hidden" name="fileName" value={file.name} />
+                    <button className="button ghost" type="submit">
+                      Restore
+                    </button>
+                  </form>
+                </td>
+                <td>
+                  <PurgeForm fileName={file.name} />
                 </td>
               </tr>
             ))
