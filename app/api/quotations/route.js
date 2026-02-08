@@ -41,6 +41,49 @@ function isSafePath(value) {
   return value && !value.includes("..") && !value.startsWith("/");
 }
 
+async function fetchObject(config, target) {
+  const response = await fetch(
+    `${config.supabaseUrl}/storage/v1/object/${config.bucket}/${encodeURIComponent(target)}`,
+    {
+      headers: {
+        Authorization: `Bearer ${config.serviceKey}`,
+        apikey: config.serviceKey
+      }
+    }
+  );
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(errorText || "Object not found");
+  }
+
+  return {
+    buffer: await response.arrayBuffer(),
+    contentType: response.headers.get("content-type") || "application/octet-stream"
+  };
+}
+
+async function uploadObject(config, target, buffer, contentType) {
+  const response = await fetch(
+    `${config.supabaseUrl}/storage/v1/object/${config.bucket}/${encodeURIComponent(target)}`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${config.serviceKey}`,
+        apikey: config.serviceKey,
+        "Content-Type": contentType,
+        "x-upsert": "false"
+      },
+      body: Buffer.from(buffer)
+    }
+  );
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(errorText || "Upload failed");
+  }
+}
+
 async function deleteObject(config, target) {
   const response = await fetch(`${config.supabaseUrl}/storage/v1/object/${config.bucket}/${encodeURIComponent(target)}`, {
     method: "DELETE",
@@ -77,7 +120,9 @@ export async function POST(request) {
       return new Response("Invalid file name.", { status: 400 });
     }
     try {
-      await moveObject(config, target, `recycle/${target}`);
+      const { buffer, contentType } = await fetchObject(config, target);
+      await uploadObject(config, `recycle/${target}`, buffer, contentType);
+      await deleteObject(config, target);
     } catch (error) {
       return new Response(`Delete failed: ${error.message}`, { status: 500 });
     }
