@@ -7,10 +7,12 @@ export default function AdminLayout({ children }) {
       <aside className="admin-sidebar">
         <div>
           <div className="admin-brand">
-            <div className="logo-architect admin-logo" aria-hidden>
-              <span className="arch-r">R</span>
-              <span className="arch-e">E</span>
-            </div>
+            <a className="admin-logo-link" href="/" aria-label="Rahul Engineering Home">
+              <div className="logo-architect admin-logo" aria-hidden>
+                <span className="arch-r">R</span>
+                <span className="arch-e">E</span>
+              </div>
+            </a>
             <div className="admin-brand-text">
               <div className="admin-wordmark">Rahul Engineering</div>
               <div className="admin-subtitle">Admin Portal</div>
