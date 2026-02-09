@@ -9,12 +9,12 @@
   <rect width="1200" height="630" fill="url(#bg)"/>
   <rect x="60" y="60" width="1080" height="510" rx="32" fill="rgba(255,255,255,0.78)" stroke="rgba(200,160,110,0.45)" />
 
-  <rect x="110" y="140" width="140" height="140" rx="18" fill="#f7f3ed" stroke="rgba(43,43,43,0.25)" stroke-width="2"/>
-  <text x="155" y="220" font-family="Times New Roman, serif" font-size="72" font-weight="700" fill="#2b2b2b">R</text>
-  <text x="205" y="255" font-family="Times New Roman, serif" font-size="60" font-weight="700" fill="#a8793e">E</text>
+  <rect x="90" y="155" width="120" height="120" rx="16" fill="#f7f3ed" stroke="rgba(43,43,43,0.25)" stroke-width="2"/>
+  <text x="128" y="230" font-family="Times New Roman, serif" font-size="64" font-weight="700" fill="#2b2b2b">R</text>
+  <text x="172" y="255" font-family="Times New Roman, serif" font-size="56" font-weight="700" fill="#a8793e">E</text>
 
-  <text x="280" y="215" font-family="Times New Roman, serif" font-size="72" font-weight="700" fill="#2b2b2b" letter-spacing="2">Rahul Engineering</text>
-  <text x="280" y="265" font-family="Times New Roman, serif" font-size="30" fill="#6c6a66" letter-spacing="3">Hospitality Workforce &amp; Project Management</text>
+  <text x="230" y="215" font-family="Times New Roman, serif" font-size="64" font-weight="700" fill="#2b2b2b" letter-spacing="2">Rahul Engineering</text>
+  <text x="230" y="260" font-family="Times New Roman, serif" font-size="28" fill="#6c6a66" letter-spacing="3">Hospitality Workforce &amp; Project Management</text>
 
-  <text x="110" y="360" font-family="Times New Roman, serif" font-size="28" fill="#3b2f24">Trusted manpower partner for premium hotels. 24/7 coverage, verified teams, and on-time staffing.</text>
+  <text x="90" y="360" font-family="Times New Roman, serif" font-size="26" fill="#3b2f24">Trusted manpower partner for premium hotels. 24/7 coverage, verified teams, and on-time staffing.</text>
 </svg>
