@@ -2019,6 +2019,7 @@ body.logo-stuck .site-mark {
     text-align: center;
     gap: 1rem;
     padding: 1.5rem 1.1rem 2rem;
+    overflow-x: hidden;
   }
 
   .admin-brand {
@@ -2028,8 +2029,12 @@ body.logo-stuck .site-mark {
     align-items: center;
   }
 
+  .admin-brand-text {
+    width: 100%;
+  }
+
   .admin-wordmark {
-    font-size: 2.15rem;
+    font-size: clamp(1.6rem, 7vw, 2.15rem);
     text-align: center;
     line-height: 1.1;
     max-width: 100%;
@@ -2066,7 +2071,8 @@ body.logo-stuck .site-mark {
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.6rem 1rem;
-    width: min(360px, 100%);
+    width: 100%;
+    max-width: 360px;
   }
 
   .admin-nav a {
@@ -2075,6 +2081,8 @@ body.logo-stuck .site-mark {
     background: rgba(255, 255, 255, 0.6);
     border: 1px solid rgba(200, 160, 110, 0.35);
     white-space: nowrap;
+    flex: 1 1 auto;
+    text-align: center;
   }
 
   .admin-sidebar form {
@@ -2089,6 +2097,10 @@ body.logo-stuck .site-mark {
   .admin-sidebar > div:last-child {
     width: 100%;
     text-align: center;
+  }
+
+  .admin-content {
+    padding: 1.6rem 1.1rem 2.5rem;
   }
 }
 
