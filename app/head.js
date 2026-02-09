@@ -11,7 +11,7 @@ export default function Head() {
       <meta property="og:site_name" content="Rahul Engineering" />
       <meta
         property="og:image"
-        content="https://www.rahulengineerings.com/opengraph-image"
+        content="https://www.rahulengineerings.com/og.png"
       />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
@@ -21,7 +21,7 @@ export default function Head() {
       <meta name="twitter:description" content={description} />
       <meta
         name="twitter:image"
-        content="https://www.rahulengineerings.com/opengraph-image"
+        content="https://www.rahulengineerings.com/og.png"
       />
       <link rel="canonical" href="https://www.rahulengineerings.com" />
     </>
