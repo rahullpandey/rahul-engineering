@@ -2059,12 +2059,28 @@ body.logo-stuck .site-mark {
   }
 
   .admin-nav a {
-    padding: 0.55rem 0.6rem;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.6);
-    border: 1px solid rgba(200, 160, 110, 0.35);
+    padding: 0.75rem 0.6rem;
+    border-radius: 16px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(245, 236, 224, 0.9));
+    border: 1px solid rgba(200, 160, 110, 0.45);
     white-space: nowrap;
     text-align: center;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #2b2117;
+    box-shadow:
+      0 10px 20px rgba(43, 43, 43, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .admin-nav a:nth-child(odd) {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 1), rgba(240, 229, 214, 0.95));
+  }
+
+  .admin-nav a:active {
+    transform: translateY(1px);
+    box-shadow: 0 6px 14px rgba(43, 43, 43, 0.14);
   }
 
   .admin-sidebar form {
