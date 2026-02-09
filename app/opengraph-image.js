@@ -70,7 +70,7 @@ export default function OpenGraphImage() {
               maxWidth: "90%"
             }}
           >
-            Trusted manpower partner for premium hotels. 24/7 coverage, verified teams, and on‑time staffing.
+            Trusted manpower partner for premium hotels. 24/7 coverage, verified teams, and on-time staffing.
           </div>
         </div>
       </div>
