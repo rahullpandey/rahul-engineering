@@ -163,6 +163,7 @@ textarea {
   background: white;
   font-family: inherit;
   caret-color: auto;
+  box-sizing: border-box;
 }
 
 input[type="date"] {
