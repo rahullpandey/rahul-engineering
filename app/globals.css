@@ -165,6 +165,14 @@ textarea {
   caret-color: auto;
 }
 
+input[type="date"] {
+  text-align: left;
+}
+
+input[type="date"]::-webkit-date-and-time-value {
+  text-align: left;
+}
+
 .container {
   width: min(1120px, 92vw);
   margin: 0 auto;
