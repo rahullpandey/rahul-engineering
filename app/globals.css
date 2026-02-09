@@ -1632,6 +1632,7 @@ body.logo-stuck .site-mark {
   background: radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.9), transparent 45%),
     radial-gradient(circle at 90% 20%, rgba(200, 160, 110, 0.18), transparent 55%),
     radial-gradient(circle at 50% 90%, rgba(27, 42, 65, 0.12), transparent 60%);
+  overflow-x: hidden;
 }
 
 .admin-dashboard {
@@ -2134,6 +2135,8 @@ body.logo-stuck .site-mark {
 
 .table-wrap {
   overflow-x: auto;
+  width: 100%;
+  max-width: 100%;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -2148,18 +2151,42 @@ body.logo-stuck .site-mark {
   }
 
   .table {
-    min-width: 560px;
+    min-width: 0;
   }
 
-  .table th,
+  .table thead {
+    display: none;
+  }
+
+  .table tr {
+    display: block;
+    border: 1px solid rgba(200, 160, 110, 0.3);
+    border-radius: 18px;
+    padding: 0.85rem 0.95rem;
+    margin-bottom: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+  }
+
   .table td {
-    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border: none;
+    padding: 0.4rem 0;
+    white-space: normal;
   }
 
-  .table td:first-child {
-    max-width: 220px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  .table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #7a6d5c;
+    flex: 0 0 42%;
+  }
+
+  .admin-table-actions {
+    width: 100%;
+    justify-content: flex-end;
   }
 }
 

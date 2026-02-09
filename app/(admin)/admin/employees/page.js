@@ -86,13 +86,13 @@ export default async function EmployeesPage() {
           <tbody>
             {employees.map((employee) => (
               <tr key={employee.id}>
-                <td>{employee.name}</td>
-                <td>{employee.phone}</td>
-                <td>{employee.role}</td>
-                <td>{employee.wageRate}</td>
-                <td>{formatDate(employee.joiningDate)}</td>
-                <td>{employee.status}</td>
-                <td>
+                <td data-label="Name">{employee.name}</td>
+                <td data-label="Phone">{employee.phone}</td>
+                <td data-label="Role">{employee.role}</td>
+                <td data-label="Wage Rate">{employee.wageRate}</td>
+                <td data-label="Joining Date">{formatDate(employee.joiningDate)}</td>
+                <td data-label="Status">{employee.status}</td>
+                <td data-label="Actions">
                   <div className="admin-table-actions">
                     <a className="button ghost" href={`/admin/employees/${employee.id}/edit`}>
                       Edit
