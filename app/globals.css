@@ -1573,65 +1573,6 @@ body.logo-stuck .site-mark {
   gap: 0.5rem;
 }
 
-.attendance-shell {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4rem 1.5rem;
-}
-
-.attendance-card {
-  width: min(480px, 92vw);
-  display: grid;
-  gap: 1rem;
-}
-
-.attendance-title {
-  font-family: "Playfair Display", "Times New Roman", serif;
-  font-size: 2rem;
-}
-
-.attendance-subtitle {
-  color: var(--muted);
-  margin-top: -0.5rem;
-}
-
-.attendance-message {
-  font-size: 0.95rem;
-  color: #5d5245;
-}
-
-.attendance-form {
-  display: grid;
-  gap: 1rem;
-}
-
-.attendance-label {
-  display: grid;
-  gap: 0.4rem;
-  font-weight: 600;
-  color: #3b2f24;
-}
-
-.attendance-actions {
-  display: flex;
-  gap: 0.8rem;
-  flex-wrap: wrap;
-}
-
-.attendance-preview {
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid rgba(168, 121, 62, 0.3);
-  box-shadow: 0 12px 24px rgba(43, 43, 43, 0.1);
-}
-
-.attendance-preview img {
-  width: 100%;
-  display: block;
-}
-
 .admin-filter {
   display: flex;
   gap: 1rem;

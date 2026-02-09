@@ -21,7 +21,6 @@ model Employee {
   updatedAt    DateTime @updatedAt
 
   assignments  ProjectAssignment[]
-  attendance   AttendanceRecord[]
 }
 
 model Hotel {
@@ -37,7 +36,6 @@ model Hotel {
   updatedAt      DateTime @updatedAt
 
   projects       Project[]
-  attendance     AttendanceRecord[]
 }
 
 model Project {
@@ -78,23 +76,4 @@ model ProposalRequest {
   status    String   @default("NEW")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-}
-
-model AttendanceRecord {
-  id             String   @id @default(cuid())
-  employeeId     String
-  hotelId        String?
-  status         String
-  attendanceDate String
-  latitude       Float?
-  longitude      Float?
-  selfiePath     String?
-  capturedAt     DateTime @default(now())
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
-
-  employee       Employee @relation(fields: [employeeId], references: [id])
-  hotel          Hotel?   @relation(fields: [hotelId], references: [id])
-
-  @@unique([employeeId, attendanceDate])
 }
