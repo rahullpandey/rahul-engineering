@@ -7,16 +7,16 @@ const description =
 export const metadata = {
   title: "Rahul Engineering",
   description,
-  metadataBase: new URL("https://rahulengineerings.com"),
+  metadataBase: new URL("https://www.rahulengineerings.com"),
   openGraph: {
     title: "Rahul Engineering",
     description,
-    url: "https://rahulengineerings.com",
+    url: "https://www.rahulengineerings.com",
     siteName: "Rahul Engineering",
     type: "website",
     images: [
       {
-        url: "/opengraph-image.png",
+        url: "https://www.rahulengineerings.com/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "Rahul Engineering"
@@ -27,7 +27,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Rahul Engineering",
     description,
-    images: ["/opengraph-image.png"]
+    images: ["https://www.rahulengineerings.com/opengraph-image.png"]
   }
 };
 
