@@ -53,8 +53,8 @@ export default async function EmployeesPage() {
 
       <div className="card" style={{ marginBottom: "2rem" }}>
         <h3 style={{ marginBottom: "1rem" }}>Add Employee</h3>
-        <form action={createEmployee} style={{ display: "grid", gap: "0.8rem" }}>
-          <div style={{ display: "grid", gap: "0.6rem", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
+        <form action={createEmployee} className="admin-form">
+          <div className="admin-form-grid">
             <input name="name" placeholder="Full name" required />
             <input name="phone" placeholder="Phone" required />
             <input name="role" placeholder="Role" required />
@@ -70,40 +70,44 @@ export default async function EmployeesPage() {
         </form>
       </div>
 
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Role</th>
-            <th>Wage Rate</th>
-            <th>Joining Date</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {employees.map((employee) => (
-            <tr key={employee.id}>
-              <td>{employee.name}</td>
-              <td>{employee.phone}</td>
-              <td>{employee.role}</td>
-              <td>{employee.wageRate}</td>
-              <td>{formatDate(employee.joiningDate)}</td>
-              <td>{employee.status}</td>
-              <td style={{ display: "flex", gap: "0.6rem" }}>
-                <a className="button ghost" href={`/admin/employees/${employee.id}/edit`}>
-                  Edit
-                </a>
-                <form action={deleteEmployee}>
-                  <input type="hidden" name="id" value={employee.id} />
-                  <button className="button" type="submit">Delete</button>
-                </form>
-              </td>
+      <div className="table-wrap">
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Phone</th>
+              <th>Role</th>
+              <th>Wage Rate</th>
+              <th>Joining Date</th>
+              <th>Status</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {employees.map((employee) => (
+              <tr key={employee.id}>
+                <td>{employee.name}</td>
+                <td>{employee.phone}</td>
+                <td>{employee.role}</td>
+                <td>{employee.wageRate}</td>
+                <td>{formatDate(employee.joiningDate)}</td>
+                <td>{employee.status}</td>
+                <td>
+                  <div className="admin-table-actions">
+                    <a className="button ghost" href={`/admin/employees/${employee.id}/edit`}>
+                      Edit
+                    </a>
+                    <form action={deleteEmployee}>
+                      <input type="hidden" name="id" value={employee.id} />
+                      <button className="button" type="submit">Delete</button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </section>
   );
 }

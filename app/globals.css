@@ -1598,6 +1598,23 @@ body.logo-stuck .site-mark {
   padding: 0.4rem 0.2rem;
 }
 
+.admin-form {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.admin-form-grid {
+  display: grid;
+  gap: 0.6rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.admin-table-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
 .admin-content {
   padding: 2.5rem;
   background: radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.9), transparent 45%),
@@ -2110,6 +2127,15 @@ body.logo-stuck .site-mark {
 }
 
 @media (max-width: 720px) {
+  .admin-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-form .button {
+    width: 100%;
+    justify-content: center;
+  }
+
   .table {
     min-width: 560px;
   }
