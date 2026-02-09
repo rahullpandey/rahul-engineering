@@ -16,7 +16,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "https://www.rahulengineerings.com/og.png?v=2",
+        url: "https://www.rahulengineerings.com/og.jpg?v=3",
         width: 1200,
         height: 630,
         alt: "Rahul Engineering"
@@ -27,7 +27,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Rahul Engineering",
     description,
-    images: ["https://www.rahulengineerings.com/og.png?v=2"]
+    images: ["https://www.rahulengineerings.com/og.jpg?v=3"]
   }
 };
 
