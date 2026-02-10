@@ -1,39 +1,30 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#f8f2e9"/>
-      <stop offset="45%" stop-color="#efe1d3"/>
-      <stop offset="100%" stop-color="#f8f2e9"/>
+      <stop offset="0%" stop-color="#f7f3ed"/>
+      <stop offset="55%" stop-color="#ead8c4"/>
+      <stop offset="100%" stop-color="#f7f3ed"/>
     </linearGradient>
-    <radialGradient id="glow" cx="70%" cy="25%" r="60%">
-      <stop offset="0%" stop-color="rgba(200,160,110,0.22)"/>
+    <radialGradient id="spot" cx="80%" cy="20%" r="55%">
+      <stop offset="0%" stop-color="rgba(200,160,110,0.28)"/>
       <stop offset="100%" stop-color="rgba(200,160,110,0)"/>
     </radialGradient>
   </defs>
 
   <rect width="1200" height="630" fill="url(#bg)"/>
-  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect width="1200" height="630" fill="url(#spot)"/>
 
-  <rect x="70" y="70" width="1060" height="490" rx="40" fill="rgba(255,255,255,0.85)" stroke="rgba(200,160,110,0.45)" stroke-width="2"/>
+  <rect x="70" y="70" width="1060" height="490" rx="44" fill="rgba(255,255,255,0.86)" stroke="rgba(200,160,110,0.45)" stroke-width="2"/>
 
-  <rect x="100" y="110" width="120" height="120" rx="18" fill="#f7f3ed" stroke="rgba(43,43,43,0.25)" stroke-width="2"/>
-  <text x="135" y="190" font-family="Times New Roman, serif" font-size="64" font-weight="700" fill="#2b2b2b">R</text>
-  <text x="185" y="214" font-family="Times New Roman, serif" font-size="56" font-weight="700" fill="#a8793e">E</text>
+  <circle cx="600" cy="190" r="74" fill="#f7f3ed" stroke="rgba(43,43,43,0.25)" stroke-width="2"/>
+  <text x="575" y="206" font-family="Times New Roman, serif" font-size="64" font-weight="700" fill="#2b2b2b">R</text>
+  <text x="632" y="226" font-family="Times New Roman, serif" font-size="56" font-weight="700" fill="#a8793e">E</text>
 
-  <text x="260" y="170" font-family="Times New Roman, serif" font-size="64" font-weight="700" fill="#2b2b2b" letter-spacing="1">Rahul Engineering</text>
-  <text x="260" y="210" font-family="Times New Roman, serif" font-size="22" fill="#6c6a66" letter-spacing="2">Hospitality Workforce &amp; Project Management</text>
+  <text x="600" y="320" text-anchor="middle" font-family="Times New Roman, serif" font-size="64" font-weight="700" fill="#2b2b2b" letter-spacing="1">Rahul Engineering</text>
+  <text x="600" y="360" text-anchor="middle" font-family="Times New Roman, serif" font-size="22" fill="#6c6a66" letter-spacing="2">Hospitality Workforce &amp; Project Management</text>
 
-  <rect x="100" y="270" width="1000" height="2" fill="rgba(200,160,110,0.45)"/>
+  <rect x="220" y="400" width="760" height="2" fill="rgba(200,160,110,0.5)"/>
 
-  <text x="100" y="330" font-family="Times New Roman, serif" font-size="26" fill="#3b2f24">Trusted manpower partner for premium hotels.</text>
-  <text x="100" y="370" font-family="Times New Roman, serif" font-size="26" fill="#3b2f24">24/7 coverage, verified teams, and on-time staffing.</text>
-
-  <rect x="100" y="415" width="240" height="44" rx="22" fill="rgba(200,160,110,0.12)" stroke="rgba(200,160,110,0.45)"/>
-  <text x="220" y="444" text-anchor="middle" font-family="Times New Roman, serif" font-size="18" fill="#8a6a3c" letter-spacing="2">5-STAR FOCUS</text>
-
-  <rect x="360" y="415" width="240" height="44" rx="22" fill="rgba(200,160,110,0.12)" stroke="rgba(200,160,110,0.45)"/>
-  <text x="480" y="444" text-anchor="middle" font-family="Times New Roman, serif" font-size="18" fill="#8a6a3c" letter-spacing="2">NORTH INDIA</text>
-
-  <rect x="620" y="415" width="240" height="44" rx="22" fill="rgba(200,160,110,0.12)" stroke="rgba(200,160,110,0.45)"/>
-  <text x="740" y="444" text-anchor="middle" font-family="Times New Roman, serif" font-size="18" fill="#8a6a3c" letter-spacing="2">24/7 COVERAGE</text>
+  <text x="600" y="455" text-anchor="middle" font-family="Times New Roman, serif" font-size="26" fill="#3b2f24">Trusted manpower partner for premium hotels</text>
+  <text x="600" y="490" text-anchor="middle" font-family="Times New Roman, serif" font-size="26" fill="#3b2f24">24/7 coverage • Verified teams • On-time staffing</text>
 </svg>
