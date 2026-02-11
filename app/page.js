@@ -111,6 +111,43 @@ export default async function HomePage({ searchParams }) {
     response: "24h"
   };
 
+  const sampleProjects = [
+    {
+      id: "sample-1",
+      name: "Banquet Workforce Ramp-Up",
+      status: "ACTIVE",
+      hotel: { name: "The Oberoi, New Delhi" },
+      startDate: "2026-01-10",
+      endDate: "2026-03-31"
+    },
+    {
+      id: "sample-2",
+      name: "Housekeeping Night Shift",
+      status: "ACTIVE",
+      hotel: { name: "ITC Grand Bharat, Gurugram" },
+      startDate: "2026-01-20",
+      endDate: "2026-04-15"
+    },
+    {
+      id: "sample-3",
+      name: "Kitchen Support Coverage",
+      status: "ON_HOLD",
+      hotel: { name: "The Lalit, New Delhi" },
+      startDate: "2026-02-01",
+      endDate: "2026-05-01"
+    },
+    {
+      id: "sample-4",
+      name: "Front-of-House Staffing",
+      status: "PLANNED",
+      hotel: { name: "Crowne Plaza, New Delhi" },
+      startDate: "2026-02-15",
+      endDate: "2026-06-01"
+    }
+  ];
+
+  const displayProjects = projects.length ? projects : sampleProjects;
+
   return (
     <main>
       <StickyLogoController />
@@ -327,40 +364,29 @@ export default async function HomePage({ searchParams }) {
           </form>
         ) : null}
         <div className="card-grid stagger-grid">
-          {projects.length === 0 ? (
-            <div className="card">
-              <h3>Projects Updating</h3>
-              <p>
-                {dbAvailable
-                  ? "Our project list is being updated. Please check back soon."
-                  : "The projects list is temporarily unavailable. Please check back soon."}
+          {displayProjects.map((project) => (
+            <div className="card project-card" key={project.id}>
+              <div className="project-top">
+                <h3>{project.name}</h3>
+                <span className={`status-pill status-${project.status?.toLowerCase()}`}>
+                  {project.status}
+                </span>
+              </div>
+              <p style={{ color: "var(--muted)", marginBottom: "0.6rem" }}>
+                {project.hotel?.name || "Hotel partner"}
               </p>
-            </div>
-          ) : (
-            projects.map((project) => (
-              <div className="card project-card" key={project.id}>
-                <div className="project-top">
-                  <h3>{project.name}</h3>
-                  <span className={`status-pill status-${project.status?.toLowerCase()}`}>
-                    {project.status}
-                  </span>
+              <div className="project-meta">
+                <div>
+                  <span>Start</span>
+                  <strong>{new Date(project.startDate).toISOString().slice(0, 10)}</strong>
                 </div>
-                <p style={{ color: "var(--muted)", marginBottom: "0.6rem" }}>
-                  {project.hotel?.name || "Hotel partner"}
-                </p>
-                <div className="project-meta">
-                  <div>
-                    <span>Start</span>
-                    <strong>{new Date(project.startDate).toISOString().slice(0, 10)}</strong>
-                  </div>
-                  <div>
-                    <span>End</span>
-                    <strong>{new Date(project.endDate).toISOString().slice(0, 10)}</strong>
-                  </div>
+                <div>
+                  <span>End</span>
+                  <strong>{new Date(project.endDate).toISOString().slice(0, 10)}</strong>
                 </div>
               </div>
-            ))
-          )}
+            </div>
+          ))}
         </div>
       </section>
 
