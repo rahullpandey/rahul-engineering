@@ -405,12 +405,12 @@ export default async function HomePage({ searchParams }) {
               </p>
               <div className="project-meta">
                 <div>
-                  <span>Start</span>
-                  <strong>{new Date(project.startDate).toISOString().slice(0, 10)}</strong>
+                  <span>Service Status</span>
+                  <strong>{project.status === "ACTIVE" ? "In progress" : project.status}</strong>
                 </div>
                 <div>
-                  <span>End</span>
-                  <strong>{new Date(project.endDate).toISOString().slice(0, 10)}</strong>
+                  <span>Coverage</span>
+                  <strong>Active teams</strong>
                 </div>
               </div>
             </div>
