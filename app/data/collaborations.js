@@ -152,6 +152,12 @@ export const COLLABORATIONS = [
     city: "Delhi NCR"
   },
   {
+    name: "Louis Vuitton, The Chanakya",
+    url: "https://in.louisvuitton.com/eng-in/point-of-sale/india/louis-vuitton-new-delhi-2-emporio",
+    group: "Luxury Retail & Malls",
+    city: "Delhi NCR"
+  },
+  {
     name: "Lakewood City, Faridabad",
     url: "https://www.lakewoodcityfaridabad.com/",
     group: "Lakewood City",
