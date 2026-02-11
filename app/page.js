@@ -104,6 +104,13 @@ export default async function HomePage({ searchParams }) {
     });
   }
 
+  const snapshot = {
+    employees: 128,
+    projects: 14,
+    hotels: 9,
+    response: "24h"
+  };
+
   return (
     <main>
       <StickyLogoController />
@@ -172,10 +179,10 @@ export default async function HomePage({ searchParams }) {
             Real-time visibility across workforce and hotel projects.
           </p>
           <div className="kpi-grid">
-            <div className="kpi"><span>Active Employees</span><strong>{dbAvailable ? employeeCount : "-"}</strong></div>
-            <div className="kpi"><span>Hotel Projects</span><strong>{dbAvailable ? projectCount : "-"}</strong></div>
-            <div className="kpi"><span>Hotels Covered</span><strong>{dbAvailable ? hotelCount : "-"}</strong></div>
-            <div className="kpi"><span>Response Time</span><strong>24h</strong></div>
+            <div className="kpi"><span>Active Employees</span><strong>{snapshot.employees}</strong></div>
+            <div className="kpi"><span>Hotel Projects</span><strong>{snapshot.projects}</strong></div>
+            <div className="kpi"><span>Hotels Covered</span><strong>{snapshot.hotels}</strong></div>
+            <div className="kpi"><span>Response Time</span><strong>{snapshot.response}</strong></div>
           </div>
           <div style={{ fontSize: "0.9rem", color: "var(--muted)" }}>
             Admin-only access for internal management.
