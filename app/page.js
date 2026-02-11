@@ -131,6 +131,15 @@ export default async function HomePage({ searchParams }) {
       endDate: "2026-07-15"
     },
     {
+      id: "sample-2b",
+      name: "Executive Housekeeping Strike Team",
+      status: "ACTIVE",
+      hotel: { name: "The Oberoi, Gurgaon" },
+      city: "Gurgaon",
+      startDate: "2026-02-01",
+      endDate: "2026-08-30"
+    },
+    {
       id: "sample-3",
       name: "Royal Suite Service Coverage",
       status: "PLANNED",
@@ -147,6 +156,15 @@ export default async function HomePage({ searchParams }) {
       city: "Delhi NCR",
       startDate: "2026-02-01",
       endDate: "2026-05-30"
+    },
+    {
+      id: "sample-5",
+      name: "Food & Beverage Service Uplift",
+      status: "ACTIVE",
+      hotel: { name: "Crowne Plaza, New Delhi" },
+      city: "Delhi NCR",
+      startDate: "2026-02-10",
+      endDate: "2026-09-15"
     }
   ];
 
