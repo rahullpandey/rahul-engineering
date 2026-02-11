@@ -114,39 +114,67 @@ export default async function HomePage({ searchParams }) {
   const sampleProjects = [
     {
       id: "sample-1",
-      name: "Banquet Workforce Ramp-Up",
+      name: "Luxury Banquet Expansion Program",
       status: "ACTIVE",
       hotel: { name: "The Oberoi, New Delhi" },
-      startDate: "2026-01-10",
-      endDate: "2026-03-31"
+      city: "Delhi NCR",
+      startDate: "2026-01-05",
+      endDate: "2026-06-30"
     },
     {
       id: "sample-2",
-      name: "Housekeeping Night Shift",
+      name: "Resort Staffing Operations Overhaul",
       status: "ACTIVE",
       hotel: { name: "ITC Grand Bharat, Gurugram" },
+      city: "Gurgaon",
       startDate: "2026-01-20",
-      endDate: "2026-04-15"
+      endDate: "2026-07-15"
     },
     {
       id: "sample-3",
-      name: "Kitchen Support Coverage",
-      status: "ON_HOLD",
-      hotel: { name: "The Lalit, New Delhi" },
-      startDate: "2026-02-01",
-      endDate: "2026-05-01"
+      name: "Royal Suite Service Coverage",
+      status: "PLANNED",
+      hotel: { name: "The Oberoi Amarvilas, Agra" },
+      city: "Agra",
+      startDate: "2026-02-15",
+      endDate: "2026-08-01"
     },
     {
       id: "sample-4",
-      name: "Front-of-House Staffing",
-      status: "PLANNED",
-      hotel: { name: "Crowne Plaza, New Delhi" },
-      startDate: "2026-02-15",
-      endDate: "2026-06-01"
+      name: "Premium Guest Services Rollout",
+      status: "ON_HOLD",
+      hotel: { name: "The Lalit, New Delhi" },
+      city: "Delhi NCR",
+      startDate: "2026-02-01",
+      endDate: "2026-05-30"
     }
   ];
 
-  const displayProjects = projects.length ? projects : sampleProjects;
+  const baseProjects = projects.length ? projects : sampleProjects;
+
+  const cityOptionsFromProjects = Array.from(
+    new Set(
+      baseProjects
+        .map((project) => project.city)
+        .filter(Boolean)
+    )
+  ).sort();
+
+  const cityOptionsFinal = cityOptions.length ? cityOptions : cityOptionsFromProjects;
+
+  let displayProjects = baseProjects;
+  if (selectedStatus !== "all") {
+    displayProjects = displayProjects.filter((project) => project.status === selectedStatus);
+  }
+  if (selectedCity !== "all") {
+    const needle = selectedCity.toLowerCase();
+    displayProjects = displayProjects.filter((project) => {
+      const projectCity = (project.city || "").toLowerCase();
+      const address = (project.hotel?.address || "").toLowerCase();
+      const name = (project.hotel?.name || "").toLowerCase();
+      return projectCity.includes(needle) || address.includes(needle) || name.includes(needle);
+    });
+  }
 
   return (
     <main>
@@ -342,7 +370,7 @@ export default async function HomePage({ searchParams }) {
             </label>
             <select id="city" name="city" defaultValue={selectedCity}>
               <option value="all">All cities</option>
-              {cityOptions.map((city) => (
+              {cityOptionsFinal.map((city) => (
                 <option key={city} value={city}>
                   {city}
                 </option>
