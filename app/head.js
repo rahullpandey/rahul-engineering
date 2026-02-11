@@ -11,11 +11,11 @@ export default function Head() {
       <meta property="og:site_name" content="Rahul Engineering" />
       <meta
         property="og:image"
-        content="https://www.rahulengineerings.com/og.jpg?v=8"
+        content="https://www.rahulengineerings.com/og.jpg?v=9"
       />
       <meta
         property="og:image:secure_url"
-        content="https://www.rahulengineerings.com/og.jpg?v=8"
+        content="https://www.rahulengineerings.com/og.jpg?v=9"
       />
       <meta property="og:image:type" content="image/jpeg" />
       <meta property="og:image:width" content="1200" />
@@ -26,7 +26,7 @@ export default function Head() {
       <meta name="twitter:description" content={description} />
       <meta
         name="twitter:image"
-        content="https://www.rahulengineerings.com/og.jpg?v=8"
+        content="https://www.rahulengineerings.com/og.jpg?v=9"
       />
       <link rel="canonical" href="https://www.rahulengineerings.com" />
     </>
