@@ -1,5 +1,6 @@
 import prisma from "../lib/prisma";
 import CoveragePanel from "./components/CoveragePanel";
+import GmailLink from "./components/GmailLink";
 import StickyLogoController from "./components/StickyLogoController";
 import { COLLABORATIONS, GROUP_ORDER } from "./data/collaborations";
 
@@ -506,14 +507,13 @@ export default async function HomePage({ searchParams }) {
               <button className="button primary" type="submit">
                 Submit request
               </button>
-              <a
+              <GmailLink
                 className="button ghost"
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=rkpanday257@gmail.com&su=Proposal%20Request%20-%20Rahul%20Engineering"
-                target="_blank"
-                rel="noreferrer"
+                to="rkpanday257@gmail.com"
+                subject="Proposal Request - Rahul Engineering"
               >
                 Email us instead
-              </a>
+              </GmailLink>
             </div>
             {proposalSubmitted ? (
               <p className="proposal-success">Thanks! Your request has been submitted.</p>
@@ -532,9 +532,13 @@ export default async function HomePage({ searchParams }) {
             <div className="contact-chips">
               <a className="contact-chip" href="tel:+919891750035">Call +91 9891750035</a>
               <a className="contact-chip" href="tel:+917982987790">Call +91 7982987790</a>
-              <a className="contact-chip" href="https://mail.google.com/mail/?view=cm&fs=1&to=rkpanday257@gmail.com&su=Proposal%20Request%20-%20Rahul%20Engineering" target="_blank" rel="noreferrer">
+              <GmailLink
+                className="contact-chip"
+                to="rkpanday257@gmail.com"
+                subject="Proposal Request - Rahul Engineering"
+              >
                 Email Us
-              </a>
+              </GmailLink>
             </div>
           </div>
           <div className="contact-card">
