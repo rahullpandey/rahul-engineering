@@ -152,10 +152,18 @@ export default async function AdminHomePage() {
             ) : (
               activeQuotations.map((file) => (
                 <tr key={file.name}>
-                  <td>{file.name}</td>
-                  <td>{file.metadata?.size ? `${Math.round(file.metadata.size / 1024)} KB` : "-"}</td>
-                  <td>{file.updated_at || file.created_at ? new Date(file.updated_at || file.created_at).toISOString().slice(0, 10) : "-"}</td>
-                  <td>
+                  <td data-label="File">
+                    <span className="file-name">{file.name}</span>
+                  </td>
+                  <td data-label="Size">
+                    {file.metadata?.size ? `${Math.round(file.metadata.size / 1024)} KB` : "-"}
+                  </td>
+                  <td data-label="Updated">
+                    {file.updated_at || file.created_at
+                      ? new Date(file.updated_at || file.created_at).toISOString().slice(0, 10)
+                      : "-"}
+                  </td>
+                  <td data-label="Download">
                     <a
                       className="button ghost"
                       href={`/api/quotations?file=${encodeURIComponent(file.name)}`}
@@ -163,7 +171,7 @@ export default async function AdminHomePage() {
                       Download
                     </a>
                   </td>
-                  <td>
+                  <td data-label="Move to Bin">
                     <RecycleForm fileName={file.name} />
                   </td>
                 </tr>
@@ -197,10 +205,18 @@ export default async function AdminHomePage() {
             ) : (
               recycledQuotations.map((file) => (
                 <tr key={file.name}>
-                  <td>{file.name.replace(/^recycle\//, "")}</td>
-                  <td>{file.metadata?.size ? `${Math.round(file.metadata.size / 1024)} KB` : "-"}</td>
-                  <td>{file.updated_at || file.created_at ? new Date(file.updated_at || file.created_at).toISOString().slice(0, 10) : "-"}</td>
-                  <td>
+                  <td data-label="File">
+                    <span className="file-name">{file.name.replace(/^recycle\//, "")}</span>
+                  </td>
+                  <td data-label="Size">
+                    {file.metadata?.size ? `${Math.round(file.metadata.size / 1024)} KB` : "-"}
+                  </td>
+                  <td data-label="Updated">
+                    {file.updated_at || file.created_at
+                      ? new Date(file.updated_at || file.created_at).toISOString().slice(0, 10)
+                      : "-"}
+                  </td>
+                  <td data-label="Restore">
                     <form className="inline-form" action="/api/quotations" method="post">
                       <input type="hidden" name="action" value="restore" />
                       <input type="hidden" name="fileName" value={file.name} />
@@ -209,7 +225,7 @@ export default async function AdminHomePage() {
                       </button>
                     </form>
                   </td>
-                  <td>
+                  <td data-label="Delete">
                     <PurgeForm fileName={file.name} />
                   </td>
                 </tr>
